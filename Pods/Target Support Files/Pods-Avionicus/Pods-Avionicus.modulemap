@@ -1,0 +1,6 @@
+framework module Pods_Avionicus {
+  umbrella header "Pods-Avionicus-umbrella.h"
+
+  export *
+  module * { export * }
+}
