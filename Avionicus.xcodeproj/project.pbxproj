@@ -37,6 +37,12 @@
 		55DF32F61E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
 		55DF32F71E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
 		55DF32F81E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
+		55DF32FA1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */; };
+		55DF32FB1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */; };
+		55DF32FC1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */; };
+		55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32FE1E885674007FA5F2 /* TrackerItem.swift */; };
+		55DF33001E885674007FA5F2 /* TrackerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32FE1E885674007FA5F2 /* TrackerItem.swift */; };
+		55DF33011E885674007FA5F2 /* TrackerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DF32FE1E885674007FA5F2 /* TrackerItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +97,8 @@
 		176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.release.xcconfig"; sourceTree = "<group>"; };
 		55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
+		55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTableViewCell.swift; sourceTree = "<group>"; };
+		55DF32FE1E885674007FA5F2 /* TrackerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerItem.swift; sourceTree = "<group>"; };
 		715FF74BABC18F386CF8D320 /* Pods-Avionicus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avionicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,6 +157,7 @@
 				17654CA11E61C9C70092A3D7 /* Constans.swift */,
 				17654C6E1E61C54B0092A3D7 /* AppDelegate.swift */,
 				17654C9E1E61C9910092A3D7 /* Model */,
+				55DF32FD1E885641007FA5F2 /* View Models */,
 				17654C9F1E61C99B0092A3D7 /* View */,
 				17654CA01E61C9A10092A3D7 /* Controller */,
 				17654CBF1E61DCBF0092A3D7 /* Main.storyboard */,
@@ -197,6 +206,7 @@
 				17654CC41E61F33D0092A3D7 /* MenuTableViewCell.swift */,
 				176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */,
 				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
+				55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -232,6 +242,14 @@
 				17654CAF1E61D2F50092A3D7 /* RegistrationViewController.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		55DF32FD1E885641007FA5F2 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				55DF32FE1E885674007FA5F2 /* TrackerItem.swift */,
+			);
+			name = "View Models";
 			sourceTree = "<group>";
 		};
 		803CE5C72D83E21944D87AEE /* Pods */ = {
@@ -318,7 +336,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "Фамил Гаджиев";
+				ORGANIZATIONNAME = "Park Team";
 				TargetAttributes = {
 					17654C6A1E61C54B0092A3D7 = {
 						CreatedOnToolsVersion = 8.2;
@@ -450,9 +468,11 @@
 				1706DA481E6C20A800358586 /* APImanager.swift in Sources */,
 				17654CC31E61DF4A0092A3D7 /* TracksTableViewController.swift in Sources */,
 				17654CB01E61D2F50092A3D7 /* LoginVeiwController.swift in Sources */,
+				55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
 				17654CB61E61D9510092A3D7 /* MainViewControllerController.swift in Sources */,
 				17654CB31E61D3110092A3D7 /* KeyboardHideManager.swift in Sources */,
+				55DF32FA1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */,
 				17654CC51E61F33D0092A3D7 /* MenuTableViewCell.swift in Sources */,
 				176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */,
 				17654CB11E61D2F50092A3D7 /* RegistrationViewController.swift in Sources */,
@@ -470,7 +490,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DF33001E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654C841E61C54B0092A3D7 /* AvionicusTests.swift in Sources */,
+				55DF32FB1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +500,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DF33011E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654C8F1E61C54B0092A3D7 /* AvionicusUITests.swift in Sources */,
+				55DF32FC1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
