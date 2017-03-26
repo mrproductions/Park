@@ -37,8 +37,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func loginAction(_ sender: AnyObject) {
         
-        let loginInput = "famil"//self.loginEnter.text!
-        let password = "12786978"//self.passwordEnter.text!
+        let loginInput = self.loginEnter.text!
+        let password = self.passwordEnter.text!
         
         let md5s2: Digest = Digest(algorithm: .md5)
         md5s2.update(string: password)

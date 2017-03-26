@@ -34,6 +34,9 @@
 		176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */; };
 		1767599A1E71770500DD5CD1 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */; };
 		51F8CBA03BAF1E65FC9FB5AD /* Pods_Avionicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */; };
+		55DF32F61E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
+		55DF32F71E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
+		55DF32F81E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,7 @@
 		176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.release.xcconfig"; sourceTree = "<group>"; };
+		55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
 		715FF74BABC18F386CF8D320 /* Pods-Avionicus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avionicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -148,6 +152,7 @@
 				17654C9F1E61C99B0092A3D7 /* View */,
 				17654CA01E61C9A10092A3D7 /* Controller */,
 				17654CBF1E61DCBF0092A3D7 /* Main.storyboard */,
+				55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */,
 				17654C771E61C54B0092A3D7 /* LaunchScreen.storyboard */,
 				17654C9C1E61C9470092A3D7 /* Assets.xcassets */,
 				17654C7A1E61C54B0092A3D7 /* Info.plist */,
@@ -317,7 +322,7 @@
 				TargetAttributes = {
 					17654C6A1E61C54B0092A3D7 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 9UWX4556KM;
+						DevelopmentTeam = CY979PLK26;
 						ProvisioningStyle = Automatic;
 					};
 					17654C7E1E61C54B0092A3D7 = {
@@ -359,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DF32F61E8839BE007FA5F2 /* Tracks.storyboard in Resources */,
 				17654C791E61C54B0092A3D7 /* LaunchScreen.storyboard in Resources */,
 				17654C9D1E61C9470092A3D7 /* Assets.xcassets in Resources */,
 				17654CC11E61DCBF0092A3D7 /* Main.storyboard in Resources */,
@@ -369,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DF32F71E8839BE007FA5F2 /* Tracks.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DF32F81E8839BE007FA5F2 /* Tracks.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,8 +613,9 @@
 			baseConfigurationReference = 715FF74BABC18F386CF8D320 /* Pods-Avionicus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UWX4556KM;
+				DEVELOPMENT_TEAM = CY979PLK26;
 				INFOPLIST_FILE = Avionicus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Famil.Avionicus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -619,8 +628,9 @@
 			baseConfigurationReference = 4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UWX4556KM;
+				DEVELOPMENT_TEAM = CY979PLK26;
 				INFOPLIST_FILE = Avionicus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Famil.Avionicus;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -28,7 +28,7 @@ enum Avionicus {
     case getTrack
     
     
-    var baseURL: String { return "http://avionicus.ru" }
+    var baseURL: String { return "http://avionicus.com" }
     var avkey: String { return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
     var hash: String? { return keyChain.get("hash") }
     var userId: String? { return UserDefaults.standard.value(forKey: "id") as? String }
