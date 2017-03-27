@@ -26,9 +26,6 @@ class TabBarController: UITabBarController {
 //            }
 //        }
         
-        
-        
-
 
         self.tabBar.tintColor = UIColor(colorLiteralRed: 240.0 , green: 251.0 , blue: 255.0 , alpha: 100.0)
         self.tabBar.unselectedItemTintColor =  UIColor.lightGray

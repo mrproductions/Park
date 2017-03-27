@@ -28,19 +28,19 @@ class TrackListItem: Mappable{
     var var_min: String?
     
     func mapping(map: Map) {
-        type <- map["type"]
-        dt_start <- map["dt_start"]
-        dt_end <- map["dt_end"]
-        time <- map["time"]
-        distance <- map["distance"]
-        id_track <- map["id_track"]
-        sp_avg <- map["sp_avg"]
-        sp_max <- map["sp_max"]
-        calories <- map["calories"]
+        type        <- map["type"]
+        dt_start    <- map["dt_start"]
+        dt_end      <- map["dt_end"]
+        time        <- map["time"]
+        distance    <- map["distance"]
+        id_track    <- map["id_track"]
+        sp_avg      <- map["sp_avg"]
+        sp_max      <- map["sp_max"]
+        calories    <- map["calories"]
         description <- map["description"]
-        weight <- map["weight"]
-        var_max <- map["var_max"]
-        var_min <- map["var_min"]
+        weight      <- map["weight"]
+        var_max     <- map["var_max"]
+        var_min     <- map["var_min"]
     }
     
     var viewModel: TrackerItem {

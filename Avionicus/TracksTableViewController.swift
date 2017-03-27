@@ -57,8 +57,6 @@ class TracksTableViewController: UITableViewController {
     }
     
     
-
-    
     // MARK: - UITableView data source methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
