@@ -78,7 +78,7 @@ enum Avionicus {
                 ParameterKeys.pass: pass,
                 ParameterKeys.mail: mail,
                 ParameterKeys.responseType: "json",
-            ]  
+            ]
         
         case .getProfile:
             return[
@@ -210,6 +210,7 @@ class APIManager {
         }, completion: completion)
                 
     }
+    
     
     func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
         let request = Avionicus.getProfile.request

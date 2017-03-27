@@ -45,7 +45,10 @@ class SideMenuTableViewController: UITableViewController {
         apiManager.getProfile() { result in
             switch result{
             case .success(let userProfile):
-                break
+                
+                print(userProfile.profile_name!)
+                print(userProfile.profile_birthday!)
+                print(userProfile.profile_height!)
                 
             case .failure(let error):
                 
