@@ -25,10 +25,10 @@ enum Avionicus {
     case registration(String, String, String)
     case getProfile
     case setProfile(parametr)
-    case getTrack
+    case getTrack(Int, Int)
     
     
-    var baseURL: String { return "http://avionicus.ru" }
+    var baseURL: String { return "http://avionicus.com" }
     var avkey: String { return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
     var hash: String? { return keyChain.get("hash") }
     var userId: String? { return UserDefaults.standard.value(forKey: "id") as? String }
@@ -44,6 +44,10 @@ enum Avionicus {
         static let mail = "mail"
         static let action = "action"
         static let userId = "user_id"
+        static let offset = "offset"
+        static let tracksCount = "count"
+        static let startingDate = "date_last"
+        static let startingTrack = "track_id"
         
         
     }
@@ -90,13 +94,14 @@ enum Avionicus {
                 ParameterKeys.responseType: "json",
                 ParameterKeys.action: "set_profile",
             ]
-        case .getTrack:
-            return[
+        case .getTrack (let count, let offset):
+            return [
                 ParameterKeys.avkey: avkey + "=",
                 ParameterKeys.hash: hash!,
                 ParameterKeys.responseType: "json",
                 ParameterKeys.userId: userId!,
-                
+                ParameterKeys.tracksCount: count,
+                ParameterKeys.offset: offset
             ]
         }
     }
@@ -191,11 +196,19 @@ class APIManager {
     
     
     func registration(login: String, pass: String, mail: String, completion: @escaping(APIResult<UserData>)-> Void) {
-        let requset = Avionicus.registration(login, mail,pass ).request
+        let request = Avionicus.registration(login, mail,pass ).request
         
-        fetch(request: requset, parse: { (json) -> UserData? in
+        fetch(request: request, parse: { (json) -> UserData? in
             return UserData(json: json)
         }, completion: completion)
+    }
+    
+    func getTracks(count: Int, offset: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
+        let request = Avionicus.getTrack(count, offset).request
+        fetch(request: request, parse: { (json) -> TrackList? in
+            return TrackList(json: json)
+        }, completion: completion)
+                
     }
     
     
@@ -206,9 +219,7 @@ class APIManager {
             return UserProfile(json: json)
         }, completion: completion)
     }
-//    func getTrack(<#parameters#>) -> <#return type#> {
-//        <#function body#>
-//    }
+
     
 }
 

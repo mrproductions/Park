@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9tK-lD-Nu2">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9tK-lD-Nu2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -482,7 +482,7 @@
                                         <rect key="frame" x="0.0" y="340" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fZC-Xc-aoj" id="QvK-cD-AWh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Caution Oval" translatesAutoresizingMaskIntoConstraints="NO" id="WFb-dS-Z3R">
@@ -510,7 +510,7 @@
                                         <rect key="frame" x="0.0" y="384" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Cu-O8-iCm" id="dEU-LM-Sgp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="7Io-Zr-NEt">
@@ -538,7 +538,7 @@
                                         <rect key="frame" x="0.0" y="428" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LWu-uj-yNA" id="UKv-Jj-ZuS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="7K9-pc-9t5">
@@ -566,7 +566,7 @@
                                         <rect key="frame" x="0.0" y="472" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WAc-Eu-QgQ" id="0GU-8P-2LA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="494-1w-Zi1">
@@ -672,46 +672,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRi-VD-03F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3464.8000000000002" y="313.49325337331339"/>
-        </scene>
-        <!--Tracks Table View Controller-->
-        <scene sceneID="1lq-Ju-NX9">
-            <objects>
-                <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="M4C-3a-g6V" customClass="TracksTableViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ysE-Iz-Mb6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.0" green="0.73333333333333328" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SMD-Xl-0Fy">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SMD-Xl-0Fy" id="IlZ-Sc-cfA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="M4C-3a-g6V" id="g64-cA-jFB"/>
-                            <outlet property="delegate" destination="M4C-3a-g6V" id="eEN-wt-6xY"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="FJh-yb-EqY">
-                        <barButtonItem key="leftBarButtonItem" image="Rows" style="plain" id="QWf-Lo-MlF">
-                            <inset key="imageInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-3"/>
-                            <color key="tintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="MenuBarItem:" destination="M4C-3a-g6V" id="pSQ-jo-wsr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7S7-nA-EsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4494" y="314"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="Qtg-rx-LOb">
@@ -943,6 +903,16 @@
             </objects>
             <point key="canvasLocation" x="1633" y="-505"/>
         </scene>
+        <!--Tracks-->
+        <scene sceneID="QxS-tp-Qrn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tracks" id="afV-cG-UmA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="I1H-O8-dmk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ec-7C-i4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4494" y="-63"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="WAb-qs-6wz">
             <objects>
@@ -1080,7 +1050,7 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0tm-ka-OF1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0tm-ka-OF1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1102,7 +1072,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TbU-5i-hob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TbU-5i-hob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1119,17 +1089,18 @@
         <scene sceneID="U5f-eO-QW4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Kt-hO-5Qu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="BarItem3" selectedImage="BarItem3" id="W6e-fe-QgB">
+                    <tabBarItem key="tabBarItem" title="" image="Tracks tab bar icon" id="W6e-fe-QgB">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MLX-ta-Ocq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MLX-ta-Ocq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="M4C-3a-g6V" kind="relationship" relationship="rootViewController" id="lZg-9T-Pjd"/>
+                        <segue destination="afV-cG-UmA" kind="relationship" relationship="rootViewController" id="LPG-uX-rYh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBQ-bR-xCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1141,7 +1112,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LeftMenu" automaticallyAdjustsScrollViewInsets="NO" id="mNs-Pc-Dbb" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Igk-Cs-zyl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Igk-Cs-zyl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1162,7 +1133,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D4G-I5-tfo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8kL-Me-S4P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8kL-Me-S4P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1178,7 +1149,6 @@
     </scenes>
     <resources>
         <image name="Back Arrow" width="34" height="21"/>
-        <image name="BarItem3" width="25" height="25"/>
         <image name="Blur Section" width="751" height="1221"/>
         <image name="Caution Oval" width="39" height="39"/>
         <image name="Clock" width="25" height="25"/>
@@ -1191,6 +1161,7 @@
         <image name="Profile" width="39" height="39"/>
         <image name="Rows" width="25" height="23"/>
         <image name="Settings" width="44" height="43"/>
+        <image name="Tracks tab bar icon" width="25" height="25"/>
         <image name="slide001" width="1256" height="836"/>
         <image name="slide002" width="1256" height="836"/>
     </resources>

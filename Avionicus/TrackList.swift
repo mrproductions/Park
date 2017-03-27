@@ -8,30 +8,20 @@
 
 import Foundation
 import ObjectMapper
-import Alamofire
-import AlamofireObjectMapper
 
 class TrackList: Mappable{
     
     public required init?(map: Map) {}
     
+    convenience init?(json: JSON) {
+        self.init(JSON: json)
+    }
     
-    var type: String?
-    var dt_start: String?
-    var dt_end: String?
-    var time: String?
-    var distance: String?
-    var id_track: String?
-    var sp_avg: String?
-    var sp_max: String?
-    var calories: String?
-    var description: String?
-    var weight: String?
-    var var_max: String?
-    var var_min: String?
+    var tracks: [String:TrackListItem]?
+     
 
     func mapping(map: Map) {
-        
+        tracks <- map ["aTracks"]
     }
     
 }
