@@ -1088,7 +1088,6 @@
         <!--Navigation Controller-->
         <scene sceneID="U5f-eO-QW4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OBQ-bR-xCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Kt-hO-5Qu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="Tracks tab bar icon" id="W6e-fe-QgB">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
@@ -1104,6 +1103,7 @@
                         <segue destination="afV-cG-UmA" kind="relationship" relationship="rootViewController" id="LPG-uX-rYh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OBQ-bR-xCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4494" y="-505"/>
         </scene>

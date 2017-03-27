@@ -41,6 +41,10 @@ class TracksTableViewCell: UITableViewCell {
         speedLabel.text = String(format: "%.2f", item.speed)
         speedLabel.textColor = UIColor.white
         
+        activityKindImageView.image = UIImage(named: "tracks_" + item.kind)?.withRenderingMode(.alwaysTemplate)
+        activityKindImageView.tintColor = UIColor.white
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
