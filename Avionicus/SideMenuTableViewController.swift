@@ -46,9 +46,9 @@ class SideMenuTableViewController: UITableViewController {
             switch result{
             case .success(let userProfile):
                 
-                print(userProfile.profile_name!)
-                print(userProfile.profile_birthday!)
-                print(userProfile.profile_height!)
+                print(userProfile.profile_name as Any)
+                print(userProfile.profile_birthday as Any)
+                print(userProfile.profile_height as Any)
                 
             case .failure(let error):
                 
