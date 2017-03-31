@@ -8,7 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import AlamofireObjectMapper
 import KeychainSwift
 
 let keyChain = KeychainSwift()

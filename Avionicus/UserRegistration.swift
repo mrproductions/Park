@@ -8,8 +8,6 @@
 
 import Foundation
 import ObjectMapper
-import Alamofire
-import AlamofireObjectMapper
 
 class UserRegistration: Mappable {
     public required init?(map: Map) {}

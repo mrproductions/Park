@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
-import AlamofireObjectMapper
 import KeychainSwift
 
 class UserData: Mappable {

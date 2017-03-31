@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
@@ -38,14 +37,24 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
             switch result {
             case .success (let userRegistration):
-                print("succes \(userRegistration.sMsg) \(userRegistration.sMsgTitle)")
-                print(Avionicus.registration(loginText! ,passwordText!,mailText!).request)
+                DispatchQueue.main.async {
+                    print("succes \(userRegistration.sMsg) \(userRegistration.sMsgTitle)")
+                    print(Avionicus.registration(loginText! ,passwordText!,mailText!).request)
+                    print(userRegistration.sMsgTitle!)
+                    let errorAlert = UIAlertController(title: "Succes", message: "\(userRegistration.sMsgTitle)", preferredStyle: UIAlertControllerStyle.alert)
+                    let actionError = UIAlertAction(title: "Fine", style: .cancel, handler: nil)
+                    errorAlert.addAction(actionError)
+                    self.present(errorAlert, animated: true, completion: nil)
+                    
+                }
                 
-            case .failure(let error):
-                print("error")
-                print(Avionicus.registration(loginText! ,passwordText!,mailText!).request)
-                
-                
+            case .failure( _):
+                DispatchQueue.main.async {
+                    let errorAlert = UIAlertController(title: "Error", message: "Registration Fail", preferredStyle: UIAlertControllerStyle.alert)
+                    let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+                    errorAlert.addAction(actionError)
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
             }
             
             

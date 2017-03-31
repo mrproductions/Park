@@ -43,7 +43,6 @@ class  MainViewController: UIViewController{
             
         menuLeftNavigationController?.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
-        
         SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         setupDifaultSideMenu()
@@ -56,13 +55,6 @@ class  MainViewController: UIViewController{
         SideMenuManager.menuWidth = 350.0
         SideMenuManager.menuPresentMode = .menuSlideIn
         SideMenuManager.menuPushStyle = .defaultBehavior
-        SideMenuManager.menuAllowPushOfSameClassTwice = true
-        SideMenuManager.menuAnimationPresentDuration = 0.1
-        SideMenuManager.menuAnimationDismissDuration = 0.1
-        SideMenuManager.menuAnimationFadeStrength = 0
-        SideMenuManager.menuAnimationTransformScaleFactor = 1
-        SideMenuManager.menuParallaxStrength = 1
-        SideMenuManager.menuAnimationOptions = .curveEaseIn
         
         
     }

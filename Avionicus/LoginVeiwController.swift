@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import IDZSwiftCommonCrypto
 
 
@@ -22,13 +21,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if keyChain.get("hash") != nil{
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: nil)
+            }
+        }
+        
         loginEnter.delegate = self
         registerForKeyboardNotification()
         
+
     }
-    deinit {
-        removeKeyboardNotification()
-    }
+    
     
     @IBAction func topText(_ sender: Any) {
         print("Touch")
@@ -53,7 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print(userData.sMsgTitle!)
                 
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: self)
+                    self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: self)    
                 }
                 
             case .failure(let error):
@@ -100,5 +104,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             signIn.isUserInteractionEnabled = true
         }
         return true
+    }
+    
+    
+    deinit {
+        removeKeyboardNotification()
     }
 }
