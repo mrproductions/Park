@@ -24,12 +24,6 @@ class SideMenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        ///вопросы по поводу реалма, нужен ли он?
-        ///как реализовать офлайн подкачку данных в приложение 
-        //как ошибки в коде?
-        
-        age.text = (UserDefaults.standard.value(forKey: "id") as! String)
         name.text = (UserDefaults.standard.value(forKey: "login") as! String)
         
         avatarIm.layer.borderColor = UIColor.white.cgColor
@@ -39,33 +33,20 @@ class SideMenuTableViewController: UITableViewController {
         avatarIm.clipsToBounds = true
         
         
-        
         let profileRequest = Avionicus.getProfile.request
         print(profileRequest.url!)
         apiManager.getProfile() { result in
             switch result{
-            case .success(let userProfile):
-                
-                print(userProfile.profile_name!)
-                print(userProfile.profile_birthday!)
-                print(userProfile.profile_height!)
+            case .success( _):
+                break
                 
             case .failure(let error):
                 
                 print("error \(error)")
-                
             }
-            
         }
-        
     }
 
-
-    func download()  {
-        
-        //apiManager.getProfile(completion: )
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,4 +65,20 @@ class SideMenuTableViewController: UITableViewController {
         tableView.backgroundView = imageView
     }
 
+
+
+    @IBAction func Out(_ sender: Any) {
+        if keyChain.get("hash") != nil{
+            keyChain.delete("hash")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewController(withIdentifier:"LoginViewController")
+            present(loginViewController, animated: true, completion: nil)
+
+        }
+    }
+    func download()  {
+        
+        //apiManager.getProfile(completion: )
+        
+    }
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
@@ -17,12 +16,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginText: RoundTextField?
     @IBOutlet weak var mailText: RoundTextField?
     @IBOutlet weak var passwordText: RoundTextField?
-    
+    var userRegistration: UserRegistration?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         
     }
     
@@ -38,14 +36,33 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
             switch result {
             case .success (let userRegistration):
-                print("succes \(userRegistration.sMsg) \(userRegistration.sMsgTitle)")
-                print(Avionicus.registration(loginText! ,passwordText!,mailText!).request)
+                DispatchQueue.main.async {
+                   
+                    
+                    let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
+                    
+                    print(request)
+            
+                    
+                    let errorAlert = UIAlertController(title: "Succes", message: "\(userRegistration.bStateError) \(userRegistration.sMsgTitle) \(userRegistration.array) \(userRegistration.response)", preferredStyle: UIAlertControllerStyle.alert)
+                    let actionError = UIAlertAction(title: "Fine", style: .cancel, handler: nil)
+                    errorAlert.addAction(actionError)
+                    self.present(errorAlert, animated: true, completion: nil)
+                    
+                }
                 
-            case .failure(let error):
-                print("error")
-                print(Avionicus.registration(loginText! ,passwordText!,mailText!).request)
-                
-                
+            case .failure(let Error):
+                DispatchQueue.main.async {
+                    
+                    let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
+                    
+                    print(request)
+                    
+                    let errorAlert = UIAlertController(title: "Error", message: "Registration Fail \(self.userRegistration?.array) \(self.userRegistration?.mail) \(self.userRegistration?.sMsgTitle))", preferredStyle: UIAlertControllerStyle.alert)
+                    let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
+                    errorAlert.addAction(actionError)
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
             }
             
             

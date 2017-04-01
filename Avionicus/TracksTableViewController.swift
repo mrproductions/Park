@@ -20,9 +20,9 @@ class TracksTableViewController: UITableViewController {
         static let headerIdentifier = "TracksTableHeader"
     }
     
-    @IBAction func MenuBarItem(_ sender: Any) {
-        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-    }
+//    @IBAction func MenuBarItem(_ sender: Any) {
+//        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+//    }
     
     // MARK : - UIViewController lifecycle methods
     

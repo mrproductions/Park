@@ -10,7 +10,7 @@ import UIKit
 import BTNavigationDropdownMenu
 import SideMenu
 
-class  MainViewController: UIViewController{
+class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var MenuBarItem: UIBarButtonItem!
     @IBOutlet weak var StartButton: RoundButton!
@@ -22,7 +22,28 @@ class  MainViewController: UIViewController{
         super.viewDidLoad()
         
         
+        
+//        let temp = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.printSome))
+//        temp.direction = .left
+//        self.view.addGestureRecognizer(temp)
+        
+//        let abc: UIGestureRecognizerState = UIGestureRecognizerState()
+//        switch abc {
+//        case .began:
+//            print(123)
+//            case .changed
+//            
+//        default:
+//            break
+        
+        //}
+        
     }
+    
+    func printSome() {
+        print("11111111111")
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         dropMenuButtonView()
@@ -43,7 +64,6 @@ class  MainViewController: UIViewController{
             
         menuLeftNavigationController?.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
-        
         SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         setupDifaultSideMenu()
@@ -56,13 +76,6 @@ class  MainViewController: UIViewController{
         SideMenuManager.menuWidth = 350.0
         SideMenuManager.menuPresentMode = .menuSlideIn
         SideMenuManager.menuPushStyle = .defaultBehavior
-        SideMenuManager.menuAllowPushOfSameClassTwice = true
-        SideMenuManager.menuAnimationPresentDuration = 0.1
-        SideMenuManager.menuAnimationDismissDuration = 0.1
-        SideMenuManager.menuAnimationFadeStrength = 0
-        SideMenuManager.menuAnimationTransformScaleFactor = 1
-        SideMenuManager.menuParallaxStrength = 1
-        SideMenuManager.menuAnimationOptions = .curveEaseIn
         
         
     }

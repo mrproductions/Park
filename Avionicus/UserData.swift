@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
-import AlamofireObjectMapper
 import KeychainSwift
 
 class UserData: Mappable {
@@ -43,7 +41,6 @@ class UserData: Mappable {
         }
         if let hash = self.hash {
             writeHashToKeyChain(string: hash)
-            
         }
         
 //        if let hash = json["hash"] as? String? {

@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide002" translatesAutoresizingMaskIntoConstraints="NO" id="jEd-Ae-yHE">
-                                <rect key="frame" x="0.0" y="-11" width="375" height="678"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.98253241408727843" green="1" blue="0.97886303472004399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAn-V7-AjI">
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.45858159092452755" green="0.67780308976690851" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.45882352941176469" green="0.67843137254901964" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nAn-V7-AjI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="91" id="8jn-VS-V5l"/>
                             <constraint firstItem="jEd-Ae-yHE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="F67-Gj-IHa"/>
@@ -45,7 +45,7 @@
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nAn-V7-AjI" secondAttribute="bottom" constant="302" id="Kp4-Ff-Mw9"/>
                             <constraint firstItem="jEd-Ae-yHE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="MHz-2P-NDb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nAn-V7-AjI" secondAttribute="trailing" constant="91" id="RDU-ae-95z"/>
-                            <constraint firstItem="jEd-Ae-yHE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-5.5" id="l5l-L0-US6"/>
+                            <constraint firstItem="jEd-Ae-yHE" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="l5l-L0-US6"/>
                             <constraint firstItem="nAn-V7-AjI" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="271" id="lxD-wq-mT0"/>
                         </constraints>
                     </view>

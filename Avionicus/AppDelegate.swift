@@ -32,6 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey(googleMapsApiKey)
         
+        
+        let storyBoard = UIStoryboard(name:"Main", bundle: nil)
+        
+        if keyChain.get("hash") != nil{
+             self.window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController")
+        } else {
+            self.window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")
+        }
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
