@@ -73,6 +73,7 @@ class SideMenuTableViewController: UITableViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier:"LoginViewController")
             present(loginViewController, animated: true, completion: nil)
+
         }
     }
     func download()  {

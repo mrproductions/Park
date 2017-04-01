@@ -10,7 +10,7 @@ import UIKit
 import BTNavigationDropdownMenu
 import SideMenu
 
-class  MainViewController: UIViewController{
+class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var MenuBarItem: UIBarButtonItem!
     @IBOutlet weak var StartButton: RoundButton!
@@ -22,7 +22,28 @@ class  MainViewController: UIViewController{
         super.viewDidLoad()
         
         
+        
+//        let temp = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.printSome))
+//        temp.direction = .left
+//        self.view.addGestureRecognizer(temp)
+        
+//        let abc: UIGestureRecognizerState = UIGestureRecognizerState()
+//        switch abc {
+//        case .began:
+//            print(123)
+//            case .changed
+//            
+//        default:
+//            break
+        
+        //}
+        
     }
+    
+    func printSome() {
+        print("11111111111")
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         dropMenuButtonView()

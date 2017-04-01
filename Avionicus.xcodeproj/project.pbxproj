@@ -22,7 +22,7 @@
 		17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA51E61CBA90092A3D7 /* UserRegistration.swift */; };
 		17654CAC1E61D2E20092A3D7 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAA1E61D2E20092A3D7 /* RoundButton.swift */; };
 		17654CAD1E61D2E20092A3D7 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAB1E61D2E20092A3D7 /* RoundTextField.swift */; };
-		17654CB01E61D2F50092A3D7 /* LoginVeiwController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAE1E61D2F50092A3D7 /* LoginVeiwController.swift */; };
+		17654CB01E61D2F50092A3D7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAE1E61D2F50092A3D7 /* LoginViewController.swift */; };
 		17654CB11E61D2F50092A3D7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAF1E61D2F50092A3D7 /* RegistrationViewController.swift */; };
 		17654CB31E61D3110092A3D7 /* KeyboardHideManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CB21E61D3110092A3D7 /* KeyboardHideManager.swift */; };
 		17654CB61E61D9510092A3D7 /* MainViewControllerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */; };
@@ -97,7 +97,7 @@
 		17654CA51E61CBA90092A3D7 /* UserRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		17654CAA1E61D2E20092A3D7 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		17654CAB1E61D2E20092A3D7 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
-		17654CAE1E61D2F50092A3D7 /* LoginVeiwController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVeiwController.swift; sourceTree = "<group>"; };
+		17654CAE1E61D2F50092A3D7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		17654CAF1E61D2F50092A3D7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		17654CB21E61D3110092A3D7 /* KeyboardHideManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHideManager.swift; sourceTree = "<group>"; };
 		17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerController.swift; sourceTree = "<group>"; };
@@ -223,11 +223,11 @@
 		17654C9F1E61C99B0092A3D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				55E59DB21E894E980014BD48 /* TracksTableHeaderView */,
 				17654CC41E61F33D0092A3D7 /* MenuTableViewCell.swift */,
 				176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */,
-				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
 				55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */,
+				55E59DB21E894E980014BD48 /* TracksTableHeaderView */,
+				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 		177F52871E66F19600B934E7 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				17654CAE1E61D2F50092A3D7 /* LoginVeiwController.swift */,
+				17654CAE1E61D2F50092A3D7 /* LoginViewController.swift */,
 				17654CAF1E61D2F50092A3D7 /* RegistrationViewController.swift */,
 				171869221E8EA02700036631 /* LaunchViewController.swift */,
 			);
@@ -503,7 +503,7 @@
 				1706DA481E6C20A800358586 /* APImanager.swift in Sources */,
 				55E59DB81E896D9C0014BD48 /* Colors.swift in Sources */,
 				17654CC31E61DF4A0092A3D7 /* TracksTableViewController.swift in Sources */,
-				17654CB01E61D2F50092A3D7 /* LoginVeiwController.swift in Sources */,
+				17654CB01E61D2F50092A3D7 /* LoginViewController.swift in Sources */,
 				55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
 				55E59DAF1E894E4C0014BD48 /* TracksTableHeaderView.swift in Sources */,

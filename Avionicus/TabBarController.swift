@@ -14,7 +14,6 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         self.tabBar.tintColor = UIColor(colorLiteralRed: 240.0 , green: 251.0 , blue: 255.0 , alpha: 100.0)
         self.tabBar.unselectedItemTintColor =  UIColor.lightGray
@@ -22,10 +21,6 @@ class TabBarController: UITabBarController {
     
     }
 
-        
-
-    
-    
 }
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         //print(item.title!)

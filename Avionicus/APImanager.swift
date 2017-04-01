@@ -170,6 +170,12 @@ class APIManager {
             case 200:
                 if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as! JSON {
                     if let result = parse(json) {
+                        print("-- REQUEST BEGIN ---")
+                        print(request)
+                        print("-- REQUEST END ---")
+                        print("--- RESPONSE BEGIN ---")
+                        print(result)
+                        print("--- RESPONSE END ---")
                         completion(.success(result))
                     } else {
                         let error = NSError(domain: "Error parsing", code: 30, userInfo: [:])
@@ -194,11 +200,11 @@ class APIManager {
     }
     
     
-    func registration(login: String, pass: String, mail: String, completion: @escaping(APIResult<UserData>)-> Void) {
-        let request = Avionicus.registration(login, mail,pass ).request
+    func registration(login: String, pass: String, mail: String, completion: @escaping(APIResult<UserRegistration>)-> Void) {
+        let request = Avionicus.registration(login, pass, mail).request
         
-        fetch(request: request, parse: { (json) -> UserData? in
-            return UserData(json: json)
+        fetch(request: request, parse: { (json) -> UserRegistration? in
+            return UserRegistration(json: json)
         }, completion: completion)
     }
     

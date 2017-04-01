@@ -17,15 +17,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signIn: RoundButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var sinInConst: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        loginEnter.leftView = UIImageView(image: UIImage(named: "loginIcon"))
+        passwordEnter.leftView = UIImageView(image: UIImage(named: "passwordIcon"))
         
-        if keyChain.get("hash") != nil{
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: nil)
-            }
-        }
+        
         
         loginEnter.delegate = self
         registerForKeyboardNotification()
@@ -86,8 +86,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func kbWillShow(_ notifitacion: Notification) {
         let userInfo = notifitacion.userInfo
         let kbFrame = (userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue ).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 30.0)
+        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 100)
         
+//        self.view.frame.height - Swift.abs(kbFrame.height)
     }
     func kbWillHide() {
         scrollView.contentOffset = CGPoint.zero
