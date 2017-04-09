@@ -17,7 +17,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signIn: RoundButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var stackViewBottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var sinInConst: NSLayoutConstraint!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +55,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             switch result {
             case .success(let userData):
                 userData.writeToUserDefaults()
-                print("Hash is \(userData.hash)")
-                print(userData.sMsgTitle!)
-                
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: self)    
                 }
@@ -86,7 +85,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func kbWillShow(_ notifitacion: Notification) {
         let userInfo = notifitacion.userInfo
         let kbFrame = (userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue ).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 100)
+        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 200)
         
 //        self.view.frame.height - Swift.abs(kbFrame.height)
     }

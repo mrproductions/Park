@@ -38,12 +38,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             case .success (let userRegistration):
                 DispatchQueue.main.async {
                    
-                    
                     let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
-                    
-                    print(request)
             
-                    
                     let errorAlert = UIAlertController(title: "Succes", message: "\(userRegistration.bStateError) \(userRegistration.sMsgTitle) \(userRegistration.array) \(userRegistration.response)", preferredStyle: UIAlertControllerStyle.alert)
                     let actionError = UIAlertAction(title: "Fine", style: .cancel, handler: nil)
                     errorAlert.addAction(actionError)
@@ -51,13 +47,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                     
                 }
                 
-            case .failure(let Error):
+            case .failure(_):
                 DispatchQueue.main.async {
                     
                     let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
-                    
-                    print(request)
-                    
+
                     let errorAlert = UIAlertController(title: "Error", message: "Registration Fail \(self.userRegistration?.array) \(self.userRegistration?.mail) \(self.userRegistration?.sMsgTitle))", preferredStyle: UIAlertControllerStyle.alert)
                     let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
                     errorAlert.addAction(actionError)

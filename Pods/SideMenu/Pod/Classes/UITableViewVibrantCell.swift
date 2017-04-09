@@ -21,7 +21,7 @@ open class UITableViewVibrantCell: UITableViewCell {
         vibrancyView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         for view in subviews {
             vibrancyView.contentView.addSubview(view)
-        } 
+        }
         addSubview(vibrancyView)
         
         let blurSelectionEffect = UIBlurEffect(style: .light)

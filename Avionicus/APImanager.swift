@@ -27,10 +27,12 @@ enum Avionicus {
     case getTrack(Int, Int)
     
     
-    var baseURL: String { return "http://avionicus.com" }
+    var baseURL: String {
+        return "http://avionicus.com"
+    }
     var avkey: String { return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
     var hash: String? { return keyChain.get("hash") }
-    var userId: String? { return UserDefaults.standard.value(forKey: "id") as? String }
+    var userId: String? { return UserDefaults.standard.value(forKey: "userId") as? String }
     
     
     private struct ParameterKeys {
@@ -170,12 +172,7 @@ class APIManager {
             case 200:
                 if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as! JSON {
                     if let result = parse(json) {
-                        print("-- REQUEST BEGIN ---")
-                        print(request)
-                        print("-- REQUEST END ---")
-                        print("--- RESPONSE BEGIN ---")
-                        print(result)
-                        print("--- RESPONSE END ---")
+
                         completion(.success(result))
                     } else {
                         let error = NSError(domain: "Error parsing", code: 30, userInfo: [:])
@@ -215,7 +212,6 @@ class APIManager {
         }, completion: completion)
                 
     }
-    
     
     func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
         let request = Avionicus.getProfile.request

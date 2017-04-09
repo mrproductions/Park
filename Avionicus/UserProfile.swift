@@ -13,7 +13,6 @@ class UserProfile: Mappable{
     
     public required init?(map: Map) {}
     
-    
     var profile_mail: String?
     var profile_name: String?
     var profile_weight: String?

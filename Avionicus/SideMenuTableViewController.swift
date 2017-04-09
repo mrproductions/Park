@@ -24,7 +24,7 @@ class SideMenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        name.text = (UserDefaults.standard.value(forKey: "login") as! String)
+        //name.text = (UserDefaults.standard.value(forKey: "login") as! String)
         
         avatarIm.layer.borderColor = UIColor.white.cgColor
         avatarIm.layer.borderWidth = 0.5
@@ -32,19 +32,19 @@ class SideMenuTableViewController: UITableViewController {
         avatarIm.layer.masksToBounds = true
         avatarIm.clipsToBounds = true
         
+//        let profileRequest = Avionicus.getProfile.request
+//        print(profileRequest.url!)
+//        apiManager.getProfile() { result in
+//            switch result{
+//            case .success( _):
+//                break
+//                
+//            case .failure(let error):
+//                
+//                print("error \(error)")
+//            }
+//        }
         
-        let profileRequest = Avionicus.getProfile.request
-        print(profileRequest.url!)
-        apiManager.getProfile() { result in
-            switch result{
-            case .success( _):
-                break
-                
-            case .failure(let error):
-                
-                print("error \(error)")
-            }
-        }
     }
 
     
@@ -75,6 +75,7 @@ class SideMenuTableViewController: UITableViewController {
             present(loginViewController, animated: true, completion: nil)
 
         }
+        
     }
     func download()  {
         
