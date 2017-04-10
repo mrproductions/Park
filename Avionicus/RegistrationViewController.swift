@@ -20,8 +20,6 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
 
@@ -35,27 +33,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         apiManager.registration(login: loginText!, pass: passwordText!, mail: mailText!){ result in
         
             switch result {
-            case .success (let userRegistration):
-                DispatchQueue.main.async {
-                   
-                    let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
-            
-                    let errorAlert = UIAlertController(title: "Succes", message: "\(userRegistration.bStateError) \(userRegistration.sMsgTitle) \(userRegistration.array) \(userRegistration.response)", preferredStyle: UIAlertControllerStyle.alert)
-                    let actionError = UIAlertAction(title: "Fine", style: .cancel, handler: nil)
-                    errorAlert.addAction(actionError)
-                    self.present(errorAlert, animated: true, completion: nil)
-                    
+            case .success:
+                DispatchQueue.main.async { [weak welf = self] in
+                    welf?.displayMessage(title: "Success", message: "Registration complete", dismissTitle: "Okay")
                 }
                 
             case .failure(_):
-                DispatchQueue.main.async {
-                    
-                    let request = Avionicus.registration(loginText!, passwordText!, mailText!).request
-
-                    let errorAlert = UIAlertController(title: "Error", message: "Registration Fail \(self.userRegistration?.array) \(self.userRegistration?.mail) \(self.userRegistration?.sMsgTitle))", preferredStyle: UIAlertControllerStyle.alert)
-                    let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                    errorAlert.addAction(actionError)
-                    self.present(errorAlert, animated: true, completion: nil)
+                DispatchQueue.main.async { [weak welf = self] in
+                    welf?.displayMessage(title: "Error", message: "Try again", dismissTitle: "Okay")
                 }
             }
             
@@ -63,6 +48,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
         
         
+    }
+    
+    
+    func displayMessage (title: String?, message: String?, dismissTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: dismissTitle, style: .cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
   

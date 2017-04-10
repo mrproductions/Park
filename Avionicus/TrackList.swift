@@ -21,7 +21,7 @@ class TrackList: Mappable{
      
 
     func mapping(map: Map) {
-        tracks <- map ["aTracks"]
+        tracks <- map ["tracks"]
     }
     
 }

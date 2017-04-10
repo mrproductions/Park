@@ -11,80 +11,67 @@ import ObjectMapper
 import KeychainSwift
 
 class UserData: Mappable {
+    
+    enum Sex: String {
+        case Male = "man"
+        case Female = "woman"
+    }
+    
     /// This function can be used to validate JSON prior to mapping. Return nil to cancel mapping at this point
     public required init?(map: Map) {}
     
-    var hash: String?
-    var userId: String?
+    var id: Int?
     var login: String?
+    var email: String?
     var name: String?
-    var profile_avatar: String?
-    var profile_weight: String?
-    var profile_height: String?
-    var profile_birthday: String?
-    var profile_hr_max: String?
-    var profile_sex: String?
-    var profile_screens: String?
-    var last_date_profile: String?
-    var bStateError: Bool?
-    var sMsgTitle: String?
-    var sMsg: String?
+    var weight: Int?
+    var height: Int?
+    var birthday: Date?
+    var hrMax: Int?
+    var sex: Sex?
+    var profileAvatarUrl: URL?
+    var token: String?
     
     let keyChain = KeychainSwift()
     
     convenience init?(json: JSON) {
         self.init(JSON: json)
-        if let error = self.bStateError {
-            guard !error else {
-                return nil
-            }
-        }
-        if let hash = self.hash {
-            writeHashToKeyChain(string: hash)
-        }
         
-//        if let hash = json["hash"] as? String? {
-//            self.hash = hash
-//        } else {
-//            return nil
-//        }
+        if let token = self.token {
+            writeTokenToKeychain(token: token)
+        }
         
  
     }
     
     func mapping(map: Map) {
     
-        hash                <- map   ["response.hash"]
-        userId              <- map   ["response.id"]
-        login               <- map   ["response.login"]
-        profile_avatar      <- map   ["response.profile_avatar"]
-        profile_weight      <- map   ["response.profile_weight"]
-        profile_height      <- map   ["response.profile_height"]
-        profile_birthday    <- map   ["response.profile_birthday"]
-        profile_hr_max      <- map   ["response.profile_hr_max"]
-        profile_sex         <- map   ["response.profile_sex"]
-        profile_screens     <- map   ["response.profile_screens"]
-        last_date_profile   <- map   ["response.last_date_profile"]
-        bStateError         <- map   ["bStateError"]
-        sMsgTitle           <- map   ["sMsgTitle"]
-        sMsg                <- map   ["sMsg"]
-    
+        token               <- map   ["token"]
+        id                  <- map   ["id"]
+        login               <- map   ["login"]
+        email               <- map   ["email"]
+        name                <- map   ["name"]
+        weight              <- map   ["weight"]
+        height              <- map   ["height"]
+        hrMax               <- map   ["max_hr"]
+        birthday            <- (map  ["birthday"], DateTransform())
+        profileAvatarUrl    <- (map  ["avatar_url"], URLTransform())
+        sex                 <- map   ["sex"]
+     
     }
     
-    // [User withDefaults]
-    // [User saveToDefaults:dictionary]U
 
-    func writeHashToKeyChain(string: String) {
-        keyChain.set( string, forKey: "hash")
+    func writeTokenToKeychain(token: String) {
+        keyChain.set(token, forKey: "token")
     }
     
-    func getHashFromKeychain() -> String? {
-        return keyChain.get("hash")
+    func getTokenFromKeychain() -> String? {
+        return keyChain.get("token")
     }
 
     
     func writeToUserDefaults() {
-        UserDefaults.standard.set(userId, forKey: "userId")
+        UserDefaults.standard.set(id, forKey: "id")
         UserDefaults.standard.set(login, forKey: "login")
         
     }

@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
         
-        if keyChain.get("hash") != nil && UserDefaults.standard.object(forKey: "userId") != nil {
+        if keyChain.get("token") != nil && UserDefaults.standard.object(forKey: "id") != nil {
              self.window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarController")
         } else {
             self.window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController")

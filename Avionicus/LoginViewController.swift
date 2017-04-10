@@ -20,6 +20,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stackViewBottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var sinInConst: NSLayoutConstraint!
     
+    var presentedModally = false
+    
+    struct StoryboardConstants {
+        static let goToTabSegueIdentifier = "GoToMainFromAuth"
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +61,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             switch result {
             case .success(let userData):
                 userData.writeToUserDefaults()
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: self)    
+                DispatchQueue.main.async { [weak welf = self] in
+                    if welf != nil {
+                        if welf!.presentedModally {
+                            welf!.dismiss(animated: true, completion: nil)
+                        } else {
+                            welf!.performSegue(withIdentifier: StoryboardConstants.goToTabSegueIdentifier, sender: self)
+                        }
+                    }
+                    
                 }
                 
             case .failure(let error):

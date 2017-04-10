@@ -21,6 +21,10 @@ class SideMenuTableViewController: UITableViewController {
     var menuNameArray: Array = [String]()
     var menuImageArray: Array = [UIImage]()
     
+    struct StoryboardConstants {
+        static let goToLoginSegueIdentifier = "goToLogin"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,12 +72,9 @@ class SideMenuTableViewController: UITableViewController {
 
 
     @IBAction func Out(_ sender: Any) {
-        if keyChain.get("hash") != nil{
-            keyChain.delete("hash")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier:"LoginViewController")
-            present(loginViewController, animated: true, completion: nil)
-
+        if keyChain.get("token") != nil{
+            keyChain.delete("token")
+            performSegue(withIdentifier: StoryboardConstants.goToLoginSegueIdentifier, sender: nil)
         }
         
     }
@@ -82,4 +83,16 @@ class SideMenuTableViewController: UITableViewController {
         //apiManager.getProfile(completion: )
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == StoryboardConstants.goToLoginSegueIdentifier {
+            if let loginVC = segue.destination as? LoginViewController {
+                loginVC.presentedModally = true
+            }
+        }
+        
+    }
+    
 }

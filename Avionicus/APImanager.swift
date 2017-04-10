@@ -20,6 +20,7 @@ enum APIResult<T> {
 }
 
 enum Avionicus {
+    
     case auth(String, String)
     case registration(String, String, String)
     case getProfile
@@ -28,81 +29,82 @@ enum Avionicus {
     
     
     var baseURL: String {
-        return "http://avionicus.com"
+        return "http://api.avionicus.com/"
     }
+    
     var avkey: String { return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
-    var hash: String? { return keyChain.get("hash") }
-    var userId: String? { return UserDefaults.standard.value(forKey: "userId") as? String }
+    var token: String? { return  keyChain.get("token") }
+    var id: Int? { return UserDefaults.standard.value(forKey: "id") as? Int }
+    var deviceId: String { return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
     
     
     private struct ParameterKeys {
         
+        static let loginOrEmail = "loginoremail"
         static let login = "login"
         static let pass = "password"
         static let avkey = "avkey"
         static let responseType = "response_type"
-        static let hash = "hash"
-        static let mail = "mail"
+        static let token = "token"
+        static let mail = "email"
         static let action = "action"
         static let userId = "user_id"
-        static let offset = "offset"
-        static let tracksCount = "count"
+        static let perPage = "per_page"
+        static let page = "page"
         static let startingDate = "date_last"
         static let startingTrack = "track_id"
-        
+        static let deviceId = "device_id"
         
     }
     
     var path: String {
         switch self {
-        case .auth: return "/api/common/login/"
-        case .registration: return "/api/common/registration/"
-        case .getProfile: return "/api/avtrack/user/"
-        case .setProfile: return "/api/avtrack/user/"
-        case .getTrack: return "/android/tracks_v0648.php"
+        case .auth: return "/2.0/user/login/"
+        case .registration: return "/2.0/user/registration/"
+        case .getProfile: return "/2.0/"
+        case .setProfile: return "/2.0/"
+        case .getTrack: return "/2.0/tracks/user/"
         }
     }
     
     
     var parameters: JSON {
         switch self {
-        case .auth(let login, let pass):
+        case .auth(let loginOrEmail, let pass):
             return [
-                ParameterKeys.login: login,
+                ParameterKeys.loginOrEmail: loginOrEmail,
                 ParameterKeys.pass: pass,
-                ParameterKeys.avkey: avkey,
-                ParameterKeys.responseType: "json",
+                ParameterKeys.deviceId : deviceId
             ]
         case .registration(let login, let pass, let mail ):
             return[
                 ParameterKeys.login: login,
                 ParameterKeys.pass: pass,
                 ParameterKeys.mail: mail,
-                ParameterKeys.responseType: "json",
+                ParameterKeys.deviceId : deviceId
             ]
         
         case .getProfile:
             return[
                 ParameterKeys.avkey: avkey + "=",
-                ParameterKeys.hash: hash!,
+                ParameterKeys.token: token ?? "",
+                //ParameterKeys.hash: hash!,
                 ParameterKeys.responseType: "json",
                 ParameterKeys.action: "get_profile",
             ]
         case .setProfile:
             return[
-                ParameterKeys.avkey: avkey + "=",
-                ParameterKeys.hash: hash!,
+                ParameterKeys.token: token ?? "",
+                //ParameterKeys.hash: hash!,
                 ParameterKeys.responseType: "json",
                 ParameterKeys.action: "set_profile",
             ]
-        case .getTrack (let count, let offset):
+        case .getTrack (let page, let perPage):
             return [
-                ParameterKeys.avkey: avkey + "=",
-                ParameterKeys.hash: hash!,
-                ParameterKeys.responseType: "json",
-                ParameterKeys.userId: userId!,
-                ParameterKeys.tracksCount: count,
-                ParameterKeys.offset: offset
+                ParameterKeys.token: token ?? "",
+                ParameterKeys.userId: id!,
+                ParameterKeys.perPage: perPage,
+                ParameterKeys.page: page
             ]
         }
     }
@@ -190,7 +192,6 @@ class APIManager {
     
     func auth(login: String, pass: String, completion: @escaping (APIResult<UserData>) -> Void) {
         let request = Avionicus.auth(login, pass).request
-        
         fetch(request: request, parse: { (json) -> UserData? in
             return UserData(json: json)
         }, completion: completion)
@@ -205,9 +206,11 @@ class APIManager {
         }, completion: completion)
     }
     
-    func getTracks(count: Int, offset: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
-        let request = Avionicus.getTrack(count, offset).request
+    func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
+        let request = Avionicus.getTrack(page, perPage).request
+        print(request)
         fetch(request: request, parse: { (json) -> TrackList? in
+            print(json)
             return TrackList(json: json)
         }, completion: completion)
                 

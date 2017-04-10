@@ -111,7 +111,7 @@ class TracksTableViewController: UITableViewController {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         DispatchQueue.global (qos: .userInitiated).async { [weak welf = self] in
-            apiManager.getTracks(count: 50, offset: 0) { result in
+            apiManager.getTracks(page: 1, perPage: 50) { result in
                 welf?.refreshControl?.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {

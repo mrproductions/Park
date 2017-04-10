@@ -12,9 +12,9 @@ import SideMenu
 
 class MapViewController: UIViewController, GMSMapViewDelegate{
     
-    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     
     let locationManager = CLLocationManager()
     
@@ -24,31 +24,27 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.mapView.delegate = self
-        self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        //self.mapView.delegate = self
+        //self.locationManager.delegate = self
+       // self.locationManager.requestWhenInUseAuthorization()
+        //self.locationManager.startUpdatingLocation()
 
-        mapView.accessibilityElementsHidden = false
-        mapView.isMyLocationEnabled = true
+        //mapView.accessibilityElementsHidden = false
+        //mapView.isMyLocationEnabled = true
 
-    
-        //mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
         
+//        
+//        if let mylocation = mapView.myLocation {
+//            print("User's location: \(mylocation)")
+//        } else {
+//            print("User's location is unknown")
+//        }
         
-        if let mylocation = mapView.myLocation {
-            print("User's location: \(mylocation)")
-        } else {
-            print("User's location is unknown")
-        }
-        
-        self.view = mapView
+        //self.view = mapView
         
     }
     override func viewWillAppear(_ animated: Bool) {
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-//        mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+
         
     }
 }
@@ -57,7 +53,6 @@ extension MapViewController: CLLocationManagerDelegate {
 
      func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            
             locationManager.startUpdatingLocation()
             mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
