@@ -19,6 +19,10 @@ class ProfileTableViewController: UITableViewController {
     
     var objectsArray = [Objects]()
     
+    @IBAction fileprivate func close() {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

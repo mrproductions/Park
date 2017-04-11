@@ -11,21 +11,27 @@ import ObjectMapper
 
 class UserProfile: Mappable{
     
-    public required init?(map: Map) {}
+    enum Sex: String {
+        case Male = "man"
+        case Female = "woman"
+    }
     
-    var profile_mail: String?
-    var profile_name: String?
-    var profile_weight: String?
-    var profile_height: String?
-    var profile_birthday: String?
-    var profile_hr_max: String?
-    var profile_sex: String?
-    var profile_boat: String?
-    var profile_avatar: String?
-    var profile_photo: String?
-    var profile_bib: String?
-    var profile_sport_club: String?
-    var last_date_profile: String?
+    public required init?(map: Map) {}
+
+    var avatar_url: String?
+    var bib: String?
+    var birthday: String?
+    var email: String?
+    var height: Int?
+    var id: Int?
+    var login: String?
+    var max_hr: String?
+    var name: String?
+    var photo_url: String?
+    var sex: Sex?
+    var sport_club: String?
+    var weight: Int?
+    
     
     convenience init?(json: JSON) {
         self.init(JSON: json)
@@ -33,22 +39,20 @@ class UserProfile: Mappable{
     
     func mapping(map: Map) {
         
-        profile_mail                <- map  ["response.profile_mail"]
-        profile_name                <- map  ["response.profile_name"]
-        profile_weight              <- map  ["response.profile_weight"]
-        profile_height              <- map  ["response.profile_height"]
-        profile_birthday            <- map  ["response.profile_birthday"]
-        profile_hr_max              <- map  ["response.profile_hr_max"]
-        profile_sex                 <- map  ["response.profile_sex"]
-        profile_boat                <- map  ["response.profile_boat"]
-        profile_avatar              <- map  ["response.profile_avatar"]
-        profile_photo               <- map  ["response.profile_photo"]
-        profile_bib                 <- map  ["response.profile_bib"]
-        profile_sport_club          <- map  ["response.profile_sport_club"]
-        last_date_profile           <- map  ["response.last_date_profile"]
+        avatar_url                  <- map  ["avatar_url"]
+        bib                         <- map ["bib"]
+        birthday                    <- map ["birthday"]
+        email                       <- map ["email"]
+        height                      <- map ["height"]
+        id                          <- map ["id"]
+        login                       <- map ["login"]
+        max_hr                      <- map ["max_hr"]
+        name                        <- map ["name"]
+        photo_url                   <- map ["photo_url"]
+        sex                         <- map ["sex"]
+        sport_club                  <- map ["sport_club"]
+        weight                      <- map ["weight"]
         
     }
     
-    
-
 }

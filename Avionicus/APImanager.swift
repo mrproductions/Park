@@ -86,10 +86,8 @@ enum Avionicus {
         
         case .getProfile:
             return[
-                ParameterKeys.avkey: avkey + "=",
+                
                 ParameterKeys.token: token ?? "",
-                //ParameterKeys.hash: hash!,
-                ParameterKeys.responseType: "json",
                 ParameterKeys.action: "get_profile",
             ]
         case .setProfile:
@@ -153,7 +151,7 @@ class APIManager {
         self.init(config: URLSessionConfiguration.default)
     }
     
-    
+
     func fetch<T>(request: URLRequest, parse: @escaping (JSON) -> T?, completion: @escaping (APIResult<T>) -> Void ) {
         
         let task = session.dataTask(with: request) { data, response, error in
