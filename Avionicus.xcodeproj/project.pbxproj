@@ -56,6 +56,7 @@
 		55E59DBC1E8981150014BD48 /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E59DBB1E8981150014BD48 /* TrackListItem.swift */; };
 		55E59DBD1E8981150014BD48 /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E59DBB1E8981150014BD48 /* TrackListItem.swift */; };
 		55E59DBE1E8981160014BD48 /* TrackListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E59DBB1E8981150014BD48 /* TrackListItem.swift */; };
+		DD4B21BC1E9D7D62000A0749 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B21BB1E9D7D62000A0749 /* ProfileTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		55E59DBB1E8981150014BD48 /* TrackListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackListItem.swift; sourceTree = "<group>"; };
 		715FF74BABC18F386CF8D320 /* Pods-Avionicus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avionicus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4B21BB1E9D7D62000A0749 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 			children = (
 				177F52871E66F19600B934E7 /* Auth */,
 				17654CC61E61F3F70092A3D7 /* UserViewControllerC.swift */,
+				DD4B21BB1E9D7D62000A0749 /* ProfileTableViewController.swift */,
 				17654CBB1E61D9960092A3D7 /* TabBarController.swift */,
 				17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */,
 				17654CB71E61D95E0092A3D7 /* MapViewController.swift */,
@@ -371,7 +374,7 @@
 				TargetAttributes = {
 					17654C6A1E61C54B0092A3D7 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 9UWX4556KM;
+						DevelopmentTeam = F9W6RAB7FZ;
 						ProvisioningStyle = Automatic;
 					};
 					17654C7E1E61C54B0092A3D7 = {
@@ -508,6 +511,7 @@
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
 				55E59DAF1E894E4C0014BD48 /* TracksTableHeaderView.swift in Sources */,
 				17654CB61E61D9510092A3D7 /* MainViewControllerController.swift in Sources */,
+				DD4B21BC1E9D7D62000A0749 /* ProfileTableViewController.swift in Sources */,
 				17654CB31E61D3110092A3D7 /* KeyboardHideManager.swift in Sources */,
 				55DF32FA1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */,
 				17654CC51E61F33D0092A3D7 /* MenuTableViewCell.swift in Sources */,
@@ -681,11 +685,11 @@
 			baseConfigurationReference = 715FF74BABC18F386CF8D320 /* Pods-Avionicus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UWX4556KM;
+				DEVELOPMENT_TEAM = F9W6RAB7FZ;
 				INFOPLIST_FILE = Avionicus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Famil.Avionicus;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Roman-Mogutnov.Avionicus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -696,11 +700,11 @@
 			baseConfigurationReference = 4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9UWX4556KM;
+				DEVELOPMENT_TEAM = F9W6RAB7FZ;
 				INFOPLIST_FILE = Avionicus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Famil.Avionicus;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Roman-Mogutnov.Avionicus";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
