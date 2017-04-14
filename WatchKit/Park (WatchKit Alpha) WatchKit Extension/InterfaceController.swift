@@ -9,6 +9,7 @@ import UIKit
 import WatchKit
 import Foundation
 import MapKit
+import HealthKit
 
 
 class InterfaceController: WKInterfaceController {
@@ -18,7 +19,8 @@ class InterfaceController: WKInterfaceController {
     var intervalTime:TimeInterval = 0.0
     var isWorkingOut = false
     
-    
+    @IBOutlet weak var label: WKInterfaceLabel!
+    @IBOutlet weak var heart: WKInterfaceImage!
     @IBOutlet var actionTimer: WKInterfaceTimer!
     @IBOutlet var mapOutlet: WKInterfaceMap!
     @IBOutlet var actionButtonOutlet: WKInterfaceButton!
@@ -111,8 +113,44 @@ class InterfaceController: WKInterfaceController {
         return String(format:"%02i:%02i:%02i",hours,minutes,seconds)
     }
     
+    func updateHeartRate(_ samples: [HKSample]?) {
+        guard let heartRateSamples = samples as? [HKQuantitySample] else {return}
+        
+        DispatchQueue.main.async {
+            guard let sample = heartRateSamples.first else{return}
+            let value = sample.quantity.doubleValue(for: HeartRate().self.heartRateUnit)
+            self.label.setText(String(UInt16(value)))
+            
+            // retrieve source from sample
+            let name = sample.sourceRevision.source.name
+            //self.updateDeviceName(name)
+            self.animateHeart()
+        }
+    }
+    
+    func animateHeart() {
+        self.animate(withDuration: 0.5) {
+            self.heart.setWidth(60)
+            self.heart.setHeight(90)
+        }
+        
+        let when = DispatchTime.now() + Double(Int64(0.5 * double_t(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        
+        DispatchQueue.global(qos: .default).async {
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.animate(withDuration: 0.5, animations: {
+                    self.heart.setWidth(50)
+                    self.heart.setHeight(80)
+                })            }
+            
+            
+        }
+    }
+    
     override func willActivate() {
         
+        HeartRate().startWorkout()
+        HeartRate().workoutActive = true
         actionStopOutlet.setTitle("Stop")
         actionStopOutlet.setBackgroundColor(UIColor.red)
         justPause()

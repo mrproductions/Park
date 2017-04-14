@@ -8,14 +8,31 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Symbol.ttf">
+            <string>Symbol</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MainVC-->
         <scene sceneID="aou-V4-d1y">
             <objects>
                 <controller identifier="MainVC" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Park__WatchKit_Alpha__WatchKit_App" customModuleProvider="target">
                     <items>
-                        <timer width="135" alignment="left" textAlignment="center" id="Ga2-S8-4FQ"/>
+                        <group width="1" alignment="left" id="fe9-DC-una">
+                            <items>
+                                <imageView alignment="left" image="heart" id="NEi-Ty-VgC"/>
+                                <label alignment="center" text="---" minimumScaleFactor="0.20000000000000001" id="MVx-kD-06H">
+                                    <fontDescription key="font" name="Symbol" family="Symbol" pointSize="28"/>
+                                </label>
+                                <label alignment="right" text="BPM" id="Z6H-aQ-oie">
+                                    <color key="textColor" red="0.86132884030000001" green="0.058584794400000001" blue="0.11313973369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                        </group>
                         <map height="100" alignment="left" id="Lkr-TI-fvX"/>
+                        <timer width="135" alignment="left" textAlignment="center" id="Ga2-S8-4FQ"/>
                         <button width="1" alignment="left" title="Button" id="QNo-i7-ufo">
                             <connections>
                                 <action selector="actionButton" destination="AgC-eL-Hgc" id="876-x5-lwU"/>
@@ -31,6 +48,8 @@
                         <outlet property="actionButtonOutlet" destination="QNo-i7-ufo" id="8Jk-7t-VIt"/>
                         <outlet property="actionStopOutlet" destination="Q1A-XS-5da" id="zhO-ll-dHD"/>
                         <outlet property="actionTimer" destination="Ga2-S8-4FQ" id="wiI-9P-Dxp"/>
+                        <outlet property="heart" destination="NEi-Ty-VgC" id="zdX-is-u9Z"/>
+                        <outlet property="label" destination="MVx-kD-06H" id="Cen-4B-F8a"/>
                         <outlet property="mapOutlet" destination="Lkr-TI-fvX" id="Uca-Kn-NGI"/>
                     </connections>
                 </controller>
@@ -87,19 +106,6 @@
                     <items>
                         <group width="1" height="1" alignment="center" contentMode="center" layout="vertical" id="GGI-wX-6H7">
                             <items>
-                                <group height="30" alignment="center" spacing="4" id="KwO-TF-pgg">
-                                    <items>
-                                        <label alignment="left" verticalAlignment="center" text="BPM" id="vGH-lm-ZQG">
-                                            <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
-                                        </label>
-                                        <imageView width="24" height="20" alignment="left" verticalAlignment="center" image="Plane" id="Yj4-rR-wtG">
-                                            <color key="tintColor" red="0.98039215690000003" green="0.066666666669999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </imageView>
-                                        <label alignment="left" verticalAlignment="center" text="96" id="k3i-ET-ATU">
-                                            <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
-                                        </label>
-                                    </items>
-                                </group>
                                 <button alignment="center" verticalAlignment="center" id="OJZ-h9-uVb">
                                     <group key="contentGroup" width="78" height="78" alignment="left" radius="39" id="b4Q-bG-64X">
                                         <items>

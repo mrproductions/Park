@@ -27,6 +27,8 @@
 		DD34AD591EA024260017D5B6 /* LoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD34AD561EA024260017D5B6 /* LoadController.swift */; };
 		DD34AD5A1EA024260017D5B6 /* LoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD34AD561EA024260017D5B6 /* LoadController.swift */; };
 		DDF5D39D1EA042B9002A2202 /* FinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF5D39C1EA042B9002A2202 /* FinalViewController.swift */; };
+		DDF984251EA04C1A0095FD23 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF984241EA04C1A0095FD23 /* HeartRate.swift */; };
+		DDF984271EA04CBF0095FD23 /* HeartRateWorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF984261EA04CBF0095FD23 /* HeartRateWorkoutSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		DD34AD501EA0204E0017D5B6 /* Park (WatchKit Alpha) WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Park (WatchKit Alpha) WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		DD34AD561EA024260017D5B6 /* LoadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadController.swift; sourceTree = "<group>"; };
 		DDF5D39C1EA042B9002A2202 /* FinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalViewController.swift; sourceTree = "<group>"; };
+		DDF984241EA04C1A0095FD23 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		DDF984261EA04CBF0095FD23 /* HeartRateWorkoutSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateWorkoutSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,11 +219,9 @@
 		DD0084BF1E9A625E00C511DF /* Park (WatchKit Alpha) WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				DD34AD561EA024260017D5B6 /* LoadController.swift */,
-				DD0084C21E9A625E00C511DF /* InterfaceController.swift */,
-				DDF5D39C1EA042B9002A2202 /* FinalViewController.swift */,
-				DD0084C41E9A625E00C511DF /* ExtensionDelegate.swift */,
-				DD0084C61E9A625E00C511DF /* NotificationController.swift */,
+				DDF984241EA04C1A0095FD23 /* HeartRate.swift */,
+				DDF984261EA04CBF0095FD23 /* HeartRateWorkoutSession.swift */,
+				DDF984231EA04A580095FD23 /* Controllers */,
 				DD0084C81E9A625E00C511DF /* Assets.xcassets */,
 				DD0084CA1E9A625E00C511DF /* Info.plist */,
 				DD0084C01E9A625E00C511DF /* Supporting Files */,
@@ -234,6 +236,18 @@
 				DD0084C11E9A625E00C511DF /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DDF984231EA04A580095FD23 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD34AD561EA024260017D5B6 /* LoadController.swift */,
+				DD0084C21E9A625E00C511DF /* InterfaceController.swift */,
+				DDF5D39C1EA042B9002A2202 /* FinalViewController.swift */,
+				DD0084C41E9A625E00C511DF /* ExtensionDelegate.swift */,
+				DD0084C61E9A625E00C511DF /* NotificationController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,6 +485,8 @@
 				DD0084C71E9A625E00C511DF /* NotificationController.swift in Sources */,
 				DD0084C51E9A625E00C511DF /* ExtensionDelegate.swift in Sources */,
 				DD0084C31E9A625E00C511DF /* InterfaceController.swift in Sources */,
+				DDF984251EA04C1A0095FD23 /* HeartRate.swift in Sources */,
+				DDF984271EA04CBF0095FD23 /* HeartRateWorkoutSession.swift in Sources */,
 				DD34AD5A1EA024260017D5B6 /* LoadController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

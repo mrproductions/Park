@@ -1,11 +1,10 @@
 //
 //  FinalViewController.swift
-//  Park (WatchKit Alpha)
+//  Park (WatchKit Alpha) WatchKit Extension
 //
-//  Created by Roman Mogutnov on 14/04/2017.
+//  Created by Roman Mogutnov on 09/04/2017.
 //  Copyright © 2017 Roman Mogutnov. All rights reserved.
 //
-
 import UIKit
 import WatchKit
 import Foundation
