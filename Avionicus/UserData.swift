@@ -31,6 +31,7 @@ class UserData: Mappable {
     var sex: Sex?
     var profileAvatarUrl: URL?
     var token: String?
+    var error: Int?
     
     let keyChain = KeychainSwift()
     
@@ -40,8 +41,6 @@ class UserData: Mappable {
         if let token = self.token {
             writeTokenToKeychain(token: token)
         }
-        
- 
     }
     
     func mapping(map: Map) {
@@ -69,7 +68,6 @@ class UserData: Mappable {
         return keyChain.get("token")
     }
 
-    
     func writeToUserDefaults() {
         UserDefaults.standard.set(id, forKey: "id")
         UserDefaults.standard.set(login, forKey: "login")

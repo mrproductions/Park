@@ -10,13 +10,19 @@ import Foundation
 import ObjectMapper
 import KeychainSwift
 
+
 let keyChain = KeychainSwift()
 typealias JSON = [String: Any]
 typealias parametr = [String: Any]
+typealias error = [String: Int]
 
 enum APIResult<T> {
     case success(T)
     case failure(Error)
+}
+
+enum APIError<T>{
+    case fail(T)
 }
 
 enum Avionicus {
@@ -32,10 +38,12 @@ enum Avionicus {
         return "http://api.avionicus.com/"
     }
     
-    var avkey: String { return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
-    var token: String? { return  keyChain.get("token") }
-    var id: Int? { return UserDefaults.standard.value(forKey: "id") as? Int }
-    var deviceId: String { return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
+    var avkey: String {     return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
+    var token: String? {    return keyChain.get("token") }
+    var id: Int? {          return UserDefaults.standard.value(forKey: "id") as? Int }
+    var deviceId: String {  return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
+    
+    
     
     
     private struct ParameterKeys {
@@ -86,11 +94,8 @@ enum Avionicus {
         
         case .getProfile:
             return[
-                ParameterKeys.avkey: avkey + "=",
                 ParameterKeys.token: token ?? "",
-                //ParameterKeys.hash: hash!,
-                ParameterKeys.responseType: "json",
-                ParameterKeys.action: "get_profile",
+                ParameterKeys.userId: id!
             ]
         case .setProfile:
             return[
@@ -171,13 +176,21 @@ class APIManager {
             }
             
             switch response.statusCode {
+
             case 200:
                 if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as! JSON {
+                    // тут проверка
+                    
+                    if let errorCode = json["error"] as? Int {
+                        let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
+                        
+                        completion(.failure(error))
+                    }
+                    
                     if let result = parse(json) {
-
                         completion(.success(result))
                     } else {
-                        let error = NSError(domain: "Error parsing", code: 30, userInfo: [:])
+                        let error = NSError(domain: "Parsing error", code: 30, userInfo: nil)
                         completion(.failure(error))
                     }
                 }
@@ -192,6 +205,7 @@ class APIManager {
     
     func auth(login: String, pass: String, completion: @escaping (APIResult<UserData>) -> Void) {
         let request = Avionicus.auth(login, pass).request
+        print(request)
         fetch(request: request, parse: { (json) -> UserData? in
             return UserData(json: json)
         }, completion: completion)
@@ -226,30 +240,6 @@ class APIManager {
 
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

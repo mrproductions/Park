@@ -69,16 +69,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             welf!.performSegue(withIdentifier: StoryboardConstants.goToTabSegueIdentifier, sender: self)
                         }
                     }
-                    
                 }
                 
-            case .failure(let error):
+            case .failure(let err):
                 
-                print("ERROR! \(error.localizedDescription)")
+                let error = AvionicusError(rawValue: err._code)
                 DispatchQueue.main.async {
-                    let errorAlert = UIAlertController(title: "Error", message: " Что то пошло не так, попробуй снова =( ", preferredStyle: UIAlertControllerStyle.alert)
-                    let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                    errorAlert.addAction(actionError)
+                    let errorAlert = UIAlertController.errorAlert(title: "Error", message: error?.description, buttonTitle: "Try again")
                     self.present(errorAlert, animated: true, completion: nil)
                 }
             }

@@ -29,11 +29,9 @@ class UserRegistration: Mappable {
     
     func mapping(map: Map) {
         
-       
         id                <- map      ["id"]
         token            <- map      ["token"]
 
-        
     }
     
     func writeTokenToKeychain(token: String) {

@@ -64,7 +64,6 @@ class SideMenuTableViewController: UITableViewController {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "Little bit Black"))
         imageView.contentMode = .scaleAspectFill
         
-        
         //imageView.backgroundColor = UIColor.black.withAlphaComponent(5)
         tableView.backgroundView = imageView
     }

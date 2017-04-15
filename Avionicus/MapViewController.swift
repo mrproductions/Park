@@ -10,10 +10,11 @@ import UIKit
 import GoogleMaps
 import SideMenu
 
-class MapViewController: UIViewController, GMSMapViewDelegate{
+class MapViewController: UIViewController{
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var startButton: RoundButton!
     
     
     let locationManager = CLLocationManager()
@@ -25,22 +26,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate{
         super.viewDidLoad()
         
         //self.mapView.delegate = self
-        //self.locationManager.delegate = self
-       // self.locationManager.requestWhenInUseAuthorization()
-        //self.locationManager.startUpdatingLocation()
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
 
-        //mapView.accessibilityElementsHidden = false
-        //mapView.isMyLocationEnabled = true
+        mapView.accessibilityElementsHidden = false
+        mapView.isMyLocationEnabled = true
 
+             
+        if let mylocation = mapView.myLocation {
+            print("User's location: \(mylocation)")
+        } else {
+            print("User's location is unknown")
+        }
         
-//        
-//        if let mylocation = mapView.myLocation {
-//            print("User's location: \(mylocation)")
-//        } else {
-//            print("User's location is unknown")
-//        }
-        
-        //self.view = mapView
+        self.view = mapView
         
     }
     override func viewWillAppear(_ animated: Bool) {
