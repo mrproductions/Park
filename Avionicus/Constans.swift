@@ -31,6 +31,4 @@ typealias DownloadComplete = () -> ()
 let CURENT_TRACK = "\(BASE)\(AVKEY)\(HASH)\(TRACK_ID)\(USER_ID)"
 
 
-struct AvionicusSegues {
-    static let goToTab = "GoToMainFromAuth"
-}
+

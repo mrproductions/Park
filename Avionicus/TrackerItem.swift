@@ -19,7 +19,7 @@ class TrackerItem {
     }
     
     let kind: String
-    let id: String
+    let id: Int
     let date: Date
     let speed: Double
     let routeLength: Double
@@ -35,7 +35,7 @@ class TrackerItem {
         return df.string(from: date)
     }
     
-    init(kind: String, time: Time, date: Date, speed: Double, routeLength: Double, id: String) {
+    init(kind: String, time: Time, date: Date, speed: Double, routeLength: Double, id: Int) {
         if TrackerItem.activities.contains(kind) {
             self.kind = kind
         } else {

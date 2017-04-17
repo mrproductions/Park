@@ -10,41 +10,72 @@ import UIKit
 import GoogleMaps
 import SideMenu
 
-class MapViewController: UIViewController, CLLocationManagerDelegate{
-    
+class MapViewController: UIViewController{
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var startButton: RoundButton!
+    
     
     let locationManager = CLLocationManager()
     
-    
-    @IBAction func MenuBarItem(_ sender: Any) {
-        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-    }
+    @IBAction func MenuBarItem(_ sender: Any) {present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)}
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let camera = GMSCameraPosition.camera(withLatitude: 55.754911, longitude: 37.613674, zoom: 10)
-        mapView.camera = camera
+        //self.mapView.delegate = self
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+
+        mapView.accessibilityElementsHidden = false
+        mapView.isMyLocationEnabled = true
+
+             
+        if let mylocation = mapView.myLocation {
+            print("User's location: \(mylocation)")
+        } else {
+            print("User's location is unknown")
+        }
         
+        self.view = mapView
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.new, context: nil)
+
         
-    }
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.authorizedWhenInUse {
-            mapView.isMyLocationEnabled = true
-        }
     }
 }
 
+extension MapViewController: CLLocationManagerDelegate {
+
+     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            mapView.isMyLocationEnabled = true
+            mapView.settings.myLocationButton = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            
+            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            locationManager.stopUpdatingLocation()
+            
+            if let mylocation = mapView.myLocation {
+                print("User's location: \(mylocation)")
+            } else {
+                print("User's location is unknown")
+            }
+            
+        }
+        
+        
+    }
+}
 
 
 

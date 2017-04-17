@@ -21,10 +21,14 @@ class SideMenuTableViewController: UITableViewController {
     var menuNameArray: Array = [String]()
     var menuImageArray: Array = [UIImage]()
     
+    struct StoryboardConstants {
+        static let goToLoginSegueIdentifier = "goToLogin"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        name.text = (UserDefaults.standard.value(forKey: "login") as! String)
+        //name.text = (UserDefaults.standard.value(forKey: "login") as! String)
         
         avatarIm.layer.borderColor = UIColor.white.cgColor
         avatarIm.layer.borderWidth = 0.5
@@ -32,19 +36,19 @@ class SideMenuTableViewController: UITableViewController {
         avatarIm.layer.masksToBounds = true
         avatarIm.clipsToBounds = true
         
+//        let profileRequest = Avionicus.getProfile.request
+//        print(profileRequest.url!)
+//        apiManager.getProfile() { result in
+//            switch result{
+//            case .success( _):
+//                break
+//                
+//            case .failure(let error):
+//                
+//                print("error \(error)")
+//            }
+//        }
         
-        let profileRequest = Avionicus.getProfile.request
-        print(profileRequest.url!)
-        apiManager.getProfile() { result in
-            switch result{
-            case .success( _):
-                break
-                
-            case .failure(let error):
-                
-                print("error \(error)")
-            }
-        }
     }
 
     
@@ -60,7 +64,6 @@ class SideMenuTableViewController: UITableViewController {
         let imageView = UIImageView(image:#imageLiteral(resourceName: "Little bit Black"))
         imageView.contentMode = .scaleAspectFill
         
-        
         //imageView.backgroundColor = UIColor.black.withAlphaComponent(5)
         tableView.backgroundView = imageView
     }
@@ -68,17 +71,27 @@ class SideMenuTableViewController: UITableViewController {
 
 
     @IBAction func Out(_ sender: Any) {
-        if keyChain.get("hash") != nil{
-            keyChain.delete("hash")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier:"LoginViewController")
-            present(loginViewController, animated: true, completion: nil)
-
+        if keyChain.get("token") != nil{
+            keyChain.delete("token")
+            performSegue(withIdentifier: StoryboardConstants.goToLoginSegueIdentifier, sender: nil)
         }
+        
     }
     func download()  {
         
         //apiManager.getProfile(completion: )
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == StoryboardConstants.goToLoginSegueIdentifier {
+            if let loginVC = segue.destination as? LoginViewController {
+                loginVC.presentedModally = true
+            }
+        }
+        
+    }
+    
 }

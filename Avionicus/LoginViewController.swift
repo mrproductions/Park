@@ -17,7 +17,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signIn: RoundButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var stackViewBottomConstrain: NSLayoutConstraint!
     @IBOutlet weak var sinInConst: NSLayoutConstraint!
+    
+    var presentedModally = false
+    
+    struct StoryboardConstants {
+        static let goToTabSegueIdentifier = "GoToMainFromAuth"
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,20 +61,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             switch result {
             case .success(let userData):
                 userData.writeToUserDefaults()
-                print("Hash is \(userData.hash)")
-                print(userData.sMsgTitle!)
-                
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: AvionicusSegues.goToTab, sender: self)    
+                DispatchQueue.main.async { [weak welf = self] in
+                    if welf != nil {
+                        if welf!.presentedModally {
+                            welf!.dismiss(animated: true, completion: nil)
+                        } else {
+                            welf!.performSegue(withIdentifier: StoryboardConstants.goToTabSegueIdentifier, sender: self)
+                        }
+                    }
                 }
                 
-            case .failure(let error):
+            case .failure(let err):
                 
-                print("ERROR! \(error.localizedDescription)")
+                let error = AvionicusError(rawValue: err._code)
                 DispatchQueue.main.async {
-                    let errorAlert = UIAlertController(title: "Error", message: " Что то пошло не так, попробуй снова =( ", preferredStyle: UIAlertControllerStyle.alert)
-                    let actionError = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-                    errorAlert.addAction(actionError)
+                    let errorAlert = UIAlertController.errorAlert(title: "Error", message: error?.description, buttonTitle: "Try again")
                     self.present(errorAlert, animated: true, completion: nil)
                 }
             }
@@ -86,7 +95,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func kbWillShow(_ notifitacion: Notification) {
         let userInfo = notifitacion.userInfo
         let kbFrame = (userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue ).cgRectValue
-        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 100)
+        scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 200)
         
 //        self.view.frame.height - Swift.abs(kbFrame.height)
     }
