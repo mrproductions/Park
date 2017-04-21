@@ -1,25 +1,25 @@
 //
-//  TrackList.swift
+//  TrackDetails.swift
 //  Avionicus
 //
-//  Created by Фамил Гаджиев on 06.03.17.
+//  Created by David Zukhbaya on 21.04.17.
 //  Copyright © 2017 Park Team. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class TrackList: Mappable{
+class TrackDetails: Mappable{
     
     public required init?(map: Map) {}
     
-    var tracks: [TrackListItem]?
-     
-
+    
+    
+    
     func mapping(map: Map) {
         
-        tracks <- map ["tracks"]
-    
+        
+        
     }
     
 }
