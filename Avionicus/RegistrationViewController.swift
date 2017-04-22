@@ -43,11 +43,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                     welf?.displayMessage(title: "Error", message: "Try again", dismissTitle: "Okay")
                 }
             }
-            
-            
         }
-        
-        
     }
     
     

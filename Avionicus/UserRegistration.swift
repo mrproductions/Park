@@ -29,7 +29,7 @@ class UserRegistration: Mappable {
     
     func mapping(map: Map) {
         
-        id                <- map      ["id"]
+        id               <- map      ["id"]
         token            <- map      ["token"]
 
     }

@@ -17,9 +17,9 @@ class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var size: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var avatarIm: UIImageView!
+    @IBOutlet weak var sex: UIImageView!
     
-    var menuNameArray: Array = [String]()
-    var menuImageArray: Array = [UIImage]()
+    
     
     struct StoryboardConstants {
         static let goToLoginSegueIdentifier = "goToLogin"
@@ -30,27 +30,26 @@ class SideMenuTableViewController: UITableViewController {
         
         //name.text = (UserDefaults.standard.value(forKey: "login") as! String)
         
-        avatarIm.layer.borderColor = UIColor.white.cgColor
-        avatarIm.layer.borderWidth = 0.5
-        avatarIm.layer.cornerRadius = 65.0
-        avatarIm.layer.masksToBounds = true
-        avatarIm.clipsToBounds = true
         
-//        let profileRequest = Avionicus.getProfile.request
-//        print(profileRequest.url!)
-//        apiManager.getProfile() { result in
-//            switch result{
-//            case .success( _):
-//                break
-//                
-//            case .failure(let error):
-//                
-//                print("error \(error)")
-//            }
-//        }
+        let profileRequest = Avionicus.getProfile.request
+        print(profileRequest.url!)
+        apiManager.getProfile() { result in
+            switch result{
+            case .success(let UserProfile):
+                DispatchQueue.main.async {
+                    print(UserProfile.login!)
+                    
+                }
+                
+            case .failure(let error):
+                
+                print("error \(error)")
+            }
+        }
         
     }
 
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,7 +76,7 @@ class SideMenuTableViewController: UITableViewController {
         }
         
     }
-    func download()  {
+    func updateUI()  {
         
         //apiManager.getProfile(completion: )
         

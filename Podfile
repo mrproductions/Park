@@ -3,6 +3,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target ‘Avionicus’ do
+    pod "ObjectMapper+Realm"
     pod 'KeychainSwift', '~> 7.0'
     pod 'IDZSwiftCommonCrypto', '~> 0.9'
     pod 'SideMenu'

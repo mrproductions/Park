@@ -44,8 +44,6 @@ enum Avionicus {
     var deviceId: String {  return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
     
     
-    
-    
     private struct ParameterKeys {
         
         static let loginOrEmail = "loginoremail"
@@ -69,7 +67,7 @@ enum Avionicus {
         switch self {
         case .auth: return "/2.0/user/login/"
         case .registration: return "/2.0/user/registration/"
-        case .getProfile: return "/2.0/"
+        case .getProfile: return "/2.0/user/profile"
         case .setProfile: return "/2.0/"
         case .getTrack: return "/2.0/tracks/user/"
         }
@@ -222,10 +220,9 @@ class APIManager {
     
     func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
         let request = Avionicus.getTrack(page, perPage).request
-        print(request)
+        
         fetch(request: request, parse: { (json) -> TrackList? in
-            print(json)
-            return TrackList(json: json)
+            return TrackList(JSON: json)
         }, completion: completion)
                 
     }
@@ -234,9 +231,20 @@ class APIManager {
         let request = Avionicus.getProfile.request
         
         fetch(request: request, parse: {(json) -> UserProfile? in
-            return UserProfile(json: json)
+            let user = UserProfile(JSON: json)
+    
+            //user?.writeToBD()
+            return user
         }, completion: completion)
     }
+    
+//    func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
+//        let request = Avionicus.getProfile.request
+//        
+//        fetch(request: request, parse: {(json) -> UserProfile? in
+//            return UserProfile(json: json)
+//        }, completion: completion)
+//    }
 
     
 }

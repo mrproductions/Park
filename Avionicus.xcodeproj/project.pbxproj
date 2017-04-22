@@ -12,7 +12,7 @@
 		1706DA4C1E6CBE5C00358586 /* CurrentTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706DA4B1E6CBE5C00358586 /* CurrentTrack.swift */; };
 		171869231E8EA02700036631 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171869221E8EA02700036631 /* LaunchViewController.swift */; };
 		1747573C1E9E774000DD512A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747573B1E9E774000DD512A /* Profile.storyboard */; };
-		1747573E1E9E7AB200DD512A /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */; };
+		1747573E1E9E7AB200DD512A /* AvionicusAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747573D1E9E7AB200DD512A /* AvionicusAlerts.swift */; };
 		17654C6F1E61C54B0092A3D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654C6E1E61C54B0092A3D7 /* AppDelegate.swift */; };
 		17654C791E61C54B0092A3D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17654C771E61C54B0092A3D7 /* LaunchScreen.storyboard */; };
 		17654C841E61C54B0092A3D7 /* AvionicusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654C831E61C54B0092A3D7 /* AvionicusTests.swift */; };
@@ -20,7 +20,7 @@
 		17654C9D1E61C9470092A3D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17654C9C1E61C9470092A3D7 /* Assets.xcassets */; };
 		17654CA21E61C9C70092A3D7 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA11E61C9C70092A3D7 /* Constans.swift */; };
 		17654CA61E61CBA90092A3D7 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA31E61CBA90092A3D7 /* UserData.swift */; };
-		17654CA71E61CBA90092A3D7 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA41E61CBA90092A3D7 /* UserProfile.swift */; };
+		17654CA71E61CBA90092A3D7 /* testRealmUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA41E61CBA90092A3D7 /* testRealmUserProfile.swift */; };
 		17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CA51E61CBA90092A3D7 /* UserRegistration.swift */; };
 		17654CAC1E61D2E20092A3D7 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAA1E61D2E20092A3D7 /* RoundButton.swift */; };
 		17654CAD1E61D2E20092A3D7 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CAB1E61D2E20092A3D7 /* RoundTextField.swift */; };
@@ -36,6 +36,9 @@
 		17654CC71E61F3F70092A3D7 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */; };
 		176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */; };
 		1767599A1E71770500DD5CD1 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */; };
+		176E41AB1EAA48180046E888 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E41AA1EAA48180046E888 /* UserProfile.swift */; };
+		17837DAD1EAB8911000DEC10 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17837DAC1EAB8911000DEC10 /* ProfileItem.swift */; };
+		17837DAF1EAB89DF000DEC10 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17837DAE1EAB89DF000DEC10 /* ProfileTableHeaderView.swift */; };
 		17B5D8671EA2881D00D63FCD /* AvionicusError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5D8661EA2881D00D63FCD /* AvionicusError.swift */; };
 		51F8CBA03BAF1E65FC9FB5AD /* Pods_Avionicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */; };
 		55DF32F61E8839BE007FA5F2 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */; };
@@ -84,7 +87,7 @@
 		1706DA4B1E6CBE5C00358586 /* CurrentTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTrack.swift; sourceTree = "<group>"; };
 		171869221E8EA02700036631 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		1747573B1E9E774000DD512A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlerts.swift; sourceTree = "<group>"; };
+		1747573D1E9E7AB200DD512A /* AvionicusAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusAlerts.swift; sourceTree = "<group>"; };
 		17654C6B1E61C54B0092A3D7 /* Avionicus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avionicus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17654C6E1E61C54B0092A3D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17654C781E61C54B0092A3D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +101,7 @@
 		17654C9C1E61C9470092A3D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17654CA11E61C9C70092A3D7 /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		17654CA31E61CBA90092A3D7 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		17654CA41E61CBA90092A3D7 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		17654CA41E61CBA90092A3D7 /* testRealmUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testRealmUserProfile.swift; sourceTree = "<group>"; };
 		17654CA51E61CBA90092A3D7 /* UserRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		17654CAA1E61D2E20092A3D7 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		17654CAB1E61D2E20092A3D7 /* RoundTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
@@ -114,6 +117,9 @@
 		17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		176E41AA1EAA48180046E888 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		17837DAC1EAB8911000DEC10 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
+		17837DAE1EAB89DF000DEC10 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		17B5D8661EA2881D00D63FCD /* AvionicusError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusError.swift; sourceTree = "<group>"; };
 		4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.release.xcconfig"; sourceTree = "<group>"; };
 		55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
@@ -157,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				1706DA471E6C20A800358586 /* APImanager.swift */,
-				1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */,
+				1747573D1E9E7AB200DD512A /* AvionicusAlerts.swift */,
 				17B5D8661EA2881D00D63FCD /* AvionicusError.swift */,
 				55E59DB71E896D9B0014BD48 /* Colors.swift */,
 				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
@@ -198,9 +204,8 @@
 				17654C9F1E61C99B0092A3D7 /* Views */,
 				17654CA01E61C9A10092A3D7 /* Controllers */,
 				17654CBF1E61DCBF0092A3D7 /* Main.storyboard */,
-				1747573B1E9E774000DD512A /* Profile.storyboard */,
-				55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */,
 				17654C771E61C54B0092A3D7 /* LaunchScreen.storyboard */,
+				171869221E8EA02700036631 /* LaunchViewController.swift */,
 				17654C9C1E61C9470092A3D7 /* Assets.xcassets */,
 				17654C7A1E61C54B0092A3D7 /* Info.plist */,
 			);
@@ -229,11 +234,12 @@
 			isa = PBXGroup;
 			children = (
 				17654CA31E61CBA90092A3D7 /* UserData.swift */,
-				17654CA41E61CBA90092A3D7 /* UserProfile.swift */,
+				176E41AA1EAA48180046E888 /* UserProfile.swift */,
 				17654CA51E61CBA90092A3D7 /* UserRegistration.swift */,
 				1706DA491E6CB95300358586 /* TrackList.swift */,
 				55E59DBB1E8981150014BD48 /* TrackListItem.swift */,
 				1706DA4B1E6CBE5C00358586 /* CurrentTrack.swift */,
+				17654CA41E61CBA90092A3D7 /* testRealmUserProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */,
 				55DF32F91E88473A007FA5F2 /* TracksTableViewCell.swift */,
 				55E59DB21E894E980014BD48 /* TracksTableHeaderView */,
+				17837DAE1EAB89DF000DEC10 /* ProfileTableHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -252,13 +259,13 @@
 		17654CA01E61C9A10092A3D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				177F52871E66F19600B934E7 /* Auth */,
-				17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */,
+				176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */,
 				17654CBB1E61D9960092A3D7 /* TabBarController.swift */,
+				177F52871E66F19600B934E7 /* Auth */,
+				17837DAA1EAA4F32000DEC10 /* Profile */,
+				17837DAB1EAA4F50000DEC10 /* Track */,
 				17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */,
 				17654CB71E61D95E0092A3D7 /* MapViewController.swift */,
-				17654CC21E61DF4A0092A3D7 /* TracksTableViewController.swift */,
-				176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -278,15 +285,33 @@
 			children = (
 				17654CAE1E61D2F50092A3D7 /* LoginViewController.swift */,
 				17654CAF1E61D2F50092A3D7 /* RegistrationViewController.swift */,
-				171869221E8EA02700036631 /* LaunchViewController.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		17837DAA1EAA4F32000DEC10 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */,
+				1747573B1E9E774000DD512A /* Profile.storyboard */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		17837DAB1EAA4F50000DEC10 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */,
+				17654CC21E61DF4A0092A3D7 /* TracksTableViewController.swift */,
+			);
+			name = Track;
 			sourceTree = "<group>";
 		};
 		55DF32FD1E885641007FA5F2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				55DF32FE1E885674007FA5F2 /* TrackerItem.swift */,
+				17837DAC1EAB8911000DEC10 /* ProfileItem.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -513,9 +538,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				17654CAC1E61D2E20092A3D7 /* RoundButton.swift in Sources */,
+				17837DAD1EAB8911000DEC10 /* ProfileItem.swift in Sources */,
 				1706DA4C1E6CBE5C00358586 /* CurrentTrack.swift in Sources */,
+				176E41AB1EAA48180046E888 /* UserProfile.swift in Sources */,
 				17654CB81E61D95E0092A3D7 /* MapViewController.swift in Sources */,
-				17654CA71E61CBA90092A3D7 /* UserProfile.swift in Sources */,
+				17654CA71E61CBA90092A3D7 /* testRealmUserProfile.swift in Sources */,
 				55E59DBC1E8981150014BD48 /* TrackListItem.swift in Sources */,
 				17654CBC1E61D9960092A3D7 /* TabBarController.swift in Sources */,
 				1706DA481E6C20A800358586 /* APImanager.swift in Sources */,
@@ -525,11 +552,12 @@
 				17654CB01E61D2F50092A3D7 /* LoginViewController.swift in Sources */,
 				55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
-				1747573E1E9E7AB200DD512A /* ErrorAlerts.swift in Sources */,
+				1747573E1E9E7AB200DD512A /* AvionicusAlerts.swift in Sources */,
 				55E59DAF1E894E4C0014BD48 /* TracksTableHeaderView.swift in Sources */,
 				17654CB61E61D9510092A3D7 /* MainViewControllerController.swift in Sources */,
 				17654CB31E61D3110092A3D7 /* KeyboardHideManager.swift in Sources */,
 				55DF32FA1E88473A007FA5F2 /* TracksTableViewCell.swift in Sources */,
+				17837DAF1EAB89DF000DEC10 /* ProfileTableHeaderView.swift in Sources */,
 				17654CC51E61F33D0092A3D7 /* MenuTableViewCell.swift in Sources */,
 				176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */,
 				17654CB11E61D2F50092A3D7 /* RegistrationViewController.swift in Sources */,

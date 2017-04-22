@@ -9,6 +9,7 @@
 import Foundation
 
 enum AvionicusError: Int {
+    
     case AnotherError = 101
     case WrongHash = 1
     case UserNotFound = 2
@@ -140,7 +141,7 @@ enum AvionicusError: Int {
         case .TrackAccessDenied:
             return ""
         case .SSIdUndefined:
-            return ""
+            return "Не определен ID"
         case .SSTypeUndefined:
             return ""
         case .SSTokenUndefined:

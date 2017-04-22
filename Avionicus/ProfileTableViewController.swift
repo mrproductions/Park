@@ -5,9 +5,13 @@ var heightForHeader: CGFloat = 40
 class ProfileTableViewController: UITableViewController {
     
     var profile: UserProfile?
+
+    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userAge: UILabel!
+    @IBOutlet weak var userSportClub: UILabel!
     
-    @IBOutlet weak var username: UILabel!
-    
+
     
     struct Objects {
         var sectionName: String!
@@ -15,10 +19,6 @@ class ProfileTableViewController: UITableViewController {
     }
     
     var objectsArray = [Objects]()
-    
-    @IBAction fileprivate func close() {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class ProfileTableViewController: UITableViewController {
                 if profile != nil {
                     welf?.profile = profile
                     DispatchQueue.main.async {
-                        welf?.username.text = self.profile?.name
+                        welf?.userName.text = self.profile?.name
                     }
                 }
                 break
@@ -44,12 +44,7 @@ class ProfileTableViewController: UITableViewController {
         
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -81,5 +76,23 @@ class ProfileTableViewController: UITableViewController {
         return heightForHeader
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // this will be non-nil if a blur effect is applied
+        guard tableView.backgroundView == nil else {
+            return
+        }
+        
+        let imageView = UIImageView(image:#imageLiteral(resourceName: "Little bit Black"))
+        imageView.contentMode = .scaleAspectFill
+        
+        tableView.backgroundView = imageView
+        
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }

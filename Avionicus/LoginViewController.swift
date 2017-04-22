@@ -34,7 +34,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordEnter.leftView = UIImageView(image: UIImage(named: "passwordIcon"))
         
         
-        
         loginEnter.delegate = self
         registerForKeyboardNotification()
         
@@ -51,7 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let loginInput = self.loginEnter.text!
         let password = self.passwordEnter.text!
-        
+            
         let md5s2: Digest = Digest(algorithm: .md5)
         md5s2.update(string: password)
         let digest = md5s2.final()
@@ -97,12 +96,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let kbFrame = (userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue ).cgRectValue
         scrollView.contentOffset = CGPoint(x: 0, y: (kbFrame.height) - 200)
         
-//        self.view.frame.height - Swift.abs(kbFrame.height)
     }
+    
     func kbWillHide() {
         scrollView.contentOffset = CGPoint.zero
     }
-
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         

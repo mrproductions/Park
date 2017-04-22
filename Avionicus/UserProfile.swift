@@ -1,3 +1,11 @@
+//
+//  UserProfile.swift
+//  Avionicus
+//
+//  Created by Фамил Гаджиев on 13.02.17.
+//  Copyright © 2017 Фамил Гаджиев. All rights reserved.
+//
+
 import Foundation
 import ObjectMapper
 
@@ -9,42 +17,42 @@ class UserProfile: Mappable{
     }
     
     public required init?(map: Map) {}
-    
+ 
+    var login: String?
     var avatar_url: String?
-    var bib: String?
-    var birthday: String?
+    var name: String?
+    var birthday: Date?
     var email: String?
     var height: Int?
-    var id: Int?
-    var login: String?
+    
+   
     var max_hr: String?
-    var name: String?
-    var photo_url: String?
     var sex: Sex?
     var sport_club: String?
     var weight: Int?
     
+    var bib: String?
     
-    convenience init?(json: JSON) {
-        self.init(JSON: json)
-    }
+
     
     func mapping(map: Map) {
         
         avatar_url                  <- map ["avatar_url"]
         bib                         <- map ["bib"]
-        birthday                    <- map ["birthday"]
+        birthday                    <- (map ["birthday"], DateTransform())
         email                       <- map ["email"]
         height                      <- map ["height"]
-        id                          <- map ["id"]
         login                       <- map ["login"]
         max_hr                      <- map ["max_hr"]
         name                        <- map ["name"]
-        photo_url                   <- map ["photo_url"]
         sex                         <- map ["sex"]
         sport_club                  <- map ["sport_club"]
         weight                      <- map ["weight"]
         
+    }
+    
+    required convenience init?() {
+        self.init()
     }
     
 }
