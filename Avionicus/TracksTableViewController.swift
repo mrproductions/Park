@@ -12,17 +12,16 @@ import SideMenu
 class TracksTableViewController: UITableViewController {
     
     var items: [[TrackerItem]] = []
-    var tracksMap: [String:TrackListItem]?
+    var tracks: [TrackListItem]?
     
     struct StoryboardConstants {
         static let cellIdentifier = "TrackCell"
-        static let detailSegueIdentifier = ""
         static let headerIdentifier = "TracksTableHeader"
     }
     
-//    @IBAction func MenuBarItem(_ sender: Any) {
-//        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
-//    }
+    @IBAction func MenuBarItem(_ sender: Any) {
+        present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
+    }
     
     // MARK : - UIViewController lifecycle methods
     
@@ -97,7 +96,15 @@ class TracksTableViewController: UITableViewController {
         return CGFloat(44)
     }
     
-    // MARK: - Storyboard related methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.section][indexPath.row]
+        let storyBoard = UIStoryboard(name:"Tracks", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "TracksDetailVC") as! TracksDetailViewController
+        detailVC.trackID = item.id
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     
     
     // MARK: - Data loading and processing
@@ -116,9 +123,9 @@ class TracksTableViewController: UITableViewController {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {
                 case .success (let tracksList):
-                    if let tracksMap = tracksList.tracks {
-                        welf?.tracksMap = tracksMap
-                        welf?.processRawData(tracksMap: tracksMap)
+                    if let tracks = tracksList.tracks {
+                        welf?.tracks = tracks
+                        welf?.processRawData(tracks: tracks)
                     }
                     break
                 case .failure(let error):
@@ -130,12 +137,12 @@ class TracksTableViewController: UITableViewController {
         
     }
     
-    func processRawData(tracksMap: [String:TrackListItem]) {
+    func processRawData(tracks: [TrackListItem]) {
         
         var dates: [String:Int] = [:]
         var result: [[TrackerItem]] = []
         
-        let rawItems = tracksMap.values.map { $0.viewModel }
+        let rawItems = tracks.map { $0.viewModel }
         for item in rawItems {
             let ind = dates[item.formattedDate] ?? result.count
             dates[item.formattedDate] = ind
@@ -145,7 +152,7 @@ class TracksTableViewController: UITableViewController {
             result[ind].append(item)
         }
         
-        result.sort { $0[0].date < $1[0].date }
+        result.sort { $0[0].date > $1[0].date }
         
         DispatchQueue.main.async { [weak welf = self] in
             welf?.items = result

@@ -3,7 +3,7 @@
 //  Avionicus
 //
 //  Created by Фамил Гаджиев on 25.02.17.
-//  Copyright © 2017 Фамил Гаджиев. All rights reserved.
+//  Copyright © 2017 Park Team. All rights reserved.
 //
 
 import UIKit

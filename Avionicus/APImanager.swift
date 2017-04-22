@@ -3,7 +3,7 @@
 //  Avionicus
 //
 //  Created by Фамил Гаджиев on 05.03.17.
-//  Copyright © 2017 Фамил Гаджиев. All rights reserved.
+//  Copyright © 2017 Park Team. All rights reserved.
 //
 
 import Foundation
@@ -31,7 +31,8 @@ enum Avionicus {
     case registration(String, String, String)
     case getProfile
     case setProfile(parametr)
-    case getTrack(Int, Int)
+    case getTracksList(Int, Int)
+    case getTrack(Int)
     
     
     var baseURL: String {
@@ -42,6 +43,8 @@ enum Avionicus {
     var token: String? {    return keyChain.get("token") }
     var id: Int? {          return UserDefaults.standard.value(forKey: "id") as? Int }
     var deviceId: String {  return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
+    
+    
     
     
     private struct ParameterKeys {
@@ -60,16 +63,18 @@ enum Avionicus {
         static let startingDate = "date_last"
         static let startingTrack = "track_id"
         static let deviceId = "device_id"
+        static let trackID = "track_id"
         
     }
     
     var path: String {
         switch self {
-        case .auth: return "/2.0/user/login/"
-        case .registration: return "/2.0/user/registration/"
-        case .getProfile: return "/2.0/user/profile"
-        case .setProfile: return "/2.0/"
-        case .getTrack: return "/2.0/tracks/user/"
+            case .auth: return "/2.0/user/login/"
+            case .registration: return "/2.0/user/registration/"
+            case .getProfile: return "/2.0/"
+            case .setProfile: return "/2.0/"
+            case .getTracksList: return "/2.0/tracks/user/"
+            case .getTrack: return "/2.0/track/"
         }
     }
     
@@ -102,13 +107,19 @@ enum Avionicus {
                 ParameterKeys.responseType: "json",
                 ParameterKeys.action: "set_profile",
             ]
-        case .getTrack (let page, let perPage):
+        case .getTracksList (let page, let perPage):
             return [
                 ParameterKeys.token: token ?? "",
                 ParameterKeys.userId: id!,
                 ParameterKeys.perPage: perPage,
                 ParameterKeys.page: page
             ]
+        case .getTrack (let trackID):
+                return [
+                    ParameterKeys.token: token ?? "",
+                    ParameterKeys.trackID: trackID
+            ]
+        
         }
     }
     
@@ -173,12 +184,11 @@ class APIManager {
                 }
             }
             
+            
             switch response.statusCode {
 
             case 200:
                 if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as! JSON {
-                    // тут проверка
-                    
                     if let errorCode = json["error"] as? Int {
                         let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
                         
@@ -203,7 +213,6 @@ class APIManager {
     
     func auth(login: String, pass: String, completion: @escaping (APIResult<UserData>) -> Void) {
         let request = Avionicus.auth(login, pass).request
-        print(request)
         fetch(request: request, parse: { (json) -> UserData? in
             return UserData(json: json)
         }, completion: completion)
@@ -219,49 +228,30 @@ class APIManager {
     }
     
     func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
-        let request = Avionicus.getTrack(page, perPage).request
-        
+        let request = Avionicus.getTracksList(page, perPage).request
         fetch(request: request, parse: { (json) -> TrackList? in
             return TrackList(JSON: json)
         }, completion: completion)
                 
     }
     
+    func getTrack(trackID: Int, completion: @escaping(APIResult<TrackDetails>) -> Void) {
+        let request = Avionicus.getTrack(trackID).request
+        print(request)
+        fetch(request: request, parse: { (json) -> TrackDetails? in
+            return TrackDetails(JSON: json)
+        }, completion: completion)
+        
+    }
+    
     func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
         let request = Avionicus.getProfile.request
         
         fetch(request: request, parse: {(json) -> UserProfile? in
-            let user = UserProfile(JSON: json)
-    
-            //user?.writeToBD()
-            return user
+            return UserProfile(json: json)
         }, completion: completion)
     }
-    
-//    func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
-//        let request = Avionicus.getProfile.request
-//        
-//        fetch(request: request, parse: {(json) -> UserProfile? in
-//            return UserProfile(json: json)
-//        }, completion: completion)
-//    }
 
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

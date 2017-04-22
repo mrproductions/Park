@@ -9,7 +9,6 @@
 import Foundation
 
 enum AvionicusError: Int {
-    
     case AnotherError = 101
     case WrongHash = 1
     case UserNotFound = 2
@@ -18,7 +17,7 @@ enum AvionicusError: Int {
     case EventUndefined = 5
     case EventNotFound = 6
     case UserFriendActionUndefined = 7
-    case UserFriendNotDefindTo = 8
+    case UserFriendNotDefinedTo = 8
     case FriendshipNotFound = 9
     case TrackIDNotFound = 10
     case TrackNotFound = 11
@@ -75,87 +74,85 @@ enum AvionicusError: Int {
         case .EventNotFound:
             return "Событие не найдено"
         case .UserFriendActionUndefined:
-            return ""
-        case .UserFriendNotDefindTo:
-            return ""
+            return "Действие с другом не указано"
+        case .UserFriendNotDefinedTo:
+            return "Друг не указан"
         case .FriendshipNotFound:
-            return ""
+            return "Дружба не найдена"
         case .TrackIDNotFound:
-            return ""
+            return "Идентификатор трека не найден"
         case .TrackNotFound:
-            return ""
+            return "Трек не найден"
         case .ImageNotFound:
-            return ""
+            return "Изображение не найдено"
         case .InvalidImage:
-            return ""
+            return "Некорректное изображение"
         case .WeatherNotFound:
-            return ""
+            return "Погода не найдена"
         case .FieldUndefined:
-            return ""
+            return "Поле не указано"
         case .ValueUndefined:
-            return ""
+            return "Значение не указано"
         case .UnsupportedField:
-            return ""
+            return "Неподдерживаемое поле"
         case .UserToIDsUndefined:
-            return ""
+            return "Идентификатор получателя не указан"
         case .MailOrLoginUndefined:
-            return ""
+            return "Почта или логин не указаны"
         case .PasswordMD5Undefined:
-            return ""
+            return "MD5 хеш пароля не указан"
         case .TaskUndefined:
-            return ""
+            return "Упражнение не указано"
         case .EmailOrLoginUndefined:
-            return ""
+            return "Электронная почта или логин не указаны"
         case .PasswordUndefined:
-            return ""
+            return "Пароль не указан"
         case .DeviceIdUndefined:
-            return ""
+            return "Идентификатор устройства не указан"
         case .UserAlreadyExists:
-            return ""
+            return "Пользователь с таким именем уже существует"
         case .LoginUndefined:
-            return ""
+            return "Логин не указан"
         case .MailUndefined:
-            return ""
+            return "Почта не указана"
         case .MessageTitleUndefined:
-            return ""
+            return "Тема сообщения не указана"
         case .MessageTextUndefined:
-            return ""
+            return "Тело сообщения не указано"
         case .DTStartUndefined:
-            return ""
+            return "Время начала не указано"
         case .DTNUndefined:
-            return ""
+            return "DTN не указан"
         case .UserIsNotTaskAdmin:
-            return ""
+            return "Пользователь не является администратором упражнения"
         case .UserIsNotEventAdmin:
-            return ""
+            return "Пользователь не является администратором события"
         case .TaskNotFound:
-            return ""
+            return "Упражнение не найдено"
         case .RasterForTaskNotFound:
-            return ""
+            return "Растр для упражнения не найден"
         case .TeamUndefined:
-            return ""
+            return "Команда не определена"
         case .TeamNotFound:
-            return ""
+            return "Команда не найдена"
         case .TracksIdUndefined:
-            return ""
+            return "Идентификатор трека не указан"
         case .TrackAccessDenied:
-            return ""
+            return "Доступ к треку запрещен"
         case .SSIdUndefined:
-            return "Не определен ID"
+            return "SS идентификатор не указан"
         case .SSTypeUndefined:
-            return ""
+            return "SS тип не указан"
         case .SSTokenUndefined:
-            return ""
+            return "SS токен не указан"
         case .NotCopyFile:
-            return ""
+            return "Файл не был скопирован"
         case .ClubUndefined:
-            return ""
+            return "Клуб не указан"
         case .UserIsNotClubAdmin:
-            return ""
+            return "Пользователь не является администратором клуба"
         case .RasterMapNotFound:
-            return ""
-        default:
-            return "Неизвестная ошибка"
+            return "Растровая карта не найдена"
         }
     }
     

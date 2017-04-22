@@ -54,6 +54,7 @@ class TrackListItem: Mappable{
     var delete: Int?
     
     func mapping(map: Map) {
+        
         var_max         <- map["var_max"]
         description     <- map["description"]
         weight          <- map["weight"]
