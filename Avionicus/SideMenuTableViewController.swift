@@ -15,10 +15,11 @@ class SideMenuTableViewController: UITableViewController {
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var weight: UILabel!
     @IBOutlet weak var size: UILabel!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var avatarIm: UIImageView!
-    @IBOutlet weak var sex: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userAvatarImage: UIImageView!
+    @IBOutlet weak var userSex: UIImageView!
     
+    var userProfile: UserProfile?
     
     
     struct StoryboardConstants {
@@ -33,12 +34,17 @@ class SideMenuTableViewController: UITableViewController {
         
         let profileRequest = Avionicus.getProfile.request
         print(profileRequest.url!)
-        apiManager.getProfile() { result in
+        apiManager.getProfile{ [weak welf = self]  result in
             switch result{
             case .success(let UserProfile):
-                DispatchQueue.main.async {
-                    print(UserProfile.login!)
+                if UserProfile != nil{
+                    welf?.userProfile = UserProfile
+                    DispatchQueue.main.async {
+                        
+                        print(UserProfile.login!)
+                        welf?.updateUI()
                     
+                    }
                 }
                 
             case .failure(let error):
@@ -76,10 +82,40 @@ class SideMenuTableViewController: UITableViewController {
         }
         
     }
+    
+    
     func updateUI()  {
-        
-        //apiManager.getProfile(completion: )
-        
+    
+        if  let profile = userProfile {
+            
+            userAvatarImage.sd_setImage(with: URL(string:profile.avatar_url!))
+            userName.text = profile.name
+            size.text = String(describing: profile.height!)
+            weight.text = String(describing: profile.weight!)
+            
+            if let birthDay = profile.birthday {
+                let calendar = NSCalendar.current
+                let ages = calendar.dateComponents([.year], from: birthDay, to: Date())
+                age.text = "\(String(describing: ages.year!))"
+                
+            }
+
+            if profile.sex?.rawValue == "man" {
+                userSex.image = UIImage(named: "male")
+            }
+            if profile.sex?.rawValue == "woman" {
+                userSex.image = UIImage(named: "female")
+
+            }
+//            if profile.sex?.rawValue = "male"  {
+//                    let image: UIImage = UIImage(named: "male")!
+//                    userSex = UIImageView(image: image)
+//    
+//            }else{
+//                let image: UIImage = UIImage(named: "male")!
+//                userSex = UIImageView(image: image)
+//            }
+        }
     }
     
     

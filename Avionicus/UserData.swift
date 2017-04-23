@@ -12,10 +12,6 @@ import KeychainSwift
 
 class UserData: Mappable {
     
-    enum Sex: String {
-        case Male = "man"
-        case Female = "woman"
-    }
     
     /// This function can be used to validate JSON prior to mapping. Return nil to cancel mapping at this point
     public required init?(map: Map) {}
@@ -26,10 +22,10 @@ class UserData: Mappable {
     var name: String?
     var weight: Int?
     var height: Int?
-    var birthday: Date?
+    var birthday: String?
     var hrMax: Int?
-    var sex: Sex?
-    var profileAvatarUrl: URL?
+    var sex: String?
+    var profileAvatarUrl: String?
     var token: String?
     var error: Int?
     
@@ -53,8 +49,8 @@ class UserData: Mappable {
         weight              <- map   ["weight"]
         height              <- map   ["height"]
         hrMax               <- map   ["max_hr"]
-        birthday            <- (map  ["birthday"], DateTransform())
-        profileAvatarUrl    <- (map  ["avatar_url"], URLTransform())
+        birthday            <- map   ["birthday"]
+        profileAvatarUrl    <- map   ["avatar_url"]
         sex                 <- map   ["sex"]
      
     }

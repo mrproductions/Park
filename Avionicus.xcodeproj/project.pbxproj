@@ -12,7 +12,6 @@
 		1706DA4C1E6CBE5C00358586 /* CurrentTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706DA4B1E6CBE5C00358586 /* CurrentTrack.swift */; };
 		171869231E8EA02700036631 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171869221E8EA02700036631 /* LaunchViewController.swift */; };
 		1747573C1E9E774000DD512A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1747573B1E9E774000DD512A /* Profile.storyboard */; };
-		1747573E1E9E7AB200DD512A /* ErrorAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */; };
 		17654C6F1E61C54B0092A3D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654C6E1E61C54B0092A3D7 /* AppDelegate.swift */; };
 		17654C791E61C54B0092A3D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17654C771E61C54B0092A3D7 /* LaunchScreen.storyboard */; };
 		17654C841E61C54B0092A3D7 /* AvionicusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17654C831E61C54B0092A3D7 /* AvionicusTests.swift */; };
@@ -37,6 +36,8 @@
 		176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */; };
 		1767599A1E71770500DD5CD1 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */; };
 		17B5D8671EA2881D00D63FCD /* AvionicusError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5D8661EA2881D00D63FCD /* AvionicusError.swift */; };
+		17C78C011EABA2420063C7F3 /* AvionicusAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */; };
+		17DEAFD21EABB85100DBD191 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEAFD11EABB85100DBD191 /* ProfileItem.swift */; };
 		51F8CBA03BAF1E65FC9FB5AD /* Pods_Avionicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */; };
 		551788B11EAA601E00D05420 /* TracksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551788B01EAA601D00D05420 /* TracksDetailViewController.swift */; };
 		551788B31EAA75DA00D05420 /* TrackDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551788B21EAA75D900D05420 /* TrackDetails.swift */; };
@@ -86,7 +87,6 @@
 		1706DA4B1E6CBE5C00358586 /* CurrentTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTrack.swift; sourceTree = "<group>"; };
 		171869221E8EA02700036631 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		1747573B1E9E774000DD512A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlerts.swift; sourceTree = "<group>"; };
 		17654C6B1E61C54B0092A3D7 /* Avionicus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avionicus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17654C6E1E61C54B0092A3D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17654C781E61C54B0092A3D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,6 +117,8 @@
 		176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		176759991E71770500DD5CD1 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		17B5D8661EA2881D00D63FCD /* AvionicusError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusError.swift; sourceTree = "<group>"; };
+		17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusAlerts.swift; sourceTree = "<group>"; };
+		17DEAFD11EABB85100DBD191 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.release.xcconfig"; sourceTree = "<group>"; };
 		551788B01EAA601D00D05420 /* TracksDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksDetailViewController.swift; sourceTree = "<group>"; };
 		551788B21EAA75D900D05420 /* TrackDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetails.swift; sourceTree = "<group>"; };
@@ -161,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				1706DA471E6C20A800358586 /* APImanager.swift */,
-				1747573D1E9E7AB200DD512A /* ErrorAlerts.swift */,
+				17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */,
 				17B5D8661EA2881D00D63FCD /* AvionicusError.swift */,
 				55E59DB71E896D9B0014BD48 /* Colors.swift */,
 				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
@@ -202,7 +204,6 @@
 				17654C9F1E61C99B0092A3D7 /* Views */,
 				17654CA01E61C9A10092A3D7 /* Controllers */,
 				17654CBF1E61DCBF0092A3D7 /* Main.storyboard */,
-				1747573B1E9E774000DD512A /* Profile.storyboard */,
 				55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */,
 				17654C771E61C54B0092A3D7 /* LaunchScreen.storyboard */,
 				17654C9C1E61C9470092A3D7 /* Assets.xcassets */,
@@ -257,8 +258,8 @@
 		17654CA01E61C9A10092A3D7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				17DEAFD01EABB7CA00DBD191 /* Profile */,
 				177F52871E66F19600B934E7 /* Auth */,
-				17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */,
 				17654CBB1E61D9960092A3D7 /* TabBarController.swift */,
 				17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */,
 				17654CB71E61D95E0092A3D7 /* MapViewController.swift */,
@@ -287,6 +288,16 @@
 				171869221E8EA02700036631 /* LaunchViewController.swift */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		17DEAFD01EABB7CA00DBD191 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17654CC61E61F3F70092A3D7 /* ProfileTableViewController.swift */,
+				17DEAFD11EABB85100DBD191 /* ProfileItem.swift */,
+				1747573B1E9E774000DD512A /* Profile.storyboard */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		55DF32FD1E885641007FA5F2 /* View Models */ = {
@@ -526,12 +537,13 @@
 				17654CBC1E61D9960092A3D7 /* TabBarController.swift in Sources */,
 				1706DA481E6C20A800358586 /* APImanager.swift in Sources */,
 				55E59DB81E896D9C0014BD48 /* Colors.swift in Sources */,
+				17C78C011EABA2420063C7F3 /* AvionicusAlerts.swift in Sources */,
 				17B5D8671EA2881D00D63FCD /* AvionicusError.swift in Sources */,
 				17654CC31E61DF4A0092A3D7 /* TracksTableViewController.swift in Sources */,
 				17654CB01E61D2F50092A3D7 /* LoginViewController.swift in Sources */,
+				17DEAFD21EABB85100DBD191 /* ProfileItem.swift in Sources */,
 				55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */,
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
-				1747573E1E9E7AB200DD512A /* ErrorAlerts.swift in Sources */,
 				55E59DAF1E894E4C0014BD48 /* TracksTableHeaderView.swift in Sources */,
 				17654CB61E61D9510092A3D7 /* MainViewControllerController.swift in Sources */,
 				17654CB31E61D3110092A3D7 /* KeyboardHideManager.swift in Sources */,
