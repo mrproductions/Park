@@ -122,7 +122,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="Fhy-un-UrG">
-                        <barButtonItem key="leftBarButtonItem" image="Back2" id="YWT-1P-dcx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="YWT-1P-dcx">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="UMM-RF-cQ9" id="25Z-xY-I8c"/>
@@ -142,7 +142,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back2" width="22" height="35"/>
         <image name="slide001" width="1256" height="836"/>
     </resources>
 </document>

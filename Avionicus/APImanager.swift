@@ -39,6 +39,7 @@ enum Avionicus {
         return "http://api.avionicus.com/"
     }
     
+    
     var avkey: String {     return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
     var token: String? {    return keyChain.get("token") }
     var id: Int? {          return UserDefaults.standard.value(forKey: "id") as? Int }
@@ -145,9 +146,17 @@ enum Avionicus {
         return components.url!
     }
     
+    var postRequest: URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        return request
+
+    }
+    
     var request: URLRequest {
         return URLRequest(url: url)
     }
+    
     
 }
 

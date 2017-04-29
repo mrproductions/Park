@@ -281,75 +281,6 @@
             </objects>
             <point key="canvasLocation" x="2504.8000000000002" y="314.39280359820094"/>
         </scene>
-        <!--Map View Controller-->
-        <scene sceneID="0jj-QQ-rjh">
-            <objects>
-                <viewController id="Ddp-8X-eJU" customClass="MapViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ItQ-V9-gXq"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rev-IM-aZs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="148-n9-6IU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVw-fH-EVx" customClass="GMSMapView">
-                                <rect key="frame" x="53" y="168" width="284" height="287"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="284" id="bst-J6-dK6"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICJ-qD-lHK">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaj-eo-bAD" customClass="RoundButton" customModule="Avionicus" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="49" width="181" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Start">
-                                            <color key="titleShadowColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZv-ub-uqV">
-                                        <rect key="frame" x="99" y="14" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="KdU-ug-94S"/>
-                                    <constraint firstAttribute="height" constant="128" id="SJw-eH-qgl"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="ICJ-qD-lHK" firstAttribute="top" secondItem="ItQ-V9-gXq" secondAttribute="bottom" constant="205" id="95V-6T-KQY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ICJ-qD-lHK" secondAttribute="trailing" constant="52" id="Axl-PI-SML"/>
-                            <constraint firstItem="aVw-fH-EVx" firstAttribute="leading" secondItem="148-n9-6IU" secondAttribute="leadingMargin" constant="37" id="CeD-EV-YXr"/>
-                            <constraint firstItem="ICJ-qD-lHK" firstAttribute="centerX" secondItem="148-n9-6IU" secondAttribute="centerX" id="YET-Ei-Ww8"/>
-                            <constraint firstItem="Rev-IM-aZs" firstAttribute="top" secondItem="ICJ-qD-lHK" secondAttribute="bottom" constant="221" id="aGg-Qj-Ned"/>
-                            <constraint firstItem="ICJ-qD-lHK" firstAttribute="leading" secondItem="148-n9-6IU" secondAttribute="leadingMargin" constant="51" id="d3U-p2-7EV"/>
-                            <constraint firstItem="ICJ-qD-lHK" firstAttribute="centerY" secondItem="148-n9-6IU" secondAttribute="centerY" id="eWb-hH-iNo"/>
-                            <constraint firstItem="Rev-IM-aZs" firstAttribute="top" secondItem="aVw-fH-EVx" secondAttribute="bottom" constant="163" id="fcF-9Z-jVY"/>
-                            <constraint firstItem="aVw-fH-EVx" firstAttribute="top" secondItem="ItQ-V9-gXq" secondAttribute="bottom" constant="104" id="uLy-uh-uvc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Chl-yX-Y12"/>
-                    <connections>
-                        <outlet property="mapView" destination="aVw-fH-EVx" id="nYh-MH-Zso"/>
-                        <outlet property="startButton" destination="Zaj-eo-bAD" id="KrV-zU-rCS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n2v-Qf-5hT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3464.8000000000002" y="339.58020989505252"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BYC-ke-TJu">
             <objects>
@@ -388,13 +319,6 @@
                                     <rect key="frame" x="19" y="0.0" width="304" height="285"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqw-wi-ng3">
-                                    <rect key="frame" x="141" y="143" width="62" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-jm-uF7">
                                     <rect key="frame" x="69" y="199" width="42" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -457,6 +381,13 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqw-wi-ng3">
+                                    <rect key="frame" x="69" y="146" width="200" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -518,7 +449,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="Q4S-4d-ZOm" kind="showDetail" id="OWb-mK-G8P"/>
+                                            <segue destination="Q4S-4d-ZOm" kind="show" identifier="goToProfile" action="showDetailViewController:sender:" id="OWb-mK-G8P"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LWu-uj-yNA">
@@ -878,6 +809,16 @@
             </objects>
             <point key="canvasLocation" x="4494" y="11"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="gmA-yA-0Vl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="sBg-kG-iBr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZSK-r5-zb7"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phu-5w-VCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3464" y="11"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="qy0-vb-Tem">
             <objects>
@@ -996,7 +937,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ddp-8X-eJU" kind="relationship" relationship="rootViewController" id="xy2-cx-EAU"/>
+                        <segue destination="sBg-kG-iBr" kind="relationship" relationship="rootViewController" id="cEH-Gm-Jpj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWH-rI-ZJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>

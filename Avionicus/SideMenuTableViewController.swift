@@ -24,6 +24,7 @@ class SideMenuTableViewController: UITableViewController {
     
     struct StoryboardConstants {
         static let goToLoginSegueIdentifier = "goToLogin"
+        static let goToProfileSegueIdentifier = "goToProfile"
     }
     
     override func viewDidLoad() {
@@ -105,7 +106,6 @@ class SideMenuTableViewController: UITableViewController {
             }
             if profile.sex?.rawValue == "woman" {
                 userSex.image = UIImage(named: "female")
-
             }
 //            if profile.sex?.rawValue = "male"  {
 //                    let image: UIImage = UIImage(named: "male")!
@@ -121,10 +121,23 @@ class SideMenuTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == StoryboardConstants.goToLoginSegueIdentifier {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case StoryboardConstants.goToLoginSegueIdentifier:
             if let loginVC = segue.destination as? LoginViewController {
                 loginVC.presentedModally = true
             }
+        case StoryboardConstants.goToProfileSegueIdentifier:
+            if let navVC = segue.destination as? UINavigationController {
+                if let profileVC = navVC.topViewController as? ProfileTableViewController {
+                    profileVC.userProfile = userProfile
+                }
+            }
+        default:
+            break
         }
         
     }

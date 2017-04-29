@@ -10,82 +10,112 @@ import UIKit
 import GoogleMaps
 import SideMenu
 
-class MapViewController: UIViewController{
+class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    @IBOutlet weak var startButton: RoundButton!
-    
+    @IBOutlet weak var toggleButton: RoundButton!
     
     let locationManager = CLLocationManager()
+    let session = RecordSession.sharedSession
+    let currentPath = GMSMutablePath()
     
-    @IBAction func MenuBarItem(_ sender: Any) {present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)}
+    @IBAction func toggleRecording(_ sender: RoundButton) {
+        session.recordInProgress = !(session.recordInProgress)
+        updateButtonState()
+        if !session.recordInProgress {
+            askForSendConfirmation()
+        }
+    }
+    
+    func updateButtonState() {
+        if session.recordInProgress {
+            toggleButton.setTitle("Stop", for:[])
+            locationManager.startUpdatingLocation()
+        } else {
+            toggleButton.setTitle("Start", for:[])
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func askForSendConfirmation() {
+        
+        let alert = UIAlertController(title: "Would you like to save the track?", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter track comment here..."
+        }
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default ) { _ in
+            let commentField = alert.textFields![0] as UITextField
+            print("Yay! Comment: \(commentField.text)")
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+//    @IBAction func MenuBarItem(_ sender: Any) {present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)}
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateButtonState()
+        
         //self.mapView.delegate = self
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        self.locationManager.distanceFilter = 100
 
         mapView.accessibilityElementsHidden = false
         mapView.isMyLocationEnabled = true
-
-             
-        if let mylocation = mapView.myLocation {
-            print("User's location: \(mylocation)")
-        } else {
-            print("User's location is unknown")
-        }
         
-        self.view = mapView
+        
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
 
-        
     }
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-
-     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    
+    // MARK: - Location manager delegate methods
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
+            self.locationManager.distanceFilter = 100
             mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        
+        if let location = locations.last {
+            
+            print("Updating location: \(location)")
             
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-            locationManager.stopUpdatingLocation()
             
-            if let mylocation = mapView.myLocation {
-                print("User's location: \(mylocation)")
-            } else {
-                print("User's location is unknown")
-            }
+            session.updateLocation(location: location)
+            
+            currentPath.add(location.coordinate)
+            let path = GMSPolyline(path: currentPath)
+            path.strokeColor = .tracksBlue
+            path.strokeWidth = 5.0
+            path.map = mapView
             
         }
         
         
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

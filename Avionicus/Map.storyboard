@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2RI-wb-JWB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="mdf-gF-8T2">
+            <objects>
+                <viewController id="2RI-wb-JWB" customClass="MapViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dF2-On-28W"/>
+                        <viewControllerLayoutGuide type="bottom" id="P3m-0p-Zvu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WxP-Ys-jOW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1X-G8-0gF" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouh-i1-Occ" customClass="RoundButton" customModule="Avionicus" customModuleProvider="target">
+                                <rect key="frame" x="82" y="575" width="210" height="45"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="fy6-pC-DR3"/>
+                                    <constraint firstAttribute="height" constant="45" id="mtO-sb-9iL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toggleRecording:" destination="2RI-wb-JWB" eventType="touchUpInside" id="dQu-EV-8c9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="P3m-0p-Zvu" firstAttribute="top" secondItem="d1X-G8-0gF" secondAttribute="bottom" id="8Di-gu-hTj"/>
+                            <constraint firstItem="P3m-0p-Zvu" firstAttribute="top" secondItem="d1X-G8-0gF" secondAttribute="bottom" id="H83-l0-wW1"/>
+                            <constraint firstItem="d1X-G8-0gF" firstAttribute="bottom" secondItem="ouh-i1-Occ" secondAttribute="bottom" constant="47" id="VYB-Vk-Xxc"/>
+                            <constraint firstItem="ouh-i1-Occ" firstAttribute="centerX" secondItem="d1X-G8-0gF" secondAttribute="centerX" id="aEB-tk-s0F"/>
+                            <constraint firstItem="d1X-G8-0gF" firstAttribute="top" secondItem="dF2-On-28W" secondAttribute="bottom" constant="-20" id="b0p-hN-Xel"/>
+                            <constraint firstItem="d1X-G8-0gF" firstAttribute="leading" secondItem="WxP-Ys-jOW" secondAttribute="leading" id="efX-O9-1Hn"/>
+                            <constraint firstAttribute="trailing" secondItem="d1X-G8-0gF" secondAttribute="trailing" id="m37-xj-qID"/>
+                            <constraint firstItem="d1X-G8-0gF" firstAttribute="top" secondItem="WxP-Ys-jOW" secondAttribute="top" id="s92-F3-YmJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3nZ-IK-zzj"/>
+                    <connections>
+                        <outlet property="mapView" destination="d1X-G8-0gF" id="vSz-bB-Ze9"/>
+                        <outlet property="toggleButton" destination="ouh-i1-Occ" id="6kM-MK-YaA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3y-MB-yaL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3464.8000000000002" y="339.58020989505252"/>
+        </scene>
+    </scenes>
+</document>

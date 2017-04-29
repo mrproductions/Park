@@ -21,29 +21,42 @@ class ProfileTableViewController: UITableViewController {
     var profileItems: [ProfileItem] = [ProfileItem]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        if userProfile != nil {
+            setUpTableData()
+            tableView.reloadData()
+        } else {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            fetchProfileData()
+        }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        tableView.tableFooterView = UIView()
+       
+
+        
+    }
+    
+    func fetchProfileData(){
         
         apiManager.getProfile { [weak welf = self] result in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             switch result {
             case .success (let profile):
-                if profile != nil {
-                    welf?.userProfile = profile
-                    DispatchQueue.main.async {
-                       
-                        welf?.setUpTableData()
-                        welf?.tableView.reloadData()
-                    }
+                welf?.userProfile = profile
+                DispatchQueue.main.async {
+                    welf?.setUpTableData()
+                    welf?.tableView.reloadData()
                 }
+                
                 break
             case .failure(let error):
                 _ = UIAlertController.errorAlert(title: "Error", message: "\(error)", buttonTitle: "Ok")
                 break
             }
         }
-        
     }
     
     func setUpTableData() {
@@ -55,7 +68,6 @@ class ProfileTableViewController: UITableViewController {
             userName.text = profile.login
             userSportClub.text = profile.sport_club
             
-        
             profileItems.append(ProfileItem(kind: .Field(profile.name), title: "Name"))
             if let birthDate = profile.birthday {
                 let calendar = NSCalendar.current
@@ -71,7 +83,7 @@ class ProfileTableViewController: UITableViewController {
             } else {
                 profileItems.append(ProfileItem(kind: .Field(nil), title: "Age"))
             }
-            profileItems.append(ProfileItem(kind: .Field(profile.sex?.description), title: "Sex"))
+            profileItems.append(ProfileItem(kind: .Field(profile.sex?.description ?? "non"), title: "Sex"))
             profileItems.append(ProfileItem(kind: .Field(String(describing: profile.weight!)), title: "Weight, kg"))
             profileItems.append(ProfileItem(kind: .Field(String(describing: profile.max_hr)), title: "Max. heart rate"))
             profileItems.append(ProfileItem(kind: .Field(String(describing: profile.login!)), title: "Login"))
@@ -111,15 +123,10 @@ class ProfileTableViewController: UITableViewController {
         return cell!
     }
     
-   
-    
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        
-//        return heightForHeader
-//    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         
         // this will be non-nil if a blur effect is applied
         guard tableView.backgroundView == nil else {
@@ -133,6 +140,7 @@ class ProfileTableViewController: UITableViewController {
         
     }
     
+
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
