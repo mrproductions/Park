@@ -7,19 +7,19 @@ PODS:
     - GoogleMaps/Base
   - IDZSwiftCommonCrypto (0.9.1)
   - KeychainSwift (7.0.0)
-  - ObjectMapper (2.2.5)
+  - ObjectMapper (2.2.6)
   - ObjectMapper+Realm (0.3):
     - ObjectMapper
     - RealmSwift
-  - Realm (2.5.0):
-    - Realm/Headers (= 2.5.0)
-  - Realm/Headers (2.5.0)
-  - RealmSwift (2.5.0):
-    - Realm (= 2.5.0)
+  - Realm (2.6.2):
+    - Realm/Headers (= 2.6.2)
+  - Realm/Headers (2.6.2)
+  - RealmSwift (2.6.2):
+    - Realm (= 2.6.2)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - SideMenu (2.3.0)
+  - SideMenu (2.3.2)
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
@@ -47,12 +47,12 @@ SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   IDZSwiftCommonCrypto: c44fe5c0219a219846b56b4c148615dd06e58591
   KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
-  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
-  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
-  RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
+  Realm: 29222766425b9f831228f81b63f0e38a97a4d700
+  RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  SideMenu: 43d092cf615cf472f105c5b9867a21beff9fc269
+  SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
 
 PODFILE CHECKSUM: 84bbc5c4930828d7b526d34b049ae3beff53aef7
 

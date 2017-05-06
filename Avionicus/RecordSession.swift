@@ -49,5 +49,19 @@ class RecordSession {
         
     }
     
+    func generateCSV () {
+        
+        guard !recordInProgress else {
+            return
+        }
+        
+        let fileName = "track_\(startTime!.timeIntervalSince1970).csv"
+        
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+        }
+        
+    }
+    
     
 }

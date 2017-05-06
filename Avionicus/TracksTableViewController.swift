@@ -30,9 +30,17 @@ class TracksTableViewController: UITableViewController {
         
         super.viewDidLoad()
         loadTracks()
-        navigationController?.navigationBar.barStyle = .black
+        let imageForNavBar = UIImage(named: "StatusBar")
+        navigationController?.navigationBar.setBackgroundImage(imageForNavBar, for: .default)
+        //navigationBlurEffect()
+        
+        //navigationController?.navigationBar.barStyle = .default
         navigationItem.title  = "Мои треки"
-        navigationController?.navigationBar.backgroundColor = UIColor.tracksBlue
+        //navigationController?.navigationBar.backgroundColor = UIColor.lightText
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+
+        
+        
         let headerNib = UINib(nibName: "TracksTableHeader", bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: StoryboardConstants.headerIdentifier)
         
@@ -56,7 +64,24 @@ class TracksTableViewController: UITableViewController {
     }
     
     
-
+    func navigationBlurEffect() {
+        // Add blur view
+        let bounds = self.navigationController?.navigationBar.bounds as CGRect!
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        visualEffectView.frame = bounds!
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        //here you can choose one
+        self.navigationController?.navigationBar.addSubview(visualEffectView)
+        // Or
+        /*
+         If you find that after adding blur effect on navigationBar, navigation buttons are not visible then add below line after adding blurView code.
+         */
+        self.navigationController?.navigationBar.sendSubview(toBack: visualEffectView)
+        
+        // Here you can add visual effects to any UIView control.
+        // Replace custom view with navigation bar in above code to add effects to custom view.
+    }
     
     // MARK: - UITableView data source methods
     

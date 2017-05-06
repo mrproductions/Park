@@ -11,7 +11,7 @@ import BTNavigationDropdownMenu
 import SideMenu
 
 class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
-
+    
     @IBOutlet weak var MenuBarItem: UIBarButtonItem!
     var menuView: BTNavigationDropdownMenu!
     
@@ -20,29 +20,15 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-//        let temp = UISwipeGestureRecognizer(target: self, action: #selector(MainViewController.printSome))
-//        temp.direction = .left
-//        self.view.addGestureRecognizer(temp)
-        
-//        let abc: UIGestureRecognizerState = UIGestureRecognizerState()
-//        switch abc {
-//        case .began:
-//            print(123)
-//            case .changed
-//            
-//        default:
-//            break
-        
-        //}
-        
+        UIApplication.shared.statusBarStyle = .lightContent
+        let imageForNavBar = UIImage(named: "StatusBar")
+        navigationController?.navigationBar.setBackgroundImage(imageForNavBar, for: .default)
+    
     }
     
     func printSome() {
         print("11111111111")
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         dropMenuButtonView()
@@ -52,15 +38,15 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func MenuBarButton(_ sender: Any) {
         present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)
     }
-
+    
     @IBAction func StartButton(_ sender: Any) {
         print("Start Button")
     }
-
+    
     func setupSideMenu(){
         
         let menuLeftNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenu") as? UISideMenuNavigationController
-            
+        
         menuLeftNavigationController?.leftSide = true
         SideMenuManager.menuLeftNavigationController = menuLeftNavigationController
         SideMenuManager.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
@@ -68,7 +54,7 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
         setupDifaultSideMenu()
         
     }
-
+    
     func setupDifaultSideMenu (){
         
         SideMenuManager.menuAnimationBackgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Little bit Black") )
@@ -84,7 +70,7 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
         let itemDropMenuButton = ["Walking","Running","Bicycle","Snowboard","Skate","Motorcycle"]
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
+        
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Type", items: itemDropMenuButton as [AnyObject])
         
@@ -100,12 +86,12 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
         menuView.maskBackgroundColor = UIColor.white
         menuView.maskBackgroundOpacity = 0.3
         
-
+        
         self.navigationItem.titleView = menuView
         
         
     }
     
     
-
+    
 }

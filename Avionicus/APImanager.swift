@@ -13,6 +13,7 @@ import KeychainSwift
 
 let keyChain = KeychainSwift()
 typealias JSON = [String: Any]
+typealias JSONArray = [Dictionary<String, Any>]
 typealias parametr = [String: Any]
 typealias error = [String: Int]
 
@@ -33,7 +34,8 @@ enum Avionicus {
     case setProfile(parametr)
     case getTracksList(Int, Int)
     case getTrack(Int)
-    
+    case getFriends
+    case postTrack()
     
     var baseURL: String {
         return "http://api.avionicus.com/"
@@ -41,12 +43,10 @@ enum Avionicus {
     
     
     var avkey: String {     return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
+    var hash: String  {     return "870eda99a1084d3b8f6a17f6d6fdfb40e8a5636377"}
     var token: String? {    return keyChain.get("token") }
     var id: Int? {          return UserDefaults.standard.value(forKey: "id") as? Int }
     var deviceId: String {  return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
-    
-    
-    
     
     private struct ParameterKeys {
         
@@ -65,17 +65,19 @@ enum Avionicus {
         static let startingTrack = "track_id"
         static let deviceId = "device_id"
         static let trackID = "track_id"
-        
+        static let hash = "hash"
     }
     
     var path: String {
         switch self {
-            case .auth: return "/2.0/user/login/"
-            case .registration: return "/2.0/user/registration/"
-            case .getProfile: return "/2.0/user/profile/"
-            case .setProfile: return "/2.0/"
-            case .getTracksList: return "/2.0/tracks/user/"
-            case .getTrack: return "/2.0/track/"
+        case .auth: return "/2.0/user/login/"
+        case .registration: return "/2.0/user/registration/"
+        case .getProfile: return "/2.0/user/profile/"
+        case .setProfile: return "/2.0/"
+        case .getTracksList: return "/2.0/tracks/user/"
+        case .getTrack: return "/2.0/track/"
+        case .getFriends: return "/2.0/friends/"
+        case .postTrack: return "/android/upload_v0660.php"
         }
     }
     
@@ -95,7 +97,7 @@ enum Avionicus {
                 ParameterKeys.mail: mail,
                 ParameterKeys.deviceId : deviceId
             ]
-        
+            
         case .getProfile:
             return[
                 ParameterKeys.token: token ?? "",
@@ -116,12 +118,23 @@ enum Avionicus {
                 ParameterKeys.page: page
             ]
         case .getTrack (let trackID):
-                return [
-                    ParameterKeys.token: token ?? "",
-                    ParameterKeys.trackID: trackID
+            return [
+                ParameterKeys.token: token ?? "",
+                ParameterKeys.trackID: trackID
             ]
-        
+        case .getFriends:
+            return [
+                ParameterKeys.token: token ?? "",
+                ParameterKeys.userId: id!
+            ]
+        case .postTrack:
+            return [
+                ParameterKeys.avkey: avkey,
+                ParameterKeys.hash: hash,
+                ParameterKeys.userId: id!
+            ]
         }
+        
     }
     
     var queryComponents: [URLQueryItem] {
@@ -150,7 +163,7 @@ enum Avionicus {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         return request
-
+        
     }
     
     var request: URLRequest {
@@ -195,22 +208,38 @@ class APIManager {
             
             
             switch response.statusCode {
-
+                
             case 200:
-                if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as! JSON {
+
+                
+                let rawJSON = try? JSONSerialization.jsonObject(with: data!, options: [])
+                
+                if let json = rawJSON as? JSONArray {
+                    if let errorCode = json as? Int {
+                        let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
+                        completion(.failure(error))
+                    }
+                    
+                    let data = ["data" : json]
+                    
+                    if let result = parse(data){
+                        completion(.success(result))
+                    }
+                } else if let json = rawJSON as? JSON {
                     if let errorCode = json["error"] as? Int {
                         let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
                         
                         completion(.failure(error))
                     }
                     
-                    if let result = parse(json) {
+                    if let result = parse(json)  {
                         completion(.success(result))
                     } else {
                         let error = NSError(domain: "Parsing error", code: 30, userInfo: nil)
                         completion(.failure(error))
                     }
                 }
+                
             default:
                 let error = NSError(domain: "", code: 40, userInfo: [:])
                 completion(.failure(error))
@@ -243,7 +272,7 @@ class APIManager {
         fetch(request: request, parse: { (json) -> TrackList? in
             return TrackList(JSON: json)
         }, completion: completion)
-                
+        
     }
     
     func getTrack(trackID: Int, completion: @escaping(APIResult<TrackDetails>) -> Void) {
@@ -262,7 +291,17 @@ class APIManager {
             return UserProfile(JSON: json)
         }, completion: completion)
     }
-
+    
+    func getFriends(completion: @escaping(APIResult<UserFriendList>)-> Void){
+        let request = Avionicus.getFriends.request
+        print(request)
+        
+        fetch(request: request, parse: {(json) -> UserFriendList? in
+            return UserFriendList(JSON: json)
+        }, completion: completion)
+        
+    }
+    
     
 }
 

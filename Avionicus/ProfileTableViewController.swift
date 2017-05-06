@@ -24,6 +24,9 @@ class ProfileTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
+        let imageForNavBar = UIImage(named: "StatusBar")
+        navigationController?.navigationBar.setBackgroundImage(imageForNavBar, for: .default)
+        
         if userProfile != nil {
             setUpTableData()
             tableView.reloadData()
@@ -139,6 +142,7 @@ class ProfileTableViewController: UITableViewController {
         tableView.backgroundView = imageView
         
     }
+    
     
 
     @IBAction func backButton(_ sender: Any) {

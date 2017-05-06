@@ -31,11 +31,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func updateButtonState() {
         if session.recordInProgress {
             toggleButton.setTitle("Stop", for:[])
+            toggleButton.backgroundColor = .stopRed
             locationManager.startUpdatingLocation()
         } else {
+            toggleButton.backgroundColor = .startGreen
             toggleButton.setTitle("Start", for:[])
             locationManager.stopUpdatingLocation()
         }
+    }
+    
+    
+    func toggleButton (button: UIButton, onImage: UIImage, ofImage: UIImage){
+        
+        
     }
     
     func askForSendConfirmation() {
@@ -71,7 +79,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         updateButtonState()
         
-        //self.mapView.delegate = self
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.distanceFilter = 100
@@ -79,8 +91,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.accessibilityElementsHidden = false
         mapView.isMyLocationEnabled = true
         
-        
-       
         
     }
     override func viewWillAppear(_ animated: Bool) {

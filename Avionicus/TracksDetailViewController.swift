@@ -17,6 +17,8 @@ class TracksDetailViewController: UITableViewController {
         
         
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+
         loadDetails()
         
 
