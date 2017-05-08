@@ -67,12 +67,16 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func dropMenuButtonView(){
         
-        let itemDropMenuButton = ["Walking","Running","Bicycle","Snowboard","Skate","Motorcycle"]
+        let activities = [ActivityKind.aerostat, ActivityKind.airplane, ActivityKind.autogyro, ActivityKind.bike, ActivityKind.car, ActivityKind.dogwalking, ActivityKind.downhillski, ActivityKind.elliptical, ActivityKind.ellipticalTrainer, ActivityKind.excerciseBicycle, ActivityKind.exercycle, ActivityKind.fishingboat, ActivityKind.gliding, ActivityKind.hanggliding, ActivityKind.hangglidingTrike, ActivityKind.helicopter, ActivityKind.hiking, ActivityKind.horseriding, ActivityKind.kitesurfing, ActivityKind.kiting, ActivityKind.kitingWinter, ActivityKind.motorboat, ActivityKind.motorcycle, ActivityKind.nordicwalking, ActivityKind.other, ActivityKind.paragliding, ActivityKind.pokemon, ActivityKind.powerboat, ActivityKind.ppg, ActivityKind.pramwalking, ActivityKind.riding, ActivityKind.rollerSkiing, ActivityKind.rollerski, ActivityKind.rowing, ActivityKind.run, ActivityKind.sailboat, ActivityKind.shorefishing, ActivityKind.skiing, ActivityKind.snowboard, ActivityKind.snowkiting, ActivityKind.swimming, ActivityKind.treadmill, ActivityKind.ultralight, ActivityKind.walk, ActivityKind.waterscooter]
+        
+        let menuItems = activities.map { $0.description }
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Type", items: itemDropMenuButton as [AnyObject])
+        let title = "Run"
+        
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: title, items: menuItems as [AnyObject])
         
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
@@ -85,6 +89,9 @@ class  MainViewController: UIViewController, UIGestureRecognizerDelegate {
         menuView.animationDuration = 0.1
         menuView.maskBackgroundColor = UIColor.white
         menuView.maskBackgroundOpacity = 0.3
+        menuView.didSelectItemAtIndexHandler = { (indexPath: Int) -> () in
+            RecordSession.sharedSession.activityKind = activities[indexPath]
+        }
         
         
         self.navigationItem.titleView = menuView

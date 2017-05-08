@@ -148,10 +148,8 @@ class TracksTableViewController: UITableViewController {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {
                 case .success (let tracksList):
-                    if let tracks = tracksList.tracks {
-                        welf?.tracks = tracks
-                        welf?.processRawData(tracks: tracks)
-                    }
+                    welf?.tracks = tracksList
+                    welf?.processRawData(tracks: tracksList)
                     break
                 case .failure(let error):
                     print("An error has occurred: \(error)")
@@ -167,7 +165,11 @@ class TracksTableViewController: UITableViewController {
         var dates: [String:Int] = [:]
         var result: [[TrackerItem]] = []
         
-        let rawItems = tracks.map { $0.viewModel }
+        for track in tracks {
+            track.saveToDatabase()
+        }
+        
+        let rawItems = tracks.map { $0.viewModel() }
         for item in rawItems {
             let ind = dates[item.formattedDate] ?? result.count
             dates[item.formattedDate] = ind
@@ -186,6 +188,14 @@ class TracksTableViewController: UITableViewController {
     }
     
 
+//    class func readFromBD() -> Person {
+//        
+//        let realm = DatabaseManager.realm
+//        let persons = realm.objects(Person.self)
+//        
+//        return persons[0]
+//    }
+//    
 
 }
     

@@ -11,7 +11,7 @@ import Foundation
 
 class RecordSessionMetadata {
     
-    struct AverageMetadata {
+    private struct AverageMetadata {
         var speedSum: Double
         var count: Int
     }

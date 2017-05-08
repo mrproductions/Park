@@ -10,11 +10,25 @@ import UIKit
 
 class FileDetailViewController: UIViewController {
     
+    var file: FilesTableViewController.File?
+    
     
     @IBOutlet weak var contentWebView: UIWebView!
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        if file != nil {
+            do {
+                let text = try String(contentsOf: file!.url)
+                contentWebView.loadHTMLString(text.replacingOccurrences(of: "\n", with: "<br />"), baseURL: file!.url)
+            } catch {
+                print("Couldn't load file...")
+            }
+        }
+        
+        navigationItem.title = file?.name
 
         // Do any additional setup after loading the view.
     }

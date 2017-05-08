@@ -63,6 +63,7 @@ class FriendTableViewController: UITableViewController {
         selectedSection = SelectedSection(rawValue: sender.selectedSegmentIndex)!
         filterFriendsList()
         tableView.reloadData()
+        
     }
     
     
@@ -75,8 +76,8 @@ class FriendTableViewController: UITableViewController {
                 welf?.refreshControl?.endRefreshing()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 switch result {
-                case.success( let friend):
-                    welf?.friendsList = friend.arrayFriend
+                case.success( let friends):
+                    welf?.friendsList = friends
                     welf?.filterFriendsList()
                     DispatchQueue.main.async {
                         welf?.tableView.reloadData()

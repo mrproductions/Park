@@ -13,7 +13,7 @@ import KeychainSwift
 
 let keyChain = KeychainSwift()
 typealias JSON = [String: Any]
-typealias JSONArray = [Dictionary<String, Any>]
+typealias JSONArray = [JSON]
 typealias parametr = [String: Any]
 typealias error = [String: Int]
 
@@ -189,8 +189,7 @@ class APIManager {
         self.init(config: URLSessionConfiguration.default)
     }
     
-    
-    func fetch<T>(request: URLRequest, parse: @escaping (JSON) -> T?, completion: @escaping (APIResult<T>) -> Void ) {
+    func fetchArray<T>(request: URLRequest, parse: @escaping (JSONArray) -> [T]?, key: String? = nil, completion: @escaping (APIResult<[T]>) -> Void ){
         
         let task = session.dataTask(with: request) { data, response, error in
             
@@ -207,25 +206,67 @@ class APIManager {
             }
             
             
+            
+            switch response.statusCode {
+                
+            case 200:
+                
+                var rawJSON = try? JSONSerialization.jsonObject(with: data!, options: [])
+                
+                if key != nil {
+                    
+                    if let dictJSON = rawJSON as? JSON {
+                        rawJSON = dictJSON[key!]
+                    }
+                    
+                }
+                
+                if let json = rawJSON as? JSONArray {
+    
+                    if let result = parse(json){
+                        completion(.success(result))
+                    }
+                } else if let json = rawJSON as? JSON {
+                    if let errorCode = json["error"] as? Int {
+                        let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
+                        
+                        completion(.failure(error))
+                    }
+                }
+                
+            default:
+                let error = NSError(domain: "", code: 40, userInfo: [:])
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+
+        
+    }
+    
+    func fetch<T>(request: URLRequest, parse: @escaping (JSON) -> T?,  completion: @escaping (APIResult<T>) -> Void ) {
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            guard let response = response as? HTTPURLResponse else {
+                let error = NSError(domain: "com.avionicus.famil", code: 20, userInfo: [:])
+                completion(.failure(error))
+                return
+            }
+            
+            if data == nil {
+                if let error = error {
+                    completion(.failure(error))
+                }
+            }
+            
             switch response.statusCode {
                 
             case 200:
 
-                
                 let rawJSON = try? JSONSerialization.jsonObject(with: data!, options: [])
                 
-                if let json = rawJSON as? JSONArray {
-                    if let errorCode = json as? Int {
-                        let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
-                        completion(.failure(error))
-                    }
-                    
-                    let data = ["data" : json]
-                    
-                    if let result = parse(data){
-                        completion(.success(result))
-                    }
-                } else if let json = rawJSON as? JSON {
+                if let json = rawJSON as? JSON {
                     if let errorCode = json["error"] as? Int {
                         let error = NSError(domain: "Avionicus API Error", code: errorCode, userInfo: nil)
                         
@@ -266,12 +307,12 @@ class APIManager {
         }, completion: completion)
     }
     
-    func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<TrackList>) -> Void) {
+    func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<[TrackListItem]>) -> Void) {
         let request = Avionicus.getTracksList(page, perPage).request
         
-        fetch(request: request, parse: { (json) -> TrackList? in
-            return TrackList(JSON: json)
-        }, completion: completion)
+        fetchArray(request: request, parse: { (json) -> [TrackListItem]? in
+            return [TrackListItem](JSONArray: json)
+        }, key: "tracks", completion: completion)
         
     }
     
@@ -292,12 +333,11 @@ class APIManager {
         }, completion: completion)
     }
     
-    func getFriends(completion: @escaping(APIResult<UserFriendList>)-> Void){
+    func getFriends(completion: @escaping(APIResult<[UserFriend]>)-> Void){
         let request = Avionicus.getFriends.request
-        print(request)
         
-        fetch(request: request, parse: {(json) -> UserFriendList? in
-            return UserFriendList(JSON: json)
+        fetchArray(request: request, parse: {(json) -> [UserFriend]? in
+            return [UserFriend](JSONArray: json)
         }, completion: completion)
         
     }

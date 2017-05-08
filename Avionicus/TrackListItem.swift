@@ -8,55 +8,66 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
-class TrackListItem: Mappable{
+class TrackListItem: Object, Mappable{
     
-    public required init?(map: Map) {}
+    required convenience init?(map: Map) {
+        self.init()
+    }
     
-    var var_max: String?
-    var description: String?
-    var weight: Int?
-    var manual: String?
-    var dt_end: String?
-    var alt_max: String?
-    var sp_avg_movement: String?
-    var os_version: String?
-    var igc_pilot: String?
-    var hr_avg: String?
-    var sp_avg: Double?
-    var task_status: String?
-    var sp_max: Double?
-    var serial_num: String?
-    var cardio: String?
-    var boat: String?
-    var complete: String?
-    var echo: String?
-    var distance: Double?
-    var app_version: String?
-    var id_user: Int?
-    var alt_min: String?
-    var mongodb: String?
-    var geo: String?
-    var server_last_dt: String?
-    var calories: String?
-    var dt_start: String?
-    var id_task: String?
-    var id_track: Int?
-    var access: Int?
-    var id_device: String?
-    var baro: String?
-    var time: Int?
-    var count_comment: String?
-    var hr_max: String?
-    var type: String?
-    var var_min: String?
-    var user_hr_max: String?
-    var delete: Int?
+    dynamic var var_max = ""
+    dynamic var trackDescription = ""
+    dynamic var weight = 0
+    dynamic var manual = ""
+    dynamic var dt_end = ""
+    dynamic var alt_max = ""
+    dynamic var sp_avg_movement = ""
+    dynamic var os_version = ""
+    dynamic var igc_pilot = ""
+    dynamic var hr_avg = ""
+    dynamic var sp_avg = 0.0
+    dynamic var task_status = ""
+    dynamic var sp_max = 0.0
+    dynamic var serial_num = ""
+    dynamic var cardio = ""
+    dynamic var boat = ""
+    dynamic var complete = ""
+    dynamic var echo = ""
+    dynamic var distance = 0.0
+    dynamic var app_version = ""
+    dynamic var id_user = 0
+    dynamic var alt_min = ""
+    dynamic var mongodb = ""
+    dynamic var geo = ""
+    dynamic var server_last_dt = ""
+    dynamic var calories = ""
+    dynamic var dt_start = ""
+    dynamic var id_task = ""
+    dynamic var id_track = 0
+    dynamic var access = 0
+    dynamic var id_device = ""
+    dynamic var baro = ""
+    dynamic var time = 0
+    dynamic var count_comment = ""
+    dynamic var hr_max = ""
+    dynamic var type = ""
+    dynamic var var_min = ""
+    dynamic var user_hr_max = ""
+    dynamic var delete = 0
+    
+    override class func primaryKey() -> String? {
+        return "id_track"
+    }
+
+
+
     
     func mapping(map: Map) {
         
         var_max         <- map["var_max"]
-        description     <- map["description"]
+        trackDescription <- map["description"]
         weight          <- map["weight"]
         manual          <- map["manual"]
         dt_end          <- map["dt_end"]
@@ -96,20 +107,25 @@ class TrackListItem: Mappable{
         delete          <- map["delete"]
     }
     
-    var viewModel: TrackerItem {
-        get {
-            let kind = type ?? "unknown"
+    func viewModel() -> TrackerItem {
+            let kind = type 
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let date = df.date(from: dt_start!) ?? Date()
-            let endDate = df.date(from: dt_end!) ?? Date()
-            let speed = sp_avg ?? 0.0
-            let routeLength = (distance ?? 0.0) / 1000
-            let id = id_track ?? -1
+            let date = df.date(from: dt_start) ?? Date()
+            let endDate = df.date(from: dt_end) ?? Date()
+            let speed = sp_avg 
+            let routeLength = (distance ) / 1000
+            let id = id_track 
             let cal = Calendar.current
             let comps = cal.dateComponents([.hour, .minute, .second], from: cal.dateComponents([.hour, .minute, .second], from: date), to: cal.dateComponents([.hour, .minute, .second], from: endDate))
             let time = TrackerItem.Time(hours: comps.hour!, minutes: comps.minute!, seconds: comps.second!)
             return TrackerItem(kind: kind, time: time, date: date, speed: speed, routeLength: routeLength, id: id)
+    }
+    
+    func saveToDatabase () {
+        let realm = DatabaseManager.realm
+        try! realm.write {
+            realm.add(self, update: true)
         }
     }
     

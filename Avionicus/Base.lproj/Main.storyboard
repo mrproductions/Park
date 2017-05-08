@@ -1004,7 +1004,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="File Cell" textLabel="PbN-xf-KbW" detailTextLabel="Lne-Hv-1cn" style="IBUITableViewCellStyleSubtitle" id="JyB-3r-F23">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="File Cell" textLabel="PbN-xf-KbW" style="IBUITableViewCellStyleDefault" id="JyB-3r-F23">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JyB-3r-F23" id="b8H-FO-IDF">
@@ -1012,21 +1012,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PbN-xf-KbW">
-                                            <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lne-Hv-1cn">
-                                            <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="K7Y-Ai-hG9" kind="show" identifier="goToFile" id="beI-Jz-0wN"/>
                                 </connections>
@@ -1045,7 +1039,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="dsf-JA-Lap">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="reloadFiles" destination="tM5-pO-blE" eventType="valueChanged" id="kbw-9r-vCc"/>
+                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGC-em-u1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1055,7 +1053,7 @@
         <!--File Detail View Controller-->
         <scene sceneID="03W-MJ-sYL">
             <objects>
-                <viewController id="K7Y-Ai-hG9" customClass="FileDetailViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="K7Y-Ai-hG9" customClass="FileDetailViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gI5-eu-aS7"/>
                         <viewControllerLayoutGuide type="bottom" id="W2M-TU-9a6"/>
@@ -1064,7 +1062,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vg-wy-Z2p">
+                            <webView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vg-wy-Z2p">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>

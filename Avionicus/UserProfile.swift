@@ -60,6 +60,8 @@ class UserProfile: Mappable{
         sport_club                  <- map ["sport_club"]
         weight                      <- map ["weight"]
         
+        UserDefaults.standard.set(weight, forKey: "weight")
+        
         var birthdayString: String?
         birthdayString <- map["birthday"]
         
@@ -69,6 +71,7 @@ class UserProfile: Mappable{
             birthday = df.date(from: birthdayString!)
         }
     }
+    
     
     required convenience init?() {
         self.init()

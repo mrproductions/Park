@@ -54,9 +54,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             textField.placeholder = "Enter track comment here..."
         }
         
-        let saveAction = UIAlertAction(title: "Save", style: .default ) { _ in
+        let saveAction = UIAlertAction(title: "Save", style: .default ) { [weak welf = self] _ in
             let commentField = alert.textFields![0] as UITextField
-            print("Yay! Comment: \(commentField.text)")
+            welf?.session.comment = commentField.text ?? ""
+            welf?.session.saveCSVToDisk(completion: { (error) in
+                if error == nil {
+                    print("Save success")
+                } else {
+                    print("Error: \(error?.localizedDescription ?? "unknown")")
+                }
+            })
             
         }
         
