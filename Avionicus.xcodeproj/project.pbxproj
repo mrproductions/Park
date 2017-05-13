@@ -181,11 +181,11 @@
 			isa = PBXGroup;
 			children = (
 				1706DA471E6C20A800358586 /* APImanager.swift */,
+				1779D4201EC10F1D00364776 /* DatabaseManager.swift */,
 				17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */,
 				17B5D8661EA2881D00D63FCD /* AvionicusError.swift */,
 				55E59DB71E896D9B0014BD48 /* Colors.swift */,
 				17654CB41E61D31C0092A3D7 /* StoryboardManager */,
-				1779D4201EC10F1D00364776 /* DatabaseManager.swift */,
 			);
 			name = "Park Manager";
 			sourceTree = "<group>";

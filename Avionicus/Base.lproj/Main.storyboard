@@ -862,7 +862,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ik-Zb-d6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6785" y="-1283"/>
+            <point key="canvasLocation" x="6745" y="-1283"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dBs-ZW-jGg">
@@ -899,7 +899,7 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0tm-ka-OF1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0tm-ka-OF1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -921,7 +921,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TbU-5i-hob">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TbU-5i-hob">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -943,7 +943,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MLX-ta-Ocq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MLX-ta-Ocq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -971,7 +971,7 @@
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Igk-Cs-zyl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Igk-Cs-zyl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1088,7 +1088,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qwv-z1-iMa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Czu-Ae-IyT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Czu-Ae-IyT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

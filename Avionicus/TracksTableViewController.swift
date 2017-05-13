@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import RealmSwift
 
 class TracksTableViewController: UITableViewController {
     
@@ -29,6 +30,10 @@ class TracksTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        tracks = Array(DatabaseManager.realm.objects(TrackListItem.self))
+        processRawData(tracks: tracks!)        
+        
         loadTracks()
         let imageForNavBar = UIImage(named: "StatusBar")
         navigationController?.navigationBar.setBackgroundImage(imageForNavBar, for: .default)
@@ -165,9 +170,6 @@ class TracksTableViewController: UITableViewController {
         var dates: [String:Int] = [:]
         var result: [[TrackerItem]] = []
         
-        for track in tracks {
-            track.saveToDatabase()
-        }
         
         let rawItems = tracks.map { $0.viewModel() }
         for item in rawItems {
@@ -181,9 +183,14 @@ class TracksTableViewController: UITableViewController {
         
         result.sort { $0[0].date > $1[0].date }
         
-        DispatchQueue.main.async { [weak welf = self] in
-            welf?.items = result
-            welf?.tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            let realm = DatabaseManager.realm
+            try! realm.write {
+                realm.add(tracks, update: true)
+            }
+
+            self?.items = result
+            self?.tableView.reloadData()
         }
     }
     

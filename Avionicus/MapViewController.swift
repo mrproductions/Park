@@ -92,7 +92,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationController?.view.backgroundColor = UIColor.clear
         
         self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
         self.locationManager.distanceFilter = 100
 
         mapView.accessibilityElementsHidden = false
