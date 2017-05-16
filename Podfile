@@ -10,6 +10,9 @@ target ‘Avionicus’ do
     pod 'ObjectMapper', '~> 2.2'
     pod 'GoogleMaps'
     pod 'SDWebImage', '~>3.8'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+    pod 'Charts'
     pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
     pod 'RealmSwift'
     post_install do |installer|
@@ -19,4 +22,41 @@ target ‘Avionicus’ do
             end
         end
     end
+end
+
+target 'AvionicusWatch' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    
+    # Pods for Park (WatchKit Alpha)
+    
+    target 'AvionicusWatchTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
+    target 'AvionicusWatchUITests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
+end
+
+target 'AvionicusWatch' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    
+    # Pods for Park (WatchKit Alpha) WatchKit App
+    
+end
+
+target 'AvionicusWatch Extension' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    
+    # Pods for Park (WatchKit Alpha) WatchKit Extension
+    
 end

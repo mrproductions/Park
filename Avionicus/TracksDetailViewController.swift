@@ -7,24 +7,45 @@
 //
 
 import UIKit
+import GoogleMaps
+import Charts
 
-class TracksDetailViewController: UITableViewController {
-
+class TracksDetailViewController: UITableViewController, ChartViewDelegate {
+    
     var trackID: Int?
-
+    
+    @IBOutlet weak var mapView: GMSMapView!
+    
+    //var chart
+    
+    
+    private struct StoryboardConstants {
+        static let InfoCellIdentifier = "Info Cell"
+        static let BarChartCellIdentifier = "Bar Chart Cell"
+        static let LineChartCellIdentifier = "Line Chart Cell"
+    }
+    
+    struct InfoItem {
+        let title: String
+        let value: String
+    }
+    
+    var infoItems: [InfoItem] = []
+    
     
     override func viewDidLoad() {
         
         
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
+        navigationItem.title = "Track details"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         loadDetails()
         
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -33,12 +54,128 @@ class TracksDetailViewController: UITableViewController {
         DispatchQueue.global (qos: .userInitiated).async { [weak welf = self] in
             if welf != nil {
                 apiManager.getTrack(trackID: welf!.trackID!, completion: { (result) in
-                    
+                    switch result {
+                    case .success (let value):
+                        welf?.configureData(details: value)
+                    case .failure (_):
+                        print("Error: couldn't load data")
+                    }
                 })
             }
         }
+        
+        
+    }
+    
+    func configureData(details: TrackDetails) {
+        
+        let df = DateFormatter()
+        df.dateStyle = .long
+        df.timeStyle = .medium
+        infoItems.append(InfoItem(title: "Start", value: df.string(from: details.startDate!)))
+        infoItems.append(InfoItem(title: "End", value: df.string(from: details.startDate!)))
+        infoItems.append(InfoItem(title: "Activity", value: details.activityKind.description))
+        
+        var seconds: Int = Int(details.duration!)
+        let hours: Int = seconds / 3600
+        let minutes: Int = (seconds % 3600) / 60
+        seconds = seconds % 60
+        
+        infoItems.append(InfoItem(title: "Time", value: String(format: "%02d:%02d:%02d", hours, minutes, seconds)))
+        infoItems.append(InfoItem(title: "Distance, km", value: String(format: "%.2f", details.distance!)))
+        infoItems.append(InfoItem(title: "Avg speed, km/h", value: String(format: "%.2f", details.averageSpeed!)))
+        infoItems.append(InfoItem(title: "Max speed, km/h", value: String(format: "%.2f", details.maxSpeed!)))
+        
+        
+        DispatchQueue.main.async { [weak welf = self] in
             
+            if let points = details.points {
+                
+                guard points.count > 0 else {
+                    return
+                }
+                
+                let currentPath = GMSMutablePath()
+                
+                for point in points {
+                    currentPath.add(CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude))
+                }
+                
+                welf?.mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: points[0].latitude, longitude: points[0].longitude), zoom: 16, bearing: 0, viewingAngle: 0)
+                
+                let path = GMSPolyline(path: currentPath)
+                path.strokeColor = .tracksBlue
+                path.strokeWidth = 5.0
+                path.map = welf?.mapView
+                
+            }
             
+            welf?.tableView.reloadData()
+        }
+        
+    }
+    
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return infoItems.count
+        case 1:
+            return 1
+        case 2:
+            return 1
+        default:
+            return 0
+        }
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var identifier = ""
+        
+        switch indexPath.section {
+        case 0:
+            identifier = StoryboardConstants.InfoCellIdentifier
+        case 1:
+            identifier = StoryboardConstants.LineChartCellIdentifier
+        case 2:
+            identifier = StoryboardConstants.BarChartCellIdentifier
+        default:
+            break
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        switch indexPath.section {
+        case 0:
+            cell.textLabel?.text = infoItems[indexPath.row].title
+            cell.detailTextLabel?.text = infoItems[indexPath.row].value
+        case 1:
+            let lineChartCell = cell as! LineChartCell
+            
+        // set up lineChartView
+        case 2:
+            let barChartCell = cell as! BarChartCell
+        // set up barChartView
+        default:
+            break
+        }
+        
+        return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,76 +193,7 @@ class TracksDetailViewController: UITableViewController {
         tableView.backgroundView = imageView
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+

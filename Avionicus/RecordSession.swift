@@ -11,12 +11,14 @@ import CoreLocation
 
 class RecordSession {
     
-    
+    var delegate: RecordSessionDelegate?
     
     private var points = [CLLocation]()
     private var previousLocation: CLLocation?
+    
     var recordInProgress = false {
         didSet {
+            delegate?.statusDidChange(recording: recordInProgress)
             if !recordInProgress {
                 endTime = Date()
             }
@@ -33,7 +35,7 @@ class RecordSession {
     static let sharedSession = RecordSession.init()
     
     private init() {
-        
+        metadata.session = self
     }
     
     
@@ -61,15 +63,15 @@ class RecordSession {
         
     }
     
-    func saveCSVToDisk (completion: (NSError?) -> Void) {
+    func saveCSVToDisk (completion: (NSError?, URL?) -> Void) {
         
         guard !recordInProgress else {
-            completion(NSError(domain: "CSV saving", code: 1, userInfo: nil))
+            completion(NSError(domain: "CSV saving", code: 1, userInfo: nil), nil)
             return
         }
         
         guard points.count > 0 else {
-            completion(NSError(domain: "CSV saving", code: 2, userInfo: nil))
+            completion(NSError(domain: "CSV saving", code: 2, userInfo: nil), nil)
             return
         }
         
@@ -82,12 +84,12 @@ class RecordSession {
             do {
                 
                 guard let start = startTime else {
-                    completion(NSError(domain: "CSV saving", code: 3, userInfo: nil))
+                    completion(NSError(domain: "CSV saving", code: 3, userInfo: nil), nil)
                     return
                 }
                 
                 guard let end = endTime else {
-                    completion(NSError(domain: "CSV saving", code: 4, userInfo: nil))
+                    completion(NSError(domain: "CSV saving", code: 4, userInfo: nil), nil)
                     return
                 }
                 
@@ -117,16 +119,16 @@ class RecordSession {
                 
                 try append(fileURL: path, text: "###;\(metadata.timeElapsed)")
 
-                completion(nil)
+                completion(nil, path)
             }
             catch {
-                completion(NSError(domain: "CSV saving", code: 5, userInfo: nil))
+                completion(NSError(domain: "CSV saving", code: 5, userInfo: nil), nil)
                 return
             }
             
             
         } else {
-            completion(NSError(domain: "CSV saving", code: 6, userInfo: nil))
+            completion(NSError(domain: "CSV saving", code: 6, userInfo: nil), nil)
             return
         }
         
@@ -149,6 +151,15 @@ class RecordSession {
         else {
             try text.write(to: fileURL, atomically: false, encoding: String.Encoding.utf8)
         }
+    }
+    
+    func clear() {
+        metadata.clear()
+        points.removeAll()
+        previousLocation = nil
+        startTime = nil
+        comment = ""
+        endTime = nil
     }
 
     

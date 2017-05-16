@@ -28,6 +28,7 @@ class UserData: Mappable {
     var profileAvatarUrl: String?
     var token: String?
     var error: Int?
+    var hash: String?
     
     let keyChain = KeychainSwift()
     
@@ -36,6 +37,10 @@ class UserData: Mappable {
         
         if let token = self.token {
             writeTokenToKeychain(token: token)
+        }
+        
+        if let hash = self.hash {
+            writeHashToKeychain(hash: hash)
         }
     }
     
@@ -52,18 +57,25 @@ class UserData: Mappable {
         birthday            <- map   ["birthday"]
         profileAvatarUrl    <- map   ["avatar_url"]
         sex                 <- map   ["sex"]
-     
+        hash                <- map   ["hash"]
     }
     
 
     func writeTokenToKeychain(token: String) {
         keyChain.set(token, forKey: "token")
     }
+    func writeHashToKeychain(hash: String) {
+        keyChain.set(hash, forKey: "hash")
+    }
     
     func getTokenFromKeychain() -> String? {
         return keyChain.get("token")
     }
 
+    func getHashFromKeychain()  -> String{
+        return keyChain.get("hash")!
+    }
+    
     func writeToUserDefaults() {
         UserDefaults.standard.set(id, forKey: "id")
         UserDefaults.standard.set(login, forKey: "login")

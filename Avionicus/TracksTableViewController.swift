@@ -43,8 +43,6 @@ class TracksTableViewController: UITableViewController {
         navigationItem.title  = "Мои треки"
         //navigationController?.navigationBar.backgroundColor = UIColor.lightText
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
-        
         
         let headerNib = UINib(nibName: "TracksTableHeader", bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: StoryboardConstants.headerIdentifier)

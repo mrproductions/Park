@@ -214,65 +214,6 @@
             </objects>
             <point key="canvasLocation" x="3465" y="-2090"/>
         </scene>
-        <!--Main-->
-        <scene sceneID="6ly-uQ-CaT">
-            <objects>
-                <viewController title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9tY-ZN-xiI" customClass="MainViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4Dy-ad-jq2"/>
-                        <viewControllerLayoutGuide type="bottom" id="Al5-qQ-cI7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZJM-gP-mai">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blur Section" translatesAutoresizingMaskIntoConstraints="NO" id="uqp-JG-Udw">
-                                <rect key="frame" x="0.0" y="-22" width="472" height="687"/>
-                            </imageView>
-                            <view multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWP-Go-oO3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TEST" translatesAutoresizingMaskIntoConstraints="NO" id="xra-lF-JrB">
-                                        <rect key="frame" x="8" y="67" width="359" height="545"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.8746764063835144" green="0.91245478391647339" blue="0.31665843725204468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="PWP-Go-oO3" firstAttribute="top" secondItem="ZJM-gP-mai" secondAttribute="top" id="2lv-y4-gZ4"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="uqp-JG-Udw" secondAttribute="bottom" constant="2" id="7d5-oC-Vgt"/>
-                            <constraint firstItem="PWP-Go-oO3" firstAttribute="centerX" secondItem="ZJM-gP-mai" secondAttribute="centerX" id="8OB-1t-Ars"/>
-                            <constraint firstItem="PWP-Go-oO3" firstAttribute="centerY" secondItem="ZJM-gP-mai" secondAttribute="centerY" id="Ar0-eH-Epe"/>
-                            <constraint firstItem="uqp-JG-Udw" firstAttribute="top" secondItem="ZJM-gP-mai" secondAttribute="top" constant="-22" id="BAY-SE-QCd"/>
-                            <constraint firstItem="PWP-Go-oO3" firstAttribute="leading" secondItem="ZJM-gP-mai" secondAttribute="leading" id="Syf-Uj-nsK"/>
-                            <constraint firstItem="uqp-JG-Udw" firstAttribute="top" secondItem="ZJM-gP-mai" secondAttribute="topMargin" constant="-22" id="fNB-vp-G5C"/>
-                            <constraint firstItem="uqp-JG-Udw" firstAttribute="centerX" secondItem="ZJM-gP-mai" secondAttribute="centerX" constant="48.5" id="g9X-YX-Ugk"/>
-                            <constraint firstAttribute="bottom" secondItem="uqp-JG-Udw" secondAttribute="bottom" constant="2" id="ha2-lR-96b"/>
-                            <constraint firstItem="uqp-JG-Udw" firstAttribute="leading" secondItem="ZJM-gP-mai" secondAttribute="leading" id="qqy-zw-3Ak"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="z9Z-X4-s0c">
-                        <barButtonItem key="leftBarButtonItem" image="Rows" style="plain" id="CBK-xL-x1g">
-                            <inset key="imageInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-3"/>
-                            <color key="tintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="MenuBarButton:" destination="9tY-ZN-xiI" id="lp9-5h-ssd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="MenuBarItem" destination="CBK-xL-x1g" id="hSx-yh-2gw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u3p-LE-Bbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2504.8000000000002" y="314.39280359820094"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BYC-ke-TJu">
             <objects>
@@ -862,7 +803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ik-Zb-d6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6745" y="-1283"/>
+            <point key="canvasLocation" x="6511" y="-1283"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dBs-ZW-jGg">
@@ -905,12 +846,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9tY-ZN-xiI" kind="relationship" relationship="rootViewController" id="Pgx-Ia-SCZ"/>
+                        <segue destination="jJ7-dh-jfq" kind="relationship" relationship="rootViewController" id="j62-7h-eZn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUs-8n-wMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2505" y="-505"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="HqZ-jx-iD4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Dashboard" id="jJ7-dh-jfq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oXZ-3M-HiZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egf-dm-5Mx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2505" y="11"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Whn-PZ-HVd">
@@ -1104,7 +1055,6 @@
     </scenes>
     <resources>
         <image name="Back Arrow" width="34" height="21"/>
-        <image name="Blur Section" width="751" height="1221"/>
         <image name="Caution Oval" width="39" height="39"/>
         <image name="Clock" width="25" height="25"/>
         <image name="Combined Sha" width="534" height="521"/>
@@ -1112,9 +1062,7 @@
         <image name="Globe" width="25" height="25"/>
         <image name="Group" width="63" height="40"/>
         <image name="Profile" width="39" height="39"/>
-        <image name="Rows" width="25" height="23"/>
         <image name="Settings" width="44" height="43"/>
-        <image name="TEST" width="752" height="1078"/>
         <image name="Tracks tab bar icon" width="25" height="25"/>
         <image name="female" width="55" height="55"/>
         <image name="slide001" width="1256" height="836"/>

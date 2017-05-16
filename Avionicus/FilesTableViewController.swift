@@ -109,6 +109,36 @@ class FilesTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let action = UITableViewRowAction(style: .destructive, title: "Remove") { [weak self] (_, indexPath) in
+            
+            guard let welf = self else {
+                return
+            }
+            
+            let url = welf.files[indexPath.row].url
+            let fm = FileManager.default
+            do {
+                try fm.removeItem(at: url)
+                DispatchQueue.main.async {
+                    welf.files.remove(at: indexPath.row)
+                    welf.tableView.reloadData()
+                }
+            } catch {
+                print("Couldn't remove file")
+            }
+            
+        }
+        
+        return [action]
+        
+    }
+    
     @IBAction func reloadFiles () {
         
         loadFiles()

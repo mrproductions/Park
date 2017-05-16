@@ -57,9 +57,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let saveAction = UIAlertAction(title: "Save", style: .default ) { [weak welf = self] _ in
             let commentField = alert.textFields![0] as UITextField
             welf?.session.comment = commentField.text ?? ""
-            welf?.session.saveCSVToDisk(completion: { (error) in
-                if error == nil {
+            welf?.session.saveCSVToDisk(completion: { (error, path) in
+                if error == nil && path != nil {
+                    RecordSession.sharedSession.clear()
+                    welf?.mapView.clear()
+                    welf?.currentPath.removeAllCoordinates()
                     print("Save success")
+                    apiManager.postTrack(fileUrl: path!, completion: { (responseState) in
+                        switch responseState.state {
+                        case .success:
+                            print("Success! Track successfully uploaded.")
+                            let fm = FileManager.default
+                            do {
+                                try fm.removeItem(at: path!)
+                            } catch {
+                                print("Couldn't remove file")
+                            }
+                        case .error:
+                            print("Error. Failed to upload track.")
+                        }
+                    })
                 } else {
                     print("Error: \(error?.localizedDescription ?? "unknown")")
                 }
@@ -67,7 +84,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak welf = self] _ in
+            RecordSession.sharedSession.clear()
+            welf?.mapView.clear()
+            welf?.currentPath.removeAllCoordinates()
+        }
         
         alert.addAction(cancelAction)
         alert.addAction(saveAction)

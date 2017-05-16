@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HGd-00-ajn">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Symbol.ttf">
+            <string>Symbol</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--MainVC-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="MainVC" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Park__WatchKit_Alpha__WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" id="fe9-DC-una">
+                            <items>
+                                <imageView alignment="left" image="heart" id="NEi-Ty-VgC"/>
+                                <label alignment="center" text="---" minimumScaleFactor="0.20000000000000001" id="MVx-kD-06H">
+                                    <fontDescription key="font" name="Symbol" family="Symbol" pointSize="28"/>
+                                </label>
+                                <label alignment="right" text="BPM" id="Z6H-aQ-oie">
+                                    <color key="textColor" red="0.86132884030000001" green="0.058584794400000001" blue="0.11313973369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                        </group>
+                        <map height="100" alignment="left" id="Lkr-TI-fvX"/>
+                        <group width="1" alignment="left" id="K88-Pk-7BX">
+                            <items>
+                                <timer width="64" alignment="left" textAlignment="center" id="Ga2-S8-4FQ"/>
+                                <label width="60" alignment="left" text="Example Str. " minimumScaleFactor="0.59999999999999998" id="UwT-hM-vW8"/>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Button" id="QNo-i7-ufo">
+                            <connections>
+                                <action selector="actionButton" destination="AgC-eL-Hgc" id="876-x5-lwU"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Button" id="Q1A-XS-5da">
+                            <connections>
+                                <action selector="actionStop" destination="AgC-eL-Hgc" id="3tZ-au-MHM"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="actionButtonOutlet" destination="QNo-i7-ufo" id="8Jk-7t-VIt"/>
+                        <outlet property="actionStopOutlet" destination="Q1A-XS-5da" id="zhO-ll-dHD"/>
+                        <outlet property="actionTimer" destination="Ga2-S8-4FQ" id="wiI-9P-Dxp"/>
+                        <outlet property="heart" destination="NEi-Ty-VgC" id="zdX-is-u9Z"/>
+                        <outlet property="label" destination="MVx-kD-06H" id="Cen-4B-F8a"/>
+                        <outlet property="mapOutlet" destination="Lkr-TI-fvX" id="Uca-Kn-NGI"/>
+                        <outlet property="positionLabel" destination="UwT-hM-vW8" id="n9v-KO-5b3"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="373" y="293"/>
+        </scene>
+        <!--FinalVC-->
+        <scene sceneID="jVN-UP-6oh">
+            <objects>
+                <controller identifier="FinalVC" id="Ayh-Ta-zPi" customClass="FinalViewController" customModule="Park__WatchKit_Alpha__WatchKit_Extension">
+                    <items>
+                        <label width="136" height="80" alignment="left" text="RESULT" textAlignment="center" id="AOm-XO-whV"/>
+                        <button width="1" alignment="left" title="Button" id="4zS-Wr-f0l">
+                            <connections>
+                                <action selector="saveAction" destination="Ayh-Ta-zPi" id="qpz-gz-qi2"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="resultOutlet" destination="AOm-XO-whV" id="39n-hG-fxu"/>
+                        <outlet property="saveButton" destination="4zS-Wr-f0l" id="XVy-U8-tEH"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="614" y="346"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Park__WatchKit_Alpha__WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--LoadVC-->
+        <scene sceneID="bKs-XX-Yra">
+            <objects>
+                <controller identifier="LoadVC" hidesWhenLoading="NO" id="HGd-00-ajn" customClass="LoadController" customModule="Park__WatchKit_Alpha__WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" height="1" alignment="center" contentMode="center" layout="vertical" id="GGI-wX-6H7">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" id="OJZ-h9-uVb">
+                                    <group key="contentGroup" width="78" height="78" alignment="left" radius="39" id="b4Q-bG-64X">
+                                        <items>
+                                            <label height="40" alignment="center" verticalAlignment="center" text="Start" id="a7X-zr-xm8">
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="16"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
+                                    <connections>
+                                        <action selector="checkInButtonTapped" destination="HGd-00-ajn" id="6jZ-hz-Pub"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="backgroundGroup" destination="GGI-wX-6H7" id="Z0r-R7-kXo"/>
+                        <outlet property="buttonLabel" destination="a7X-zr-xm8" id="tjE-pf-zTt"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="112" y="339"/>
+        </scene>
+    </scenes>
+</document>

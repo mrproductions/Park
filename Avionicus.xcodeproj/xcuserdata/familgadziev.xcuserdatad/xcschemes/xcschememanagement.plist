@@ -9,6 +9,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>AvionicusWatch (Notification).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>AvionicusWatch.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>17654C891E61C54B0092A3D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>17C11EBE1ECB93C700ACBB18</key>
 		<dict>
 			<key>primary</key>
 			<true/>

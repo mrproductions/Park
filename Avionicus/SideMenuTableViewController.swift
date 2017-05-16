@@ -31,8 +31,6 @@ class SideMenuTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        let profileRequest = Avionicus.getProfile.request
-        print(profileRequest.url!)
         apiManager.getProfile{ [weak welf = self]  result in
             switch result{
             case .success(let UserProfile):

@@ -64,6 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     if welf != nil {
                         if welf!.presentedModally {
                             welf!.dismiss(animated: true, completion: nil)
+                            print(" это ХЕШ!!  \(userData.hash!)")
                         } else {
                             welf!.performSegue(withIdentifier: StoryboardConstants.goToTabSegueIdentifier, sender: self)
                         }

@@ -136,18 +136,99 @@
         <scene sceneID="473-Cc-oA7">
             <objects>
                 <tableViewController storyboardIdentifier="TracksDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Pm-l0-8vB" customClass="TracksDetailViewController" customModule="Avionicus" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X9x-p1-Kf1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X9x-p1-Kf1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Rzl-yd-DPg" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pyR-px-D6w">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Info Cell" textLabel="Ctt-l1-JNK" detailTextLabel="DSZ-qx-43q" style="IBUITableViewCellStyleValue1" id="pyR-px-D6w">
+                                <rect key="frame" x="0.0" y="238" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pyR-px-D6w" id="l9U-hc-I09">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ctt-l1-JNK">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DSZ-qx-43q">
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Bar Chart Cell" rowHeight="220" id="DEO-r5-8sa" customClass="BarChartCell" customModule="Avionicus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="282" width="375" height="220"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DEO-r5-8sa" id="PzX-rv-zEM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULI-VB-3rC" customClass="BarChartView" customModule="Charts">
+                                            <rect key="frame" x="8" y="8" width="359" height="204"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="204" id="2sI-TI-vPk"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="204" id="fwv-fx-kfa"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="ULI-VB-3rC" firstAttribute="leading" secondItem="PzX-rv-zEM" secondAttribute="leading" constant="8" id="OjN-l7-D8T"/>
+                                        <constraint firstItem="ULI-VB-3rC" firstAttribute="top" secondItem="PzX-rv-zEM" secondAttribute="top" constant="8" id="cKo-KT-mh4"/>
+                                        <constraint firstAttribute="trailing" secondItem="ULI-VB-3rC" secondAttribute="trailing" constant="8" id="dlp-Yd-U0e"/>
+                                        <constraint firstAttribute="bottom" secondItem="ULI-VB-3rC" secondAttribute="bottom" constant="7.5" id="ypf-lw-aME"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="barChartView" destination="ULI-VB-3rC" id="Zhm-T8-oDU"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Line Chart Cell" rowHeight="220" id="JkJ-Ev-6L4" customClass="LineChartCell" customModule="Avionicus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="502" width="375" height="220"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JkJ-Ev-6L4" id="Ibd-U1-Ypy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7j1-WP-yLw" customClass="LineChartView" customModule="Charts">
+                                            <rect key="frame" x="8" y="8" width="359" height="204"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="204" id="c3m-sz-gCl"/>
+                                                <constraint firstAttribute="height" constant="204" id="vqb-rj-0uE"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="7j1-WP-yLw" firstAttribute="leading" secondItem="Ibd-U1-Ypy" secondAttribute="leading" constant="8" id="JK6-5x-EaO"/>
+                                        <constraint firstAttribute="bottom" secondItem="7j1-WP-yLw" secondAttribute="bottom" constant="7.5" id="QIl-S1-f7h"/>
+                                        <constraint firstAttribute="trailing" secondItem="7j1-WP-yLw" secondAttribute="trailing" constant="8" id="Zuz-p3-f40"/>
+                                        <constraint firstItem="7j1-WP-yLw" firstAttribute="top" secondItem="Ibd-U1-Ypy" secondAttribute="top" constant="8" id="mmG-ca-Lgq"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="lineChartView" destination="7j1-WP-yLw" id="1Os-J2-TZ3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -156,10 +237,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="0kv-14-cw9"/>
+                    <connections>
+                        <outlet property="mapView" destination="Rzl-yd-DPg" id="74c-3z-Dki"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nv-TX-MwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="131"/>
+            <point key="canvasLocation" x="5446" y="131"/>
         </scene>
     </scenes>
 </document>
