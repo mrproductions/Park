@@ -116,6 +116,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="cDm-fy-HAo">
                         <barButtonItem key="backBarButtonItem" title=" " id="ZPh-H8-9vb"/>
+                        <barButtonItem key="leftBarButtonItem" image="Rows" id="OEz-cc-sfd">
+                            <connections>
+                                <action selector="MenuBarItem:" destination="hPN-SO-gMG" id="Yba-01-Bgo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -139,15 +144,81 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="X9x-p1-Kf1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="m8t-Pd-K3w" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pyR-px-D6w">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Info Cell" focusStyle="custom" textLabel="vHh-3T-mN9" detailTextLabel="H6F-Fs-cFf" style="IBUITableViewCellStyleValue1" id="pyR-px-D6w">
+                                <rect key="frame" x="0.0" y="280" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pyR-px-D6w" id="l9U-hc-I09">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vHh-3T-mN9">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H6F-Fs-cFf">
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Bar Chart Cell" rowHeight="164" id="Odc-Nr-N2s" customClass="BarChartCell" customModule="Avionicus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="324" width="375" height="164"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odc-Nr-N2s" id="qJz-gw-I9E">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdN-sL-WtB" customClass="BarChartView" customModule="Charts">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="HdN-sL-WtB" firstAttribute="leading" secondItem="qJz-gw-I9E" secondAttribute="leading" id="AGO-Wd-GZP"/>
+                                        <constraint firstItem="HdN-sL-WtB" firstAttribute="centerX" secondItem="qJz-gw-I9E" secondAttribute="centerX" id="QvY-bR-D3v"/>
+                                        <constraint firstAttribute="trailing" secondItem="HdN-sL-WtB" secondAttribute="trailing" id="jxG-LQ-aQw"/>
+                                        <constraint firstAttribute="bottom" secondItem="HdN-sL-WtB" secondAttribute="bottom" id="wda-EL-zJE"/>
+                                        <constraint firstItem="HdN-sL-WtB" firstAttribute="top" secondItem="qJz-gw-I9E" secondAttribute="top" id="wpC-f9-u14"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Line Chart Cell" rowHeight="191" id="mPX-IP-C4b" customClass="LineChartCell" customModule="Avionicus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="488" width="375" height="191"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mPX-IP-C4b" id="yyr-c6-pE2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="190.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-sI-5GW" customClass="LineChartView" customModule="Charts">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="CHS-sI-5GW" secondAttribute="trailing" id="2JF-q0-BPO"/>
+                                        <constraint firstAttribute="bottom" secondItem="CHS-sI-5GW" secondAttribute="bottom" id="K4N-mI-fXy"/>
+                                        <constraint firstItem="CHS-sI-5GW" firstAttribute="leading" secondItem="yyr-c6-pE2" secondAttribute="leading" id="LyN-Zp-XB8"/>
+                                        <constraint firstItem="CHS-sI-5GW" firstAttribute="top" secondItem="yyr-c6-pE2" secondAttribute="top" id="d8s-cc-op0"/>
+                                        <constraint firstItem="CHS-sI-5GW" firstAttribute="centerX" secondItem="yyr-c6-pE2" secondAttribute="centerX" id="syZ-of-7y7"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -156,10 +227,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="0kv-14-cw9"/>
+                    <connections>
+                        <outlet property="mapView" destination="m8t-Pd-K3w" id="mBd-as-oHs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nv-TX-MwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5470" y="131"/>
+            <point key="canvasLocation" x="5469.6000000000004" y="130.88455772113943"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Rows" width="25" height="23"/>
+    </resources>
 </document>

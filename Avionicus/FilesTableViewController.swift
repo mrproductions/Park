@@ -22,12 +22,12 @@ class FilesTableViewController: UITableViewController {
     
     private var files = [File]()
     
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         reloadFiles()
-
+        
         let imageForNavBar = UIImage(named: "StatusBar")
         navigationController?.navigationBar.setBackgroundImage(imageForNavBar, for: .default)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -49,15 +49,15 @@ class FilesTableViewController: UITableViewController {
         tableView.backgroundView = imageView
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return files.count
     }
@@ -94,7 +94,7 @@ class FilesTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
         
     }
-
+    
     func loadFiles () {
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -106,6 +106,36 @@ class FilesTableViewController: UITableViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let action = UITableViewRowAction(style: .destructive, title: "Remove") { [weak self] (_, indexPath) in
+            
+            guard let welf = self else {
+                return
+            }
+            
+            let url = welf.files[indexPath.row].url
+            let fm = FileManager.default
+            do {
+                try fm.removeItem(at: url)
+                DispatchQueue.main.async {
+                    welf.files.remove(at: indexPath.row)
+                    welf.tableView.reloadData()
+                }
+            } catch {
+                print("Couldn't remove file")
+            }
+            
+        }
+        
+        return [action]
         
     }
     

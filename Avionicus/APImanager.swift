@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import Alamofire
 import KeychainSwift
 
 
@@ -43,7 +44,7 @@ enum Avionicus {
     
     
     var avkey: String {     return "1M1TE9oeWTDK6gFME9JYWXqpAGc" }
-    var hash: String  {     return "870eda99a1084d3b8f6a17f6d6fdfb40e8a5636377"}
+    var hash: String  {     return keyChain.get("hash")!  }
     var token: String? {    return keyChain.get("token") }
     var id: Int? {          return UserDefaults.standard.value(forKey: "id") as? Int }
     var deviceId: String {  return UIDevice.current.identifierForVendor?.uuidString ?? "_" }
@@ -64,6 +65,7 @@ enum Avionicus {
         static let startingDate = "date_last"
         static let startingTrack = "track_id"
         static let deviceId = "device_id"
+        static let imea = "imea"
         static let trackID = "track_id"
         static let hash = "hash"
     }
@@ -131,7 +133,9 @@ enum Avionicus {
             return [
                 ParameterKeys.avkey: avkey,
                 ParameterKeys.hash: hash,
-                ParameterKeys.userId: id!
+                ParameterKeys.userId: id!,
+                ParameterKeys.deviceId: deviceId,
+                
             ]
         }
         
@@ -166,7 +170,7 @@ enum Avionicus {
         
     }
     
-    var request: URLRequest {
+    var getRequest: URLRequest {
         return URLRequest(url: url)
     }
     
@@ -184,6 +188,8 @@ class APIManager {
     init(config: URLSessionConfiguration) {
         self.configuration = config
     }
+    
+    
     
     convenience init() {
         self.init(config: URLSessionConfiguration.default)
@@ -205,12 +211,9 @@ class APIManager {
                 }
             }
             
-            
-            
             switch response.statusCode {
                 
             case 200:
-                
                 var rawJSON = try? JSONSerialization.jsonObject(with: data!, options: [])
                 
                 if key != nil {
@@ -222,7 +225,7 @@ class APIManager {
                 }
                 
                 if let json = rawJSON as? JSONArray {
-    
+                    
                     if let result = parse(json){
                         completion(.success(result))
                     }
@@ -240,9 +243,10 @@ class APIManager {
             }
         }
         task.resume()
-
+        
         
     }
+    
     
     func fetch<T>(request: URLRequest, parse: @escaping (JSON) -> T?,  completion: @escaping (APIResult<T>) -> Void ) {
         
@@ -263,7 +267,7 @@ class APIManager {
             switch response.statusCode {
                 
             case 200:
-
+                
                 let rawJSON = try? JSONSerialization.jsonObject(with: data!, options: [])
                 
                 if let json = rawJSON as? JSON {
@@ -291,8 +295,8 @@ class APIManager {
     
     
     func auth(login: String, pass: String, completion: @escaping (APIResult<UserData>) -> Void) {
-        let request = Avionicus.auth(login, pass).request
-        
+        let request = Avionicus.auth(login, pass).getRequest
+        print(request)
         fetch(request: request, parse: { (json) -> UserData? in
             return UserData(json: json)
         }, completion: completion)
@@ -300,7 +304,7 @@ class APIManager {
     
     
     func registration(login: String, pass: String, mail: String, completion: @escaping(APIResult<UserRegistration>)-> Void) {
-        let request = Avionicus.registration(login, pass, mail).request
+        let request = Avionicus.registration(login, pass, mail).getRequest
         
         fetch(request: request, parse: { (json) -> UserRegistration? in
             return UserRegistration(json: json)
@@ -308,7 +312,7 @@ class APIManager {
     }
     
     func getTracks(page: Int, perPage: Int, completion: @escaping(APIResult<[TrackListItem]>) -> Void) {
-        let request = Avionicus.getTracksList(page, perPage).request
+        let request = Avionicus.getTracksList(page, perPage).getRequest
         
         fetchArray(request: request, parse: { (json) -> [TrackListItem]? in
             return [TrackListItem](JSONArray: json)
@@ -317,16 +321,26 @@ class APIManager {
     }
     
     func getTrack(trackID: Int, completion: @escaping(APIResult<TrackDetails>) -> Void) {
-        let request = Avionicus.getTrack(trackID).request
-        
+        let request = Avionicus.getTrack(trackID).getRequest
+        print(request)
         fetch(request: request, parse: { (json) -> TrackDetails? in
-            return TrackDetails(JSON: json)
+            let details = TrackDetails(JSON: json)
+            details?.points = []
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            if let points = json["aPoints"] as? [[Any]] {
+                for point in points {
+                    let p = TrackDetails.Point(latitude: point[0] as! Double, longitude: point[1] as! Double, altitude: point[2] as! Double, date: df.date(from: point[3] as! String)!, pulse: point[4] as! Double, speed: point[5] as! Double, course: point[6] as! Double)
+                    details?.points!.append(p)
+                }
+            }
+            return details
         }, completion: completion)
         
     }
     
     func getProfile(completion: @escaping(APIResult<UserProfile>)-> Void){
-        let request = Avionicus.getProfile.request
+        let request = Avionicus.getProfile.getRequest
         
         fetch(request: request, parse: {(json) -> UserProfile? in
             return UserProfile(JSON: json)
@@ -334,7 +348,7 @@ class APIManager {
     }
     
     func getFriends(completion: @escaping(APIResult<[UserFriend]>)-> Void){
-        let request = Avionicus.getFriends.request
+        let request = Avionicus.getFriends.getRequest
         
         fetchArray(request: request, parse: {(json) -> [UserFriend]? in
             return [UserFriend](JSONArray: json)
@@ -342,6 +356,40 @@ class APIManager {
         
     }
     
+    func postTrack(fileUrl: URL, completion: @escaping(ResponseState) -> Void) {
+        
+        guard let data = try? Data(contentsOf: fileUrl) else {
+            completion(ResponseState(state: .error))
+            return
+        }
+        
+        print(fileUrl)
+        
+        let requestUrl = "http://avionicus.ru/android/upload_v0660.php"
+        
+        let parameters: [String: Any] = ["avkey" : "1M1TE9oeWTDK6gFME9JYWXqpAGc=", "hash" : keyChain.get("hash")!, "user_id" : String(UserDefaults.standard.integer(forKey: "id")), "imea" : UIDevice.current.identifierForVendor?.uuidString ?? "_"]
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(data, withName: "file", fileName: "filename", mimeType: "text/csv")
+            for (key, value) in parameters {
+                multipartFormData.append((value as! String).data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: requestUrl, encodingCompletion: {
+            encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                    completion(ResponseState(JSON: response.value as! JSON)!)
+                    print(response)
+                }
+            case .failure(let encodingError):
+                completion(ResponseState(state: .error))
+                print(encodingError)
+            }
+        })
+        
+        
+    }
     
 }
 

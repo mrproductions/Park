@@ -5,7 +5,10 @@ use_frameworks!
 target ‘Avionicus’ do
     pod "ObjectMapper+Realm"
     pod 'KeychainSwift', '~> 7.0'
+    pod 'Charts'
     pod 'IDZSwiftCommonCrypto', '~> 0.9'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
     pod 'SideMenu'
     pod 'ObjectMapper', '~> 2.2'
     pod 'GoogleMaps'

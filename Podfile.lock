@@ -1,5 +1,9 @@
 PODS:
+  - Alamofire (4.4.0)
   - BTNavigationDropdownMenu (0.4.1)
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - GoogleMaps (2.2.0):
     - GoogleMaps/Maps (= 2.2.0)
   - GoogleMaps/Base (2.2.0)
@@ -11,18 +15,21 @@ PODS:
   - ObjectMapper+Realm (0.3):
     - ObjectMapper
     - RealmSwift
-  - Realm (2.6.2):
-    - Realm/Headers (= 2.6.2)
-  - Realm/Headers (2.6.2)
-  - RealmSwift (2.6.2):
-    - Realm (= 2.6.2)
+  - Realm (2.7.0):
+    - Realm/Headers (= 2.7.0)
+  - Realm/Headers (2.7.0)
+  - RealmSwift (2.7.0):
+    - Realm (= 2.7.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SideMenu (2.3.2)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - Alamofire
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
+  - Charts
   - GoogleMaps
   - IDZSwiftCommonCrypto (~> 0.9)
   - KeychainSwift (~> 7.0)
@@ -31,6 +38,7 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage (~> 3.8)
   - SideMenu
+  - SwiftyJSON
 
 EXTERNAL SOURCES:
   BTNavigationDropdownMenu:
@@ -43,17 +51,20 @@ CHECKOUT OPTIONS:
     :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   IDZSwiftCommonCrypto: c44fe5c0219a219846b56b4c148615dd06e58591
   KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   ObjectMapper: 042708195cc46c20871cbcbec0453826398273fd
   ObjectMapper+Realm: 98992926f775a4fdf1c025541b97c78119f15b8a
-  Realm: 29222766425b9f831228f81b63f0e38a97a4d700
-  RealmSwift: d161a80f96cb91ae88391a7d5a9cf08024a7bc8e
+  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
+  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SideMenu: 3fa07dd05d4bade2b6f9889fb1877e312e1ba319
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 84bbc5c4930828d7b526d34b049ae3beff53aef7
+PODFILE CHECKSUM: 5147db1900c6139791527f25b37fbc3886976ad9
 
 COCOAPODS: 1.2.0

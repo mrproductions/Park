@@ -12,6 +12,7 @@ import SideMenu
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
+
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var toggleButton: RoundButton!
@@ -19,6 +20,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let session = RecordSession.sharedSession
     let currentPath = GMSMutablePath()
+    
+    @IBAction func myPlace(_ sender: RoundButton) {
+        locationManager.startUpdatingLocation()
+        locationManager.stopUpdatingLocation()
+    }
     
     @IBAction func toggleRecording(_ sender: RoundButton) {
         session.recordInProgress = !(session.recordInProgress)
@@ -57,9 +63,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let saveAction = UIAlertAction(title: "Save", style: .default ) { [weak welf = self] _ in
             let commentField = alert.textFields![0] as UITextField
             welf?.session.comment = commentField.text ?? ""
-            welf?.session.saveCSVToDisk(completion: { (error) in
-                if error == nil {
+            welf?.session.saveCSVToDisk(completion: { (error, path) in
+                if error == nil && path != nil {
+                    RecordSession.sharedSession.clear()
+                    welf?.mapView.clear()
+                    welf?.currentPath.removeAllCoordinates()
                     print("Save success")
+                    apiManager.postTrack(fileUrl: path!, completion: { (responseState) in
+                        switch responseState.state {
+                        case .success:
+                            print("Success! Track successfully uploaded.")
+                            let fm = FileManager.default
+                            do {
+                                try fm.removeItem(at: path!)
+                            } catch {
+                                print("Couldn't remove file")
+                            }
+                        case .error:
+                            print("Error. Failed to upload track.")
+                        }
+                    })
                 } else {
                     print("Error: \(error?.localizedDescription ?? "unknown")")
                 }
@@ -67,7 +90,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak welf = self] _ in
+            RecordSession.sharedSession.clear()
+            welf?.mapView.clear()
+            welf?.currentPath.removeAllCoordinates()
+        }
         
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
@@ -78,7 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
-//    @IBAction func MenuBarItem(_ sender: Any) {present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)}
+    //    @IBAction func MenuBarItem(_ sender: Any) {present(SideMenuManager.menuLeftNavigationController!, animated: true, completion: nil)}
     
     
     override func viewDidLoad() {
@@ -94,14 +121,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.distanceFilter = 100
-
+        
         mapView.accessibilityElementsHidden = false
         mapView.isMyLocationEnabled = true
-        
+        mapView.settings.myLocationButton = true
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       
+        
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        toggleButton.center.y += view.bounds.height
+        
+        UIView.animate(withDuration: 0.4 , delay: 0.2 , options: [], animations: {
+            
+            self.toggleButton.center.y -= self.view.bounds.height
+        }, completion: nil)
     }
     
     // MARK: - Location manager delegate methods
@@ -131,8 +173,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             path.map = mapView
             
         }
-        
-        
     }
-    
 }

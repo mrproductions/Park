@@ -32,7 +32,7 @@ class TracksTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tracks = Array(DatabaseManager.realm.objects(TrackListItem.self))
-        processRawData(tracks: tracks!)        
+        processRawData(tracks: tracks!)
         
         loadTracks()
         let imageForNavBar = UIImage(named: "StatusBar")
@@ -43,14 +43,12 @@ class TracksTableViewController: UITableViewController {
         navigationItem.title  = "Мои треки"
         //navigationController?.navigationBar.backgroundColor = UIColor.lightText
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
-        
         
         let headerNib = UINib(nibName: "TracksTableHeader", bundle: nil)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: StoryboardConstants.headerIdentifier)
         
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,7 +104,7 @@ class TracksTableViewController: UITableViewController {
         return cell
         
     }
-
+    
     
     // MARK: - UITableView delegate methods
     
@@ -188,24 +186,20 @@ class TracksTableViewController: UITableViewController {
             try! realm.write {
                 realm.add(tracks, update: true)
             }
-
+            
             self?.items = result
             self?.tableView.reloadData()
         }
     }
     
-
-//    class func readFromBD() -> Person {
-//        
-//        let realm = DatabaseManager.realm
-//        let persons = realm.objects(Person.self)
-//        
-//        return persons[0]
-//    }
-//    
-
+    
+    //    class func readFromBD() -> Person {
+    //
+    //        let realm = DatabaseManager.realm
+    //        let persons = realm.objects(Person.self)
+    //
+    //        return persons[0]
+    //    }
+    //    
+    
 }
-    
-
-    
-

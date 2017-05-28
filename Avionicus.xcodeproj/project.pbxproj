@@ -41,10 +41,20 @@
 		176BEE0A1EBE0F7500853ECA /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176BEE091EBE0F7500853ECA /* FileDetailViewController.swift */; };
 		1779D4211EC10F1D00364776 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1779D4201EC10F1D00364776 /* DatabaseManager.swift */; };
 		178B678F1EACEEAD0000AD6E /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178B678E1EACEEAD0000AD6E /* Map.storyboard */; };
+		178D74EE1ECCB3C20047DDE1 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178D74ED1ECCB3C20047DDE1 /* SettingTableViewController.swift */; };
+		178D74F01ECCB3E50047DDE1 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178D74EF1ECCB3E50047DDE1 /* Setting.storyboard */; };
 		179EBB281EB4D7E700BEBE10 /* RecordSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179EBB271EB4D7E700BEBE10 /* RecordSession.swift */; };
 		179EBB2A1EB4DB8B00BEBE10 /* RecordSessionMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179EBB291EB4DB8B00BEBE10 /* RecordSessionMetadata.swift */; };
 		179EBB2E1EB4FBBF00BEBE10 /* UserFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179EBB2D1EB4FBBF00BEBE10 /* UserFriend.swift */; };
 		17B5D8671EA2881D00D63FCD /* AvionicusError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B5D8661EA2881D00D63FCD /* AvionicusError.swift */; };
+		17C11F721ECC86CD00ACBB18 /* ResponseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11F711ECC86CD00ACBB18 /* ResponseState.swift */; };
+		17C11F741ECC89DB00ACBB18 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C11F731ECC89DB00ACBB18 /* Charts.framework */; };
+		17C11F771ECC8A4500ACBB18 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11F751ECC8A4500ACBB18 /* BarChartCell.swift */; };
+		17C11F781ECC8A4500ACBB18 /* LineChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11F761ECC8A4500ACBB18 /* LineChartCell.swift */; };
+		17C11F7A1ECC8B5500ACBB18 /* RecordSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11F791ECC8B5500ACBB18 /* RecordSessionDelegate.swift */; };
+		17C11FF21ECC8C9200ACBB18 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C11FF11ECC8C9200ACBB18 /* Dashboard.storyboard */; };
+		17C11FF71ECC8CFF00ACBB18 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11FF51ECC8CFF00ACBB18 /* DashboardCell.swift */; };
+		17C11FF81ECC8CFF00ACBB18 /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C11FF61ECC8CFF00ACBB18 /* DashboardItem.swift */; };
 		17C78C011EABA2420063C7F3 /* AvionicusAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */; };
 		17DEAFD21EABB85100DBD191 /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEAFD11EABB85100DBD191 /* ProfileItem.swift */; };
 		51F8CBA03BAF1E65FC9FB5AD /* Pods_Avionicus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */; };
@@ -131,10 +141,20 @@
 		176BEE091EBE0F7500853ECA /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
 		1779D4201EC10F1D00364776 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		178B678E1EACEEAD0000AD6E /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		178D74ED1ECCB3C20047DDE1 /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		178D74EF1ECCB3E50047DDE1 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		179EBB271EB4D7E700BEBE10 /* RecordSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordSession.swift; sourceTree = "<group>"; };
 		179EBB291EB4DB8B00BEBE10 /* RecordSessionMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordSessionMetadata.swift; sourceTree = "<group>"; };
 		179EBB2D1EB4FBBF00BEBE10 /* UserFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriend.swift; sourceTree = "<group>"; };
 		17B5D8661EA2881D00D63FCD /* AvionicusError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusError.swift; sourceTree = "<group>"; };
+		17C11F711ECC86CD00ACBB18 /* ResponseState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseState.swift; sourceTree = "<group>"; };
+		17C11F731ECC89DB00ACBB18 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "../Library/Developer/Xcode/DerivedData/Avionicus-fkaijpfvunkwzncwknorngwraxks/Build/Products/Debug-iphonesimulator/Charts/Charts.framework"; sourceTree = "<group>"; };
+		17C11F751ECC8A4500ACBB18 /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		17C11F761ECC8A4500ACBB18 /* LineChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartCell.swift; sourceTree = "<group>"; };
+		17C11F791ECC8B5500ACBB18 /* RecordSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordSessionDelegate.swift; sourceTree = "<group>"; };
+		17C11FF11ECC8C9200ACBB18 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dashboard.storyboard; path = ../Dashboard.storyboard; sourceTree = "<group>"; };
+		17C11FF51ECC8CFF00ACBB18 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
+		17C11FF61ECC8CFF00ACBB18 /* DashboardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
 		17C78C001EABA2420063C7F3 /* AvionicusAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvionicusAlerts.swift; sourceTree = "<group>"; };
 		17DEAFD11EABB85100DBD191 /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		4BB8B8AD0799F7A2924D8FCC /* Pods-Avionicus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avionicus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avionicus/Pods-Avionicus.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C11F741ECC89DB00ACBB18 /* Charts.framework in Frameworks */,
 				51F8CBA03BAF1E65FC9FB5AD /* Pods_Avionicus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				17654CA31E61CBA90092A3D7 /* UserData.swift */,
-				17654CA41E61CBA90092A3D7 /* UserProfile.swift */,
 				17654CA51E61CBA90092A3D7 /* UserRegistration.swift */,
 			);
 			name = Auth;
@@ -206,6 +226,7 @@
 				55E59DBB1E8981150014BD48 /* TrackListItem.swift */,
 				551788B21EAA75D900D05420 /* TrackDetails.swift */,
 				176252BB1EC09EDC00C2783B /* ActivityKind.swift */,
+				17C11F711ECC86CD00ACBB18 /* ResponseState.swift */,
 			);
 			name = Track;
 			sourceTree = "<group>";
@@ -214,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				179EBB2D1EB4FBBF00BEBE10 /* UserFriend.swift */,
+				17654CA41E61CBA90092A3D7 /* UserProfile.swift */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -316,9 +338,10 @@
 				178B678D1EACEE660000AD6E /* Map */,
 				176BEE081EBE0F5500853ECA /* Files */,
 				17DEAFD01EABB7CA00DBD191 /* Profile */,
+				178D74F11ECCB78D0047DDE1 /* Setting */,
+				17C11FF41ECC8CB100ACBB18 /* Dashboard */,
 				17654CBB1E61D9960092A3D7 /* TabBarController.swift */,
 				176759971E71703B00DD5CD1 /* SideMenuTableViewController.swift */,
-				17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +367,8 @@
 		176BEE051EBB26F800853ECA /* Track */ = {
 			isa = PBXGroup;
 			children = (
+				17C11F751ECC8A4500ACBB18 /* BarChartCell.swift */,
+				17C11F761ECC8A4500ACBB18 /* LineChartCell.swift */,
 				17654CC21E61DF4A0092A3D7 /* TracksTableViewController.swift */,
 				551788B01EAA601D00D05420 /* TracksDetailViewController.swift */,
 				55DF32F51E8839BD007FA5F2 /* Tracks.storyboard */,
@@ -376,9 +401,30 @@
 				17654CB71E61D95E0092A3D7 /* MapViewController.swift */,
 				179EBB271EB4D7E700BEBE10 /* RecordSession.swift */,
 				179EBB291EB4DB8B00BEBE10 /* RecordSessionMetadata.swift */,
+				17C11F791ECC8B5500ACBB18 /* RecordSessionDelegate.swift */,
 				178B678E1EACEEAD0000AD6E /* Map.storyboard */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		178D74F11ECCB78D0047DDE1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				178D74ED1ECCB3C20047DDE1 /* SettingTableViewController.swift */,
+				178D74EF1ECCB3E50047DDE1 /* Setting.storyboard */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		17C11FF41ECC8CB100ACBB18 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				17654CB51E61D9510092A3D7 /* MainViewControllerController.swift */,
+				17C11FF51ECC8CFF00ACBB18 /* DashboardCell.swift */,
+				17C11FF61ECC8CFF00ACBB18 /* DashboardItem.swift */,
+				17C11FF11ECC8C9200ACBB18 /* Dashboard.storyboard */,
+			);
+			name = Dashboard;
 			sourceTree = "<group>";
 		};
 		17DEAFD01EABB7CA00DBD191 /* Profile */ = {
@@ -420,6 +466,7 @@
 		FFBC9FEE926F7F9D39CEDE33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17C11F731ECC89DB00ACBB18 /* Charts.framework */,
 				DA1993DC8BD81311C2F7F58B /* Pods_Avionicus.framework */,
 			);
 			name = Frameworks;
@@ -545,6 +592,8 @@
 				55E59DB41E894EE70014BD48 /* TracksTableHeader.xib in Resources */,
 				17654C791E61C54B0092A3D7 /* LaunchScreen.storyboard in Resources */,
 				17654C9D1E61C9470092A3D7 /* Assets.xcassets in Resources */,
+				178D74F01ECCB3E50047DDE1 /* Setting.storyboard in Resources */,
+				17C11FF21ECC8C9200ACBB18 /* Dashboard.storyboard in Resources */,
 				17654CC11E61DCBF0092A3D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +673,7 @@
 			files = (
 				17654CAC1E61D2E20092A3D7 /* RoundButton.swift in Sources */,
 				17654CB81E61D95E0092A3D7 /* MapViewController.swift in Sources */,
+				17C11FF81ECC8CFF00ACBB18 /* DashboardItem.swift in Sources */,
 				1779D4211EC10F1D00364776 /* DatabaseManager.swift in Sources */,
 				17654CA71E61CBA90092A3D7 /* UserProfile.swift in Sources */,
 				55E59DBC1E8981150014BD48 /* TrackListItem.swift in Sources */,
@@ -636,9 +686,12 @@
 				17654CC31E61DF4A0092A3D7 /* TracksTableViewController.swift in Sources */,
 				17654CB01E61D2F50092A3D7 /* LoginViewController.swift in Sources */,
 				17DEAFD21EABB85100DBD191 /* ProfileItem.swift in Sources */,
+				17C11F781ECC8A4500ACBB18 /* LineChartCell.swift in Sources */,
 				55DF32FF1E885674007FA5F2 /* TrackerItem.swift in Sources */,
+				17C11F771ECC8A4500ACBB18 /* BarChartCell.swift in Sources */,
 				17654CA81E61CBA90092A3D7 /* UserRegistration.swift in Sources */,
 				179EBB281EB4D7E700BEBE10 /* RecordSession.swift in Sources */,
+				17C11F7A1ECC8B5500ACBB18 /* RecordSessionDelegate.swift in Sources */,
 				174C404E1EB684C400B42CE5 /* FriendTableViewController.swift in Sources */,
 				17526ECF1EB7776900222E34 /* FriendTableViewCell.swift in Sources */,
 				55E59DAF1E894E4C0014BD48 /* TracksTableHeaderView.swift in Sources */,
@@ -652,10 +705,13 @@
 				17654CC51E61F33D0092A3D7 /* MenuTableViewCell.swift in Sources */,
 				176759981E71703B00DD5CD1 /* SideMenuTableViewController.swift in Sources */,
 				17654CB11E61D2F50092A3D7 /* RegistrationViewController.swift in Sources */,
+				17C11F721ECC86CD00ACBB18 /* ResponseState.swift in Sources */,
 				17654CAD1E61D2E20092A3D7 /* RoundTextField.swift in Sources */,
 				17654CA61E61CBA90092A3D7 /* UserData.swift in Sources */,
 				176BEE071EBE0CC600853ECA /* FilesTableViewController.swift in Sources */,
+				178D74EE1ECCB3C20047DDE1 /* SettingTableViewController.swift in Sources */,
 				17654CA21E61C9C70092A3D7 /* Constants.swift in Sources */,
+				17C11FF71ECC8CFF00ACBB18 /* DashboardCell.swift in Sources */,
 				1767599A1E71770500DD5CD1 /* SideMenuTableViewCell.swift in Sources */,
 				17654CC71E61F3F70092A3D7 /* ProfileTableViewController.swift in Sources */,
 				171869231E8EA02700036631 /* LaunchViewController.swift in Sources */,
